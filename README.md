@@ -6,6 +6,8 @@ Design 畫布「弘淇羽球報名系統」的原始檔（版本 5，2026-09-20�
 
 ## 預覽
 
+線上版：<https://winsonboy23.github.io/hongqi-booking-design/>（GitHub Pages，push 到 main 就自動更新）
+
 `index.html` 是給業主看的設計稿畫廊：三個分頁（前台手機／前台桌機／後台），縮圖是實際運作中的畫板，點開可以放大操作，支援 ← → 換頁與 Esc 關閉。
 
 本地預覽：
