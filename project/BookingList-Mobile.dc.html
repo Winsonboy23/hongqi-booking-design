@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>單堂預約列表（手機）</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Noto+Sans+TC:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #faf7f3; color: #2f4a6d; font-family: "Zen Maru Gothic", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
+a { color: #2f4a6d; } a:hover { color: #dd94a2; }
+</style>
+</helmet>
+<div style="width: 390px; height: 1240px; background: #faf7f3; display: flex; flex-direction: column; overflow: hidden;">
+
+  <div style="height: 56px; padding: 0 16px; display: flex; align-items: center; gap: 8px; background: #ffffff; border-bottom: 2px solid #2f4a6d; flex-shrink: 0;">
+    <a href="Main.dc.html" style="font-size: 18px; line-height: 26px; font-weight: 700; text-decoration: none; flex-grow: 1;">弘淇羽球</a>
+    <a href="Lookup-Mobile.dc.html" style="font-size: 13px; line-height: 20px; font-weight: 700;">查詢我的報名</a>
+  </div>
+
+  <div style="flex-grow: 1; padding: 16px; display: flex; flex-direction: column; gap: 16px;">
+
+    <div style="display: flex; flex-direction: column; gap: 4px;">
+      <h1 style="margin: 0; font-size: 26px; line-height: 34px; font-weight: 700;">單堂預約</h1>
+      <p style="margin: 0; font-size: 13px; line-height: 20px; color: #5c748f;">先選地區，再挑教練。兩個都可以留「不指定」，直接看所有開放時段。</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <label for="f-area" style="font-size: 15px; line-height: 26px; font-weight: 700;">地區</label>
+        <select id="f-area" value="{{area}}" onChange="{{setArea}}" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+          <option value="">不指定</option>
+          <option value="永康區">永康區</option>
+          <option value="東區">東區</option>
+          <option value="仁德區">仁德區</option>
+        </select>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <label for="f-coach" style="font-size: 15px; line-height: 26px; font-weight: 700;">教練</label>
+        <select id="f-coach" value="{{coach}}" onChange="{{setCoach}}" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+          <option value="">不指定</option>
+          <option value="林彥廷">林彥廷</option>
+          <option value="陳怡君">陳怡君</option>
+          <option value="黃柏勛">黃柏勛</option>
+          <option value="張雅婷">張雅婷</option>
+        </select>
+      </div>
+    </div>
+
+    <p style="margin: 0; font-size: 13px; line-height: 20px; color: #5c748f;">{{countText}}</p>
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <sc-for list="{{rows}}" as="r" hint-placeholder-count="6">
+        <div style="background: #ffffff; border: 2px solid #2f4a6d; border-radius: 20px; box-shadow: 0 4px 0 #2f4a6d; padding: 16px; display: flex; flex-direction: column; gap: 6px;">
+          <div style="display: flex; align-items: baseline; gap: 8px;">
+            <h3 style="margin: 0; flex-grow: 1; font-size: 18px; line-height: 26px; font-weight: 700;">{{r.when}}</h3>
+            <span style="font-size: 15px; line-height: 26px; font-weight: 700;">{{r.price}}</span>
+          </div>
+          <p style="margin: 0; font-size: 15px; line-height: 26px;">{{r.coach}} 教練・{{r.venue}}（{{r.area}}）</p>
+          <div style="display: flex; align-items: center; gap: 8px; margin-top: 2px;">
+            <span style="{{r.chipStyle}}">{{r.chipText}}</span>
+            <span style="flex-grow: 1;"></span>
+            <sc-if value="{{r.open}}" hint-placeholder-val="{{yes}}">
+              <a href="Checkout-Mobile.dc.html" style="display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 24px; background: #f2c2cb; color: #24405f; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 4px 0 #dd94a2; font-size: 15px; line-height: 26px; font-weight: 700; text-decoration: none;">預約</a>
+            </sc-if>
+            <sc-if value="{{r.full}}" hint-placeholder-val="{{no}}">
+              <button type="button" disabled style="height: 44px; padding: 0 24px; background: #f0eae3; color: #5c748f; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; line-height: 26px; font-weight: 700;">已額滿</button>
+            </sc-if>
+          </div>
+        </div>
+      </sc-for>
+
+      <sc-if value="{{empty}}" hint-placeholder-val="{{no}}">
+        <div style="background: #ffffff; border: 2px solid #2f4a6d; border-radius: 20px; box-shadow: 0 4px 0 #2f4a6d; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" aria-hidden="true">
+            <circle cx="36" cy="46" r="15" fill="#bcd9ec" stroke="#2f4a6d" stroke-width="2"></circle>
+            <path d="M36 31 L24 10 M36 31 L36 8 M36 31 L48 10" stroke="#2f4a6d" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M24 10 Q36 2 48 10" stroke="#2f4a6d" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          <p style="margin: 0; font-size: 18px; line-height: 26px; font-weight: 700;">這個條件沒有開放時段</p>
+          <p style="margin: 0; text-align: center; font-size: 13px; line-height: 20px; color: #5c748f;">把教練或地區改回「不指定」，就能看到全部六個時段。</p>
+          <button type="button" onClick="{{clear}}" style="height: 44px; padding: 0 24px; background: #ffffff; color: #2f4a6d; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 4px 0 #2f4a6d; font-family: inherit; font-size: 15px; line-height: 26px; font-weight: 700; cursor: pointer;">清除條件</button>
+        </div>
+      </sc-if>
+    </div>
+
+    <p style="margin: 0; font-size: 13px; line-height: 20px; color: #5c748f;">找整季的班？<a href="Main.dc.html">看季課程報名</a></p>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1240}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { coach: '', area: '' };
+  }
+  renderVals() {
+    var self = this;
+    var SESSIONS = [
+      { when: '10/06（二）20:00–22:00', coach: '林彥廷', venue: '永康館', area: '永康區', left: 4, price: 'NT$450' },
+      { when: '10/08（四）19:00–21:00', coach: '陳怡君', venue: '永康館', area: '永康區', left: 1, price: 'NT$450' },
+      { when: '10/09（五）20:00–22:00', coach: '張雅婷', venue: '東寧館', area: '東區', left: 6, price: 'NT$450' },
+      { when: '10/11（日）09:00–11:00', coach: '黃柏勛', venue: '仁德館', area: '仁德區', left: 0, price: 'NT$450' },
+      { when: '10/13（二）20:00–22:00', coach: '林彥廷', venue: '中華館', area: '永康區', left: 5, price: 'NT$450' },
+      { when: '10/15（四）19:00–21:00', coach: '陳怡君', venue: '仁德館', area: '仁德區', left: 3, price: 'NT$450' }
+    ];
+    var list = SESSIONS.filter(function (s) {
+      return (!self.state.coach || s.coach === self.state.coach) && (!self.state.area || s.area === self.state.area);
+    });
+    var rows = list.map(function (s) {
+      var full = s.left === 0;
+      var low = !full && s.left <= 3;
+      var t = full ? '已額滿' : (low ? '剩 ' + s.left + ' 個名額' : '尚有 ' + s.left + ' 個名額');
+      var c = full ? '#b04747' : (low ? '#9a6318' : '#3f7f68');
+      return {
+        when: s.when, coach: s.coach, venue: s.venue, area: s.area, price: s.price,
+        open: !full, full: full,
+        chipText: t,
+        chipStyle: 'display:inline-flex;align-items:center;height:28px;padding:0 10px;background:#ffffff;border:2px solid ' + c + ';border-radius:8px;font-size:13px;line-height:20px;font-weight:700;color:' + c + ';'
+      };
+    });
+    return {
+      coach: this.state.coach,
+      area: this.state.area,
+      setCoach: function (e) { self.setState({ coach: e.target.value }); },
+      setArea: function (e) { self.setState({ area: e.target.value }); },
+      clear: function () { self.setState({ coach: '', area: '' }); },
+      rows: rows,
+      empty: rows.length === 0,
+      countText: '共 ' + rows.length + ' 個開放時段',
+      yes: true,
+      no: false
+    };
+  }
+}
+</script>
+</body>
+</html>

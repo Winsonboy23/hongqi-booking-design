@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>查詢報名（桌機）</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Noto+Sans+TC:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #faf7f3; color: #2f4a6d; font-family: "Zen Maru Gothic", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
+a { color: #2f4a6d; } a:hover { color: #dd94a2; }
+</style>
+</helmet>
+<div style="width: 1280px; height: 820px; background: #faf7f3; display: flex; flex-direction: column; overflow: hidden;">
+
+  <div style="height: 72px; padding: 0 48px; display: flex; align-items: center; gap: 32px; background: #ffffff; border-bottom: 2px solid #2f4a6d; flex-shrink: 0;">
+    <a href="Courses-Desktop.dc.html" style="font-size: 22px; line-height: 30px; font-weight: 700; text-decoration: none;">弘淇羽球</a>
+    <nav style="flex-grow: 1; display: flex; align-items: center; gap: 24px;">
+      <a href="Courses-Desktop.dc.html" style="font-size: 15px; line-height: 26px; text-decoration: none;">季課程報名</a>
+      <a href="BookingList-Desktop.dc.html" style="font-size: 15px; line-height: 26px; text-decoration: none;">單堂預約</a>
+      <a href="Lookup-Desktop.dc.html" style="font-size: 15px; line-height: 26px; font-weight: 700; text-decoration: none; box-shadow: inset 0 -8px 0 #f2c2cb;">查詢報名</a>
+    </nav>
+    <span style="font-size: 15px; line-height: 26px; font-weight: 700;">諮詢專線 [中心電話]</span>
+  </div>
+
+  <div style="flex-grow: 1; padding: 48px; display: grid; grid-template-columns: 420px minmax(0, 1fr); gap: 40px; align-items: start;">
+
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; flex-direction: column; gap: 4px;">
+        <h1 style="margin: 0; font-size: 32px; line-height: 40px; font-weight: 700;">查詢我的報名</h1>
+        <p style="margin: 0; font-size: 15px; line-height: 26px; color: #5c748f;">用報名時填的手機號碼加訂單編號就能查，不用註冊會員。</p>
+      </div>
+
+      <div style="background: #ffffff; border: 2px solid #2f4a6d; border-radius: 20px; box-shadow: 0 4px 0 #2f4a6d; padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <label for="w-tel" style="font-size: 15px; line-height: 26px; font-weight: 700;">手機號碼（必填）</label>
+          <input id="w-tel" name="tel" type="tel" placeholder="0912-345-678" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <label for="w-no" style="font-size: 15px; line-height: 26px; font-weight: 700;">訂單編號（必填）</label>
+          <input id="w-no" name="no" type="text" placeholder="HQ-20260920-0137" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+          <p style="margin: 0; font-size: 13px; line-height: 20px; color: #5c748f;">訂單編號在報名完成頁與簡訊裡，開頭是 HQ。</p>
+        </div>
+        <button type="button" onClick="{{search}}" style="height: 52px; background: #f2c2cb; color: #24405f; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 4px 0 #dd94a2; font-family: inherit; font-size: 18px; line-height: 26px; font-weight: 700; cursor: pointer;">{{btnText}}</button>
+      </div>
+    </div>
+
+    <div>
+      <sc-if value="{{blank}}" hint-placeholder-val="{{yes}}">
+        <div style="background: #ffffff; border: 2px solid #2f4a6d; border-radius: 20px; box-shadow: 0 4px 0 #2f4a6d; padding: 64px 48px; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+          <svg width="96" height="96" viewBox="0 0 72 72" fill="none" aria-hidden="true">
+            <circle cx="36" cy="46" r="15" fill="#bcd9ec" stroke="#2f4a6d" stroke-width="2"></circle>
+            <path d="M36 31 L24 10 M36 31 L36 8 M36 31 L48 10" stroke="#2f4a6d" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M24 10 Q36 2 48 10" stroke="#2f4a6d" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          <p style="margin: 0; font-size: 22px; line-height: 30px; font-weight: 700;">還沒有查詢結果</p>
+          <p style="margin: 0; text-align: center; font-size: 15px; line-height: 26px; color: #5c748f;">填好左邊兩欄再按查詢。<br>此處預留中心吉祥物（資產待上傳後替換）。</p>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{found}}" hint-placeholder-val="{{no}}">
+        <div style="background: #ffffff; border: 2px solid #2f4a6d; border-radius: 20px; box-shadow: 0 4px 0 #2f4a6d; padding: 24px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <h2 style="margin: 0; flex-grow: 1; font-size: 22px; line-height: 30px; font-weight: 700;">HQ-20260920-0137</h2>
+            <span style="display: inline-flex; align-items: center; height: 32px; padding: 0 12px; background: #ffffff; border: 2px solid #3f7f68; border-radius: 8px; font-size: 15px; line-height: 26px; font-weight: 700; color: #3f7f68;">已付款</span>
+          </div>
+          <div style="height: 1px; background: #ccd8e4;"></div>
+          <div style="display: flex; gap: 16px;"><span style="width: 72px; flex-shrink: 0; font-size: 15px; line-height: 26px; color: #5c748f;">課程</span><span style="font-size: 15px; line-height: 26px; font-weight: 700;">成人進階班（季課程）</span></div>
+          <div style="display: flex; gap: 16px;"><span style="width: 72px; flex-shrink: 0; font-size: 15px; line-height: 26px; color: #5c748f;">時段</span><span style="font-size: 15px; line-height: 26px;">永康館・每週四 19:00–21:00，共 12 堂</span></div>
+          <div style="display: flex; gap: 16px;"><span style="width: 72px; flex-shrink: 0; font-size: 15px; line-height: 26px; color: #5c748f;">學員</span><span style="font-size: 15px; line-height: 26px;">王小明・0912-345-678</span></div>
+          <div style="display: flex; gap: 16px;"><span style="width: 72px; flex-shrink: 0; font-size: 15px; line-height: 26px; color: #5c748f;">金額</span><span style="font-size: 15px; line-height: 26px; font-weight: 700;">NT$5,040（含稅）</span></div>
+          <div style="display: flex; gap: 16px;"><span style="width: 72px; flex-shrink: 0; font-size: 15px; line-height: 26px; color: #5c748f;">發票</span><span style="font-size: 15px; line-height: 26px;">統編發票・已開立 IV-38271905</span></div>
+          <div style="height: 1px; background: #ccd8e4;"></div>
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <button type="button" style="height: 44px; padding: 0 24px; background: #ffffff; color: #b04747; border: 2px solid #b04747; border-radius: 12px; font-family: inherit; font-size: 15px; line-height: 26px; font-weight: 700; cursor: pointer;">取消這筆報名</button>
+            <p style="margin: 0; font-size: 13px; line-height: 20px; color: #5c748f;">開課前三日可全額退費；取消後名額會立刻釋出，無法復原。</p>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":820}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { found: false };
+  }
+  renderVals() {
+    var self = this;
+    return {
+      found: this.state.found,
+      blank: !this.state.found,
+      btnText: this.state.found ? '重新查詢' : '查詢',
+      search: function () { self.setState({ found: !self.state.found }); },
+      yes: true,
+      no: false
+    };
+  }
+}
+</script>
+</body>
+</html>

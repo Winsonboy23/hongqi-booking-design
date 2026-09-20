@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>後台・帳號與登入</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Noto+Sans+TC:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #faf7f3; color: #2f4a6d; font-family: "Zen Maru Gothic", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
+a { color: #2f4a6d; } a:hover { color: #dd94a2; }
+</style>
+</helmet>
+<div style="width: 1440px; height: 760px; background: #faf7f3; display: flex; overflow: hidden;">
+
+  <div style="width: 240px; flex-shrink: 0; background: #ffffff; border-right: 2px solid #2f4a6d; padding: 24px 16px; display: flex; flex-direction: column; gap: 24px;">
+    <div style="padding: 0 8px; display: flex; flex-direction: column;">
+      <span style="font-size: 22px; line-height: 30px; font-weight: 700;">弘淇羽球</span>
+      <span style="font-size: 13px; line-height: 20px; color: #5c748f;">後台管理</span>
+    </div>
+    <nav style="display: flex; flex-direction: column; gap: 8px;">
+      <a href="Admin-Courses.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid transparent; border-radius: 12px; font-size: 15px; line-height: 26px; text-decoration: none;">課程／時段</a>
+      <a href="Admin-Coaches.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid transparent; border-radius: 12px; font-size: 15px; line-height: 26px; text-decoration: none;">教練</a>
+      <a href="Admin-Venues.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid transparent; border-radius: 12px; font-size: 15px; line-height: 26px; text-decoration: none;">地點</a>
+      <a href="Admin-Orders.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid transparent; border-radius: 12px; font-size: 15px; line-height: 26px; text-decoration: none;">訂單</a>
+      <a href="Admin-Account.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 3px 0 #dd94a2; background: #f2c2cb; color: #24405f; font-size: 15px; line-height: 26px; font-weight: 700; text-decoration: none;">帳號</a>
+    </nav>
+    <span style="flex-grow: 1;"></span>
+    <div style="padding: 0 8px; display: flex; flex-direction: column;">
+      <span style="font-size: 13px; line-height: 20px; color: #5c748f;">管理員</span>
+      <span style="font-size: 15px; line-height: 26px; font-weight: 700;">admin@[網域]</span>
+    </div>
+  </div>
+
+  <div style="flex-grow: 1; display: flex; flex-direction: column; overflow: hidden;">
+
+    <div style="height: 80px; flex-shrink: 0; padding: 0 32px; display: flex; align-items: center;">
+      <h1 style="margin: 0; font-size: 32px; line-height: 40px; font-weight: 700;">帳號</h1>
+    </div>
+
+    <div style="flex-grow: 1; padding: 0 32px 32px; display: grid; grid-template-columns: minmax(0, 1fr) 520px; gap: 24px; align-items: start;">
+
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="background: #ffffff; border: 2px solid #2f4a6d; border-radius: 20px; box-shadow: 0 4px 0 #2f4a6d; padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+          <h2 style="margin: 0; font-size: 22px; line-height: 30px; font-weight: 700;">管理員帳號</h2>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <label for="ac-email" style="font-size: 15px; line-height: 26px; font-weight: 700;">電子郵件</label>
+            <input id="ac-email" name="email" type="email" value="admin@[網域]" onChange="{{noop}}" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+            <span style="font-size: 13px; line-height: 20px; color: #5c748f;">整個系統只有這一組管理員帳號，沒有會員系統，學員靠電話＋訂單編號查詢。</span>
+          </div>
+
+          <div style="height: 1px; background: #ccd8e4;"></div>
+
+          <h3 style="margin: 0; font-size: 18px; line-height: 26px; font-weight: 700;">變更密碼</h3>
+          <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px;">
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <label for="ac-old" style="font-size: 15px; line-height: 26px; font-weight: 700;">目前密碼</label>
+              <input id="ac-old" name="old" type="password" placeholder="••••••••" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <label for="ac-new" style="font-size: 15px; line-height: 26px; font-weight: 700;">新密碼</label>
+              <input id="ac-new" name="new" type="password" placeholder="至少 8 碼" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <label for="ac-new2" style="font-size: 15px; line-height: 26px; font-weight: 700;">確認新密碼</label>
+              <input id="ac-new2" name="new2" type="password" placeholder="再打一次" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <button type="button" style="height: 48px; padding: 0 28px; background: #f2c2cb; color: #24405f; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 4px 0 #dd94a2; font-family: inherit; font-size: 15px; line-height: 26px; font-weight: 700; cursor: pointer;">更新密碼</button>
+            <span style="font-size: 13px; line-height: 20px; color: #5c748f;">密碼至少 8 碼，要有英文字母與數字。</span>
+          </div>
+        </div>
+
+        <div style="background: #ffffff; border: 2px solid #2f4a6d; border-radius: 20px; box-shadow: 0 4px 0 #2f4a6d; padding: 24px; display: flex; align-items: center; gap: 16px;">
+          <div style="flex-grow: 1; display: flex; flex-direction: column;">
+            <span style="font-size: 15px; line-height: 26px; font-weight: 700;">最後登入：2026/09/20 09:41</span>
+            <span style="font-size: 13px; line-height: 20px; color: #5c748f;">來源 IP 118.xxx.xxx.xxx・Chrome / macOS</span>
+          </div>
+          <button type="button" style="height: 44px; padding: 0 24px; background: #ffffff; color: #b04747; border: 2px solid #b04747; border-radius: 12px; font-family: inherit; font-size: 15px; line-height: 26px; font-weight: 700; cursor: pointer;">登出</button>
+        </div>
+      </div>
+
+      <div style="background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; background: #e9f2f8; border-radius: 8px; font-size: 13px; line-height: 20px; font-weight: 700;">畫面參考</span>
+          <span style="font-size: 15px; line-height: 26px; font-weight: 700;">登入頁（未登入時看到的畫面）</span>
+        </div>
+        <div style="align-self: center; width: 400px; background: #ffffff; border: 2px solid #2f4a6d; border-radius: 20px; box-shadow: 0 4px 0 #2f4a6d; padding: 32px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; flex-direction: column;">
+            <span style="font-size: 26px; line-height: 34px; font-weight: 700;">弘淇羽球</span>
+            <span style="font-size: 15px; line-height: 26px; color: #5c748f;">後台管理登入</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <label for="li-email" style="font-size: 15px; line-height: 26px; font-weight: 700;">電子郵件</label>
+            <input id="li-email" name="liemail" type="email" placeholder="admin@[網域]" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <label for="li-pw" style="font-size: 15px; line-height: 26px; font-weight: 700;">密碼</label>
+            <input id="li-pw" name="lipw" type="password" placeholder="••••••••" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+          </div>
+          <a href="Admin-Courses.dc.html" style="display: flex; align-items: center; justify-content: center; height: 52px; background: #f2c2cb; color: #24405f; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 4px 0 #dd94a2; font-size: 18px; line-height: 26px; font-weight: 700; text-decoration: none;">登入</a>
+          <p style="margin: 0; font-size: 13px; line-height: 20px; color: #5c748f;">密碼忘了請聯絡 [網站維護聯絡人] 重設，系統不寄重設信。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":760}}'>
+class Component extends DCLogic {
+  renderVals() { return { noop: function () {} }; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "Admin-Account.dc.html": {
+      "h": 760,
+      "title": "E 帳號與登入",
+      "w": 1440,
+      "x": 6080,
+      "y": 3020
+    },
+    "Admin-Coaches.dc.html": {
+      "h": 880,
+      "is_interactive": true,
+      "title": "B 教練管理",
+      "w": 1440,
+      "x": 1520,
+      "y": 3020
+    },
+    "Admin-Courses.dc.html": {
+      "h": 1000,
+      "is_interactive": true,
+      "title": "A 課程／時段管理",
+      "w": 1440,
+      "x": 0,
+      "y": 3020
+    },
+    "Admin-Orders.dc.html": {
+      "h": 980,
+      "is_interactive": true,
+      "title": "D 訂單管理",
+      "w": 1440,
+      "x": 4560,
+      "y": 3020
+    },
+    "Admin-Venues.dc.html": {
+      "h": 760,
+      "is_interactive": true,
+      "title": "C 地點管理",
+      "w": 1440,
+      "x": 3040,
+      "y": 3020
+    },
+    "BookingList-Desktop.dc.html": {
+      "h": 940,
+      "is_interactive": true,
+      "title": "2 預約列表・單堂",
+      "w": 1280,
+      "x": 1360,
+      "y": 1640
+    },
+    "BookingList-Mobile.dc.html": {
+      "h": 1240,
+      "is_interactive": true,
+      "title": "2 預約列表・單堂",
+      "w": 390,
+      "x": 470,
+      "y": 0
+    },
+    "Checkout-Desktop.dc.html": {
+      "h": 1060,
+      "is_interactive": true,
+      "title": "3 結帳",
+      "w": 1280,
+      "x": 2720,
+      "y": 1640
+    },
+    "Checkout-Mobile.dc.html": {
+      "h": 1320,
+      "is_interactive": true,
+      "title": "3 結帳",
+      "w": 390,
+      "x": 940,
+      "y": 0
+    },
+    "Courses-Desktop.dc.html": {
+      "h": 930,
+      "is_interactive": true,
+      "title": "1 課程資訊・季報名",
+      "w": 1280,
+      "x": 0,
+      "y": 1640
+    },
+    "Done-Desktop.dc.html": {
+      "h": 780,
+      "title": "4 完成",
+      "w": 1280,
+      "x": 4080,
+      "y": 1640
+    },
+    "Done-Mobile.dc.html": {
+      "h": 860,
+      "title": "4 完成",
+      "w": 390,
+      "x": 1410,
+      "y": 0
+    },
+    "Lookup-Desktop.dc.html": {
+      "h": 820,
+      "is_interactive": true,
+      "title": "5 查詢",
+      "w": 1280,
+      "x": 5440,
+      "y": 1640
+    },
+    "Lookup-Mobile.dc.html": {
+      "h": 900,
+      "is_interactive": true,
+      "title": "5 查詢",
+      "w": 390,
+      "x": 1880,
+      "y": 0
+    },
+    "Main.dc.html": {
+      "h": 1090,
+      "is_interactive": true,
+      "title": "1 課程資訊・季報名",
+      "w": 390,
+      "x": 0,
+      "y": 0
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-09-20T16:20:00+08:00",
+    "v": 1
+  },
+  "designSystems": [
+    {
+      "artifact": "https://claude.ai/artifact/BHFKNwNd2KX2npT2xK9jCx",
+      "copiedAt": "2026-09-20T16:20:00+08:00",
+      "namespace": "hongqi",
+      "title": "弘淇羽球設計系統",
+      "version": null
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  },
+  "notes": {
+    "n1": {
+      "kind": "title1",
+      "maxW": 2270,
+      "text": "前台・手機 390",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "n2": {
+      "kind": "title1",
+      "maxW": 6720,
+      "text": "前台・桌機 1280",
+      "w": 240,
+      "x": 0,
+      "y": 1340
+    },
+    "n3": {
+      "kind": "title1",
+      "maxW": 7520,
+      "text": "後台・桌機 1440",
+      "w": 240,
+      "x": 0,
+      "y": 2720
+    },
+    "n4": {
+      "color": "blue",
+      "text": "可點流程：1 選地區→選館別→點月曆日期→報名→3 結帳（切統編會即時 +5%）→4 完成→5 查詢。地區換了，館別會跳到該區第一個館。2 先選地區再挑教練，兩個下拉都會真的篩選，篩空會出現空狀態。後台側欄五個模組互通。",
+      "w": 320,
+      "x": 2350,
+      "y": 0
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "BookingList-Mobile.dc.html",
+    "Checkout-Mobile.dc.html",
+    "Done-Mobile.dc.html",
+    "Lookup-Mobile.dc.html",
+    "Courses-Desktop.dc.html",
+    "BookingList-Desktop.dc.html",
+    "Checkout-Desktop.dc.html",
+    "Done-Desktop.dc.html",
+    "Lookup-Desktop.dc.html",
+    "Admin-Courses.dc.html",
+    "Admin-Coaches.dc.html",
+    "Admin-Venues.dc.html",
+    "Admin-Orders.dc.html",
+    "Admin-Account.dc.html"
+  ],
+  "pages": [],
+  "title": "弘淇羽球報名系統"
+}

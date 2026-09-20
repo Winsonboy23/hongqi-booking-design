@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>後台・教練管理</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Noto+Sans+TC:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #faf7f3; color: #2f4a6d; font-family: "Zen Maru Gothic", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
+a { color: #2f4a6d; } a:hover { color: #dd94a2; }
+</style>
+</helmet>
+<div style="width: 1440px; height: 880px; background: #faf7f3; display: flex; overflow: hidden;">
+
+  <div style="width: 240px; flex-shrink: 0; background: #ffffff; border-right: 2px solid #2f4a6d; padding: 24px 16px; display: flex; flex-direction: column; gap: 24px;">
+    <div style="padding: 0 8px; display: flex; flex-direction: column;">
+      <span style="font-size: 22px; line-height: 30px; font-weight: 700;">弘淇羽球</span>
+      <span style="font-size: 13px; line-height: 20px; color: #5c748f;">後台管理</span>
+    </div>
+    <nav style="display: flex; flex-direction: column; gap: 8px;">
+      <a href="Admin-Courses.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid transparent; border-radius: 12px; font-size: 15px; line-height: 26px; text-decoration: none;">課程／時段</a>
+      <a href="Admin-Coaches.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 3px 0 #dd94a2; background: #f2c2cb; color: #24405f; font-size: 15px; line-height: 26px; font-weight: 700; text-decoration: none;">教練</a>
+      <a href="Admin-Venues.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid transparent; border-radius: 12px; font-size: 15px; line-height: 26px; text-decoration: none;">地點</a>
+      <a href="Admin-Orders.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid transparent; border-radius: 12px; font-size: 15px; line-height: 26px; text-decoration: none;">訂單</a>
+      <a href="Admin-Account.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid transparent; border-radius: 12px; font-size: 15px; line-height: 26px; text-decoration: none;">帳號</a>
+    </nav>
+    <span style="flex-grow: 1;"></span>
+    <div style="padding: 0 8px; display: flex; flex-direction: column;">
+      <span style="font-size: 13px; line-height: 20px; color: #5c748f;">管理員</span>
+      <span style="font-size: 15px; line-height: 26px; font-weight: 700;">admin@[網域]</span>
+    </div>
+  </div>
+
+  <div style="flex-grow: 1; display: flex; flex-direction: column; overflow: hidden;">
+
+    <div style="height: 80px; flex-shrink: 0; padding: 0 32px; display: flex; align-items: center; gap: 16px; background: #ffffff; border-bottom: 2px solid #2f4a6d;">
+      <h1 style="margin: 0; flex-grow: 1; font-size: 32px; line-height: 40px; font-weight: 700;">教練管理</h1>
+      <button type="button" style="height: 48px; padding: 0 28px; background: #f2c2cb; color: #24405f; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 4px 0 #dd94a2; font-family: inherit; font-size: 15px; line-height: 26px; font-weight: 700; cursor: pointer;">新增教練</button>
+    </div>
+
+    <div style="flex-grow: 1; padding: 24px 32px 32px; display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 24px; align-items: start;">
+
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <sc-for list="{{coaches}}" as="c" hint-placeholder-count="4">
+          <div style="{{c.cardStyle}}">
+            <div style="{{c.avatarStyle}}">{{c.initial}}</div>
+            <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 4px;">
+              <span style="font-size: 18px; line-height: 26px; font-weight: 700;">{{c.name}}</span>
+              <span style="font-size: 15px; line-height: 26px; color: #5c748f;">{{c.bio}}</span>
+              <div style="display: flex; gap: 8px; margin-top: 2px;">
+                <sc-for list="{{c.areas}}" as="a" hint-placeholder-count="2">
+                  <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; background: #e5f2ee; border-radius: 8px; font-size: 13px; line-height: 20px; font-weight: 700;">{{a}}</span>
+                </sc-for>
+              </div>
+            </div>
+            <button type="button" onClick="{{c.pick}}" style="{{c.btnStyle}}">{{c.btnText}}</button>
+          </div>
+        </sc-for>
+        <p style="margin: 0; font-size: 13px; line-height: 20px; color: #5c748f;">頭像沒上傳時用姓氏字卡代替，前台不會出現破圖。</p>
+      </div>
+
+      <div style="background: #ffffff; border: 2px solid #2f4a6d; border-radius: 20px; box-shadow: 0 4px 0 #2f4a6d; padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+        <h2 style="margin: 0; font-size: 22px; line-height: 30px; font-weight: 700;">編輯教練</h2>
+
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <div style="{{editAvatarStyle}}">{{editInitial}}</div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <button type="button" style="height: 44px; padding: 0 20px; background: #bcd9ec; color: #24405f; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 4px 0 #7fb3d3; font-family: inherit; font-size: 15px; line-height: 26px; font-weight: 700; cursor: pointer;">上傳頭像</button>
+            <span style="font-size: 13px; line-height: 20px; color: #5c748f;">正方形 JPG／PNG，至少 400×400。</span>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <label for="e-name" style="font-size: 15px; line-height: 26px; font-weight: 700;">姓名（必填）</label>
+          <input id="e-name" name="cname" type="text" value="{{editName}}" onChange="{{setName}}" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <label for="e-bio" style="font-size: 15px; line-height: 26px; font-weight: 700;">簡介</label>
+          <textarea id="e-bio" name="bio" rows="3" value="{{editBio}}" onChange="{{setBio}}" style="padding: 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; line-height: 26px; color: #2f4a6d; resize: none;"></textarea>
+          <span style="font-size: 13px; line-height: 20px; color: #5c748f;">前台課程卡會顯示前兩行，寫重點就好。</span>
+        </div>
+
+        <fieldset style="margin: 0; padding: 0; border: none; display: flex; flex-direction: column; gap: 8px;">
+          <legend style="padding: 0; font-size: 15px; line-height: 26px; font-weight: 700;">可教地區</legend>
+          <sc-for list="{{areaOpts}}" as="o" hint-placeholder-count="3">
+            <label style="{{o.style}}">
+              <input type="checkbox" checked="{{o.on}}" onChange="{{o.toggle}}" style="width: 20px; height: 20px; accent-color: #dd94a2;">
+              <span style="font-size: 15px; line-height: 26px; font-weight: 700;">{{o.name}}</span>
+            </label>
+          </sc-for>
+        </fieldset>
+
+        <div style="display: flex; gap: 12px; margin-top: 4px;">
+          <button type="button" style="flex-grow: 1; height: 48px; background: #f2c2cb; color: #24405f; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 4px 0 #dd94a2; font-family: inherit; font-size: 15px; line-height: 26px; font-weight: 700; cursor: pointer;">儲存</button>
+          <button type="button" style="height: 48px; padding: 0 24px; background: #ffffff; color: #2f4a6d; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 4px 0 #2f4a6d; font-family: inherit; font-size: 15px; line-height: 26px; font-weight: 700; cursor: pointer;">取消</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":880}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sel: 0,
+      edits: {
+        0: { name: '林彥廷', bio: '中華民國 C 級教練，專長殺球與步法，帶成人初級與一對一。', areas: ['永康區', '仁德區'] },
+        1: { name: '陳怡君', bio: '前縣市代表隊，帶成人進階與女子班，擅長雙打站位。', areas: ['永康區'] },
+        2: { name: '黃柏勛', bio: '青少年培訓主教練，帶兒童啟蒙到校隊選手。', areas: ['永康區', '東區', '仁德區'] },
+        3: { name: '張雅婷', bio: '體適能背景，帶樂齡與零基礎入門，節奏放慢好跟上。', areas: ['東區'] }
+      }
+    };
+  }
+  renderVals() {
+    var self = this;
+    var AREAS = ['永康區', '東區', '仁德區'];
+    var TINT = ['#fbe8ec', '#e9f2f8', '#e5f2ee', '#fbe8ec'];
+    var coaches = [0, 1, 2, 3].map(function (i) {
+      var e = self.state.edits[i];
+      var on = self.state.sel === i;
+      return {
+        name: e.name,
+        bio: e.bio,
+        areas: e.areas,
+        initial: e.name.charAt(0),
+        cardStyle: 'background:#ffffff;border:2px solid #2f4a6d;border-radius:20px;box-shadow:0 4px 0 #2f4a6d;padding:20px;display:flex;align-items:flex-start;gap:16px;' + (on ? 'outline:2px solid #2f4a6d;outline-offset:2px;' : ''),
+        avatarStyle: 'width:56px;height:56px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:' + TINT[i] + ';border:3px solid #2f4a6d;border-radius:999px;font-size:22px;line-height:30px;font-weight:700;',
+        pick: function () { self.setState({ sel: i }); },
+        btnText: on ? '編輯中' : '編輯',
+        btnStyle: 'flex-shrink:0;height:44px;padding:0 20px;border:2px solid #2f4a6d;border-radius:12px;font-family:inherit;font-size:15px;line-height:26px;font-weight:700;cursor:pointer;' + (on ? 'background:#f2c2cb;color:#24405f;box-shadow:0 4px 0 #dd94a2;' : 'background:#ffffff;color:#2f4a6d;box-shadow:0 4px 0 #2f4a6d;')
+      };
+    });
+    var cur = this.state.edits[this.state.sel];
+    var write = function (patch) {
+      var edits = {};
+      for (var k in self.state.edits) { edits[k] = self.state.edits[k]; }
+      var next = { name: cur.name, bio: cur.bio, areas: cur.areas };
+      for (var p in patch) { next[p] = patch[p]; }
+      edits[self.state.sel] = next;
+      self.setState({ edits: edits });
+    };
+    var areaOpts = AREAS.map(function (a) {
+      var on = cur.areas.indexOf(a) >= 0;
+      return {
+        name: a,
+        on: on,
+        style: 'display:flex;align-items:center;gap:12px;height:48px;padding:0 12px;border:2px solid #2f4a6d;border-radius:12px;cursor:pointer;' + (on ? 'background:#fbe8ec;' : 'background:#ffffff;'),
+        toggle: function () {
+          var next = cur.areas.filter(function (x) { return x !== a; });
+          if (!on) { next = AREAS.filter(function (x) { return cur.areas.indexOf(x) >= 0 || x === a; }); }
+          write({ areas: next });
+        }
+      };
+    });
+    return {
+      coaches: coaches,
+      areaOpts: areaOpts,
+      editName: cur.name,
+      editBio: cur.bio,
+      editInitial: cur.name.charAt(0),
+      editAvatarStyle: 'width:72px;height:72px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:' + TINT[this.state.sel] + ';border:3px solid #2f4a6d;border-radius:999px;font-size:26px;line-height:34px;font-weight:700;',
+      setName: function (e) { write({ name: e.target.value }); },
+      setBio: function (e) { write({ bio: e.target.value }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>後台・訂單管理</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Noto+Sans+TC:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #faf7f3; color: #2f4a6d; font-family: "Zen Maru Gothic", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
+a { color: #2f4a6d; } a:hover { color: #dd94a2; }
+</style>
+</helmet>
+<div style="width: 1440px; height: 980px; background: #faf7f3; display: flex; overflow: hidden;">
+
+  <div style="width: 240px; flex-shrink: 0; background: #ffffff; border-right: 2px solid #2f4a6d; padding: 24px 16px; display: flex; flex-direction: column; gap: 24px;">
+    <div style="padding: 0 8px; display: flex; flex-direction: column;">
+      <span style="font-size: 22px; line-height: 30px; font-weight: 700;">弘淇羽球</span>
+      <span style="font-size: 13px; line-height: 20px; color: #5c748f;">後台管理</span>
+    </div>
+    <nav style="display: flex; flex-direction: column; gap: 8px;">
+      <a href="Admin-Courses.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid transparent; border-radius: 12px; font-size: 15px; line-height: 26px; text-decoration: none;">課程／時段</a>
+      <a href="Admin-Coaches.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid transparent; border-radius: 12px; font-size: 15px; line-height: 26px; text-decoration: none;">教練</a>
+      <a href="Admin-Venues.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid transparent; border-radius: 12px; font-size: 15px; line-height: 26px; text-decoration: none;">地點</a>
+      <a href="Admin-Orders.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 3px 0 #dd94a2; background: #f2c2cb; color: #24405f; font-size: 15px; line-height: 26px; font-weight: 700; text-decoration: none;">訂單</a>
+      <a href="Admin-Account.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid transparent; border-radius: 12px; font-size: 15px; line-height: 26px; text-decoration: none;">帳號</a>
+    </nav>
+    <span style="flex-grow: 1;"></span>
+    <div style="padding: 0 8px; display: flex; flex-direction: column;">
+      <span style="font-size: 13px; line-height: 20px; color: #5c748f;">管理員</span>
+      <span style="font-size: 15px; line-height: 26px; font-weight: 700;">admin@[網域]</span>
+    </div>
+  </div>
+
+  <div style="flex-grow: 1; display: flex; flex-direction: column; overflow: hidden;">
+
+    <div style="height: 80px; flex-shrink: 0; padding: 0 32px; display: flex; align-items: center; gap: 16px; background: #ffffff; border-bottom: 2px solid #2f4a6d;">
+      <h1 style="margin: 0; flex-grow: 1; font-size: 32px; line-height: 40px; font-weight: 700;">訂單管理</h1>
+      <button type="button" style="height: 48px; padding: 0 28px; background: #bcd9ec; color: #24405f; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 4px 0 #7fb3d3; font-family: inherit; font-size: 15px; line-height: 26px; font-weight: 700; cursor: pointer;">匯出 Excel</button>
+    </div>
+
+    <div style="flex-grow: 1; padding: 24px 32px 32px; display: flex; flex-direction: column; gap: 20px;">
+
+      <div style="background: #ffffff; border: 2px solid #2f4a6d; border-radius: 20px; box-shadow: 0 4px 0 #2f4a6d; padding: 16px 24px; display: flex; align-items: flex-end; gap: 16px;">
+        <div style="width: 220px; display: flex; flex-direction: column; gap: 4px;">
+          <label for="o-course" style="font-size: 15px; line-height: 26px; font-weight: 700;">課程</label>
+          <select id="o-course" value="{{course}}" onChange="{{setCourse}}" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+            <option value="">全部課程</option>
+            <option value="成人進階班">成人進階班</option>
+            <option value="成人初級班">成人初級班</option>
+            <option value="兒童啟蒙班">兒童啟蒙班</option>
+            <option value="青少年培訓班">青少年培訓班</option>
+            <option value="單堂體驗課">單堂體驗課</option>
+          </select>
+        </div>
+        <div style="width: 160px; display: flex; flex-direction: column; gap: 4px;">
+          <label for="o-status" style="font-size: 15px; line-height: 26px; font-weight: 700;">狀態</label>
+          <select id="o-status" value="{{status}}" onChange="{{setStatus}}" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+            <option value="">全部狀態</option>
+            <option value="待付款">待付款</option>
+            <option value="已付款">已付款</option>
+            <option value="已取消">已取消</option>
+          </select>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <label for="o-from" style="font-size: 15px; line-height: 26px; font-weight: 700;">報名日期</label>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <input id="o-from" type="date" value="2026-09-14" onChange="{{noop}}" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+            <span style="font-size: 15px; line-height: 26px; color: #5c748f;">至</span>
+            <input id="o-to" type="date" value="2026-09-20" onChange="{{noop}}" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+          </div>
+        </div>
+        <span style="flex-grow: 1; text-align: right; font-size: 15px; line-height: 26px; color: #5c748f;">{{countText}}</span>
+      </div>
+
+      <div style="background: #ffffff; border: 2px solid #2f4a6d; border-radius: 20px; box-shadow: 0 4px 0 #2f4a6d; padding: 24px; display: flex; flex-direction: column;">
+
+        <div style="display: grid; grid-template-columns: 150px minmax(0, 1fr) 110px 100px 140px 88px 150px 44px; gap: 10px; align-items: center; padding-bottom: 12px;">
+          <span style="font-size: 13px; line-height: 20px; color: #5c748f;">訂單編號</span>
+          <span style="font-size: 13px; line-height: 20px; color: #5c748f;">課程</span>
+          <span style="font-size: 13px; line-height: 20px; color: #5c748f;">學員</span>
+          <span style="font-size: 13px; line-height: 20px; color: #5c748f;">含稅金額</span>
+          <span style="font-size: 13px; line-height: 20px; color: #5c748f;">狀態</span>
+          <span style="font-size: 13px; line-height: 20px; color: #5c748f;">發票已開</span>
+          <span style="font-size: 13px; line-height: 20px; color: #5c748f;">發票號碼</span>
+          <span style="font-size: 13px; line-height: 20px; color: #5c748f;"></span>
+        </div>
+
+        <sc-for list="{{rows}}" as="r" hint-placeholder-count="5">
+          <div style="border-top: 1px solid #ccd8e4;">
+            <div style="{{r.rowStyle}}">
+              <span style="font-size: 15px; line-height: 26px; font-weight: 700;">{{r.id}}</span>
+              <span style="font-size: 15px; line-height: 26px;">{{r.course}}</span>
+              <span style="font-size: 15px; line-height: 26px;">{{r.name}}</span>
+              <span style="font-size: 15px; line-height: 26px; font-weight: 700;">{{r.amount}}</span>
+              <select value="{{r.status}}" onChange="{{r.setStatus}}" aria-label="{{r.statusLabel}}" style="{{r.statusStyle}}">
+                <option value="待付款">待付款</option>
+                <option value="已付款">已付款</option>
+                <option value="已取消">已取消</option>
+              </select>
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                <input type="checkbox" checked="{{r.inv}}" onChange="{{r.toggleInv}}" aria-label="{{r.invLabel}}" style="width: 22px; height: 22px; accent-color: #dd94a2;">
+                <span style="font-size: 13px; line-height: 20px; font-weight: 700;">{{r.invText}}</span>
+              </label>
+              <input type="text" value="{{r.invNo}}" onChange="{{r.setInvNo}}" disabled="{{r.invOff}}" placeholder="IV-00000000" aria-label="{{r.invNoLabel}}" style="{{r.invNoStyle}}">
+              <button type="button" onClick="{{r.toggleOpen}}" aria-expanded="{{r.open}}" aria-label="{{r.detailLabel}}" style="{{r.detailStyle}}">{{r.detailIcon}}</button>
+            </div>
+            <sc-if value="{{r.open}}" hint-placeholder-val="{{no}}">
+              <div style="margin: 0 0 16px; padding: 20px; background: #f0eae3; border-radius: 12px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 24px;">
+                <div style="display: flex; flex-direction: column;"><span style="font-size: 13px; line-height: 20px; color: #5c748f;">學員資料</span><span style="font-size: 15px; line-height: 26px; font-weight: 700;">{{r.d.who}}</span></div>
+                <div style="display: flex; flex-direction: column;"><span style="font-size: 13px; line-height: 20px; color: #5c748f;">LINE ID</span><span style="font-size: 15px; line-height: 26px;">{{r.d.line}}</span></div>
+                <div style="display: flex; flex-direction: column;"><span style="font-size: 13px; line-height: 20px; color: #5c748f;">報名時間</span><span style="font-size: 15px; line-height: 26px;">{{r.d.at}}</span></div>
+                <div style="grid-column: span 2; display: flex; flex-direction: column;"><span style="font-size: 13px; line-height: 20px; color: #5c748f;">程度備註</span><span style="font-size: 15px; line-height: 26px;">{{r.d.note}}</span></div>
+                <div style="display: flex; flex-direction: column;"><span style="font-size: 13px; line-height: 20px; color: #5c748f;">付款方式</span><span style="font-size: 15px; line-height: 26px;">{{r.d.pay}}</span></div>
+                <div style="display: flex; flex-direction: column;"><span style="font-size: 13px; line-height: 20px; color: #5c748f;">發票類型</span><span style="font-size: 15px; line-height: 26px; font-weight: 700;">{{r.d.invType}}</span></div>
+                <div style="display: flex; flex-direction: column;"><span style="font-size: 13px; line-height: 20px; color: #5c748f;">統編・抬頭</span><span style="font-size: 15px; line-height: 26px;">{{r.d.vat}}</span></div>
+                <div style="display: flex; flex-direction: column;"><span style="font-size: 13px; line-height: 20px; color: #5c748f;">金額明細</span><span style="font-size: 15px; line-height: 26px;">{{r.d.sum}}</span></div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+
+      </div>
+
+      <p style="margin: 0; font-size: 13px; line-height: 20px; color: #5c748f;">狀態改成「已取消」會把名額釋回前台，但不會自動退款，退款請另外處理。會計用「發票已開」與「發票號碼」這兩欄對帳，匯出的 Excel 也會帶這兩欄。</p>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":980}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      course: '', status: '', open: 'HQ-20260920-0137',
+      st: {}, inv: { 'HQ-20260920-0137': true, 'HQ-20260919-0134': true },
+      no: { 'HQ-20260920-0137': 'IV-38271905', 'HQ-20260919-0134': 'IV-38271904' }
+    };
+  }
+  renderVals() {
+    var self = this;
+    var ORDERS = [
+      { id: 'HQ-20260920-0137', key: '成人進階班', course: '成人進階班（季課程）', name: '王小明', amount: 'NT$5,040', status: '已付款',
+        d: { who: '王小明・0912-345-678', line: 'winson_bd', at: '2026/09/20 14:32', note: '球齡兩年，想加強反手切球與網前小球。', pay: '[金流商名稱]・信用卡', invType: '統編發票', vat: '12345678・鳴周科技有限公司', sum: 'NT$4,800 ＋ 稅 NT$240 ＝ NT$5,040' } },
+      { id: 'HQ-20260920-0136', key: '成人初級班', course: '成人初級班（季課程）', name: '李佳芳', amount: 'NT$4,800', status: '已付款',
+        d: { who: '李佳芳・0933-221-108', line: '未填', at: '2026/09/20 11:05', note: '完全沒打過，想從握拍開始學。', pay: '[金流商名稱]・信用卡', invType: '二聯式收據', vat: '—', sum: 'NT$4,800（未稅）' } },
+      { id: 'HQ-20260919-0135', key: '單堂體驗課', course: '單堂體驗課 10/09', name: '吳承翰', amount: 'NT$450', status: '待付款',
+        d: { who: '吳承翰・0987-654-321', line: 'han_wu', at: '2026/09/19 20:47', note: '球齡半年，想找人對打。', pay: '尚未付款', invType: '二聯式收據', vat: '—', sum: 'NT$450（未稅）' } },
+      { id: 'HQ-20260919-0134', key: '兒童啟蒙班', course: '兒童啟蒙班（季課程）', name: '周宜靜', amount: 'NT$3,780', status: '已付款',
+        d: { who: '周宜靜（家長）・0918-334-770', line: 'joujing', at: '2026/09/19 09:13', note: '小孩小二，第一次上團體課。', pay: '[金流商名稱]・轉帳', invType: '統編發票', vat: '87654321・[公司抬頭]', sum: 'NT$3,600 ＋ 稅 NT$180 ＝ NT$3,780' } },
+      { id: 'HQ-20260918-0133', key: '青少年培訓班', course: '青少年培訓班（季課程）', name: '鄭凱文', amount: 'NT$5,200', status: '已取消',
+        d: { who: '鄭凱文・0955-110-284', line: 'kw_cheng', at: '2026/09/18 16:20', note: '校隊選手，想加強體能與多球。', pay: '已退款（手動）', invType: '二聯式收據', vat: '—', sum: 'NT$5,200（未稅）' } }
+    ];
+    var stOf = function (o) { return self.state.st[o.id] || o.status; };
+    var list = ORDERS.filter(function (o) {
+      return (!self.state.course || o.key === self.state.course) && (!self.state.status || stOf(o) === self.state.status);
+    });
+    var COLOR = { '已付款': '#3f7f68', '待付款': '#9a6318', '已取消': '#b04747' };
+    var rows = list.map(function (o, i) {
+      var s = stOf(o);
+      var inv = !!self.state.inv[o.id];
+      var open = self.state.open === o.id;
+      var patch = function (field, value) {
+        var next = {};
+        for (var k in self.state[field]) { next[k] = self.state[field][k]; }
+        next[o.id] = value;
+        var upd = {};
+        upd[field] = next;
+        self.setState(upd);
+      };
+      return {
+        id: o.id, course: o.course, name: o.name, amount: o.amount, d: o.d,
+        status: s,
+        statusLabel: o.id + ' 的狀態',
+        statusStyle: 'height:44px;padding:0 8px;background:#ffffff;border:2px solid ' + COLOR[s] + ';border-radius:12px;font-family:inherit;font-size:15px;font-weight:700;color:' + COLOR[s] + ';cursor:pointer;',
+        setStatus: function (e) { patch('st', e.target.value); },
+        inv: inv,
+        invText: inv ? '已開' : '未開',
+        invLabel: o.id + ' 發票已開',
+        toggleInv: function () { patch('inv', !inv); },
+        invNo: self.state.no[o.id] || '',
+        invNoLabel: o.id + ' 發票號碼',
+        invOff: !inv,
+        invNoStyle: 'height:44px;padding:0 10px;border:2px solid ' + (inv ? '#2f4a6d' : '#ccd8e4') + ';border-radius:12px;font-family:inherit;font-size:15px;color:' + (inv ? '#2f4a6d' : '#5c748f') + ';background:' + (inv ? '#f0eae3' : '#faf7f3') + ';',
+        setInvNo: function (e) { patch('no', e.target.value); },
+        open: open,
+        detailIcon: open ? '−' : '＋',
+        detailLabel: (open ? '收合 ' : '展開 ') + o.id + ' 的詳情',
+        detailStyle: 'width:44px;height:44px;border:2px solid #2f4a6d;border-radius:12px;font-family:inherit;font-size:18px;font-weight:700;cursor:pointer;' + (open ? 'background:#f2c2cb;color:#24405f;' : 'background:#ffffff;color:#2f4a6d;'),
+        toggleOpen: function () { self.setState({ open: open ? null : o.id }); },
+        rowStyle: 'display:grid;grid-template-columns:150px minmax(0,1fr) 110px 100px 140px 88px 150px 44px;gap:10px;align-items:center;padding:12px 0;' + (i % 2 === 1 ? 'background:#faf7f3;' : '')
+      };
+    });
+    return {
+      rows: rows,
+      course: this.state.course,
+      status: this.state.status,
+      setCourse: function (e) { self.setState({ course: e.target.value }); },
+      setStatus: function (e) { self.setState({ status: e.target.value }); },
+      countText: '共 ' + rows.length + ' 筆訂單',
+      noop: function () {},
+      no: false
+    };
+  }
+}
+</script>
+</body>
+</html>

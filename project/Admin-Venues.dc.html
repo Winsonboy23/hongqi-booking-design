@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>後台・地點管理</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Noto+Sans+TC:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #faf7f3; color: #2f4a6d; font-family: "Zen Maru Gothic", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
+a { color: #2f4a6d; } a:hover { color: #dd94a2; }
+</style>
+</helmet>
+<div style="width: 1440px; height: 760px; background: #faf7f3; display: flex; overflow: hidden;">
+
+  <div style="width: 240px; flex-shrink: 0; background: #ffffff; border-right: 2px solid #2f4a6d; padding: 24px 16px; display: flex; flex-direction: column; gap: 24px;">
+    <div style="padding: 0 8px; display: flex; flex-direction: column;">
+      <span style="font-size: 22px; line-height: 30px; font-weight: 700;">弘淇羽球</span>
+      <span style="font-size: 13px; line-height: 20px; color: #5c748f;">後台管理</span>
+    </div>
+    <nav style="display: flex; flex-direction: column; gap: 8px;">
+      <a href="Admin-Courses.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid transparent; border-radius: 12px; font-size: 15px; line-height: 26px; text-decoration: none;">課程／時段</a>
+      <a href="Admin-Coaches.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid transparent; border-radius: 12px; font-size: 15px; line-height: 26px; text-decoration: none;">教練</a>
+      <a href="Admin-Venues.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 3px 0 #dd94a2; background: #f2c2cb; color: #24405f; font-size: 15px; line-height: 26px; font-weight: 700; text-decoration: none;">地點</a>
+      <a href="Admin-Orders.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid transparent; border-radius: 12px; font-size: 15px; line-height: 26px; text-decoration: none;">訂單</a>
+      <a href="Admin-Account.dc.html" style="display: flex; align-items: center; height: 44px; padding: 0 16px; border: 2px solid transparent; border-radius: 12px; font-size: 15px; line-height: 26px; text-decoration: none;">帳號</a>
+    </nav>
+    <span style="flex-grow: 1;"></span>
+    <div style="padding: 0 8px; display: flex; flex-direction: column;">
+      <span style="font-size: 13px; line-height: 20px; color: #5c748f;">管理員</span>
+      <span style="font-size: 15px; line-height: 26px; font-weight: 700;">admin@[網域]</span>
+    </div>
+  </div>
+
+  <div style="flex-grow: 1; display: flex; flex-direction: column; overflow: hidden;">
+
+    <div style="height: 80px; flex-shrink: 0; padding: 0 32px; display: flex; align-items: center;">
+      <h1 style="margin: 0; font-size: 32px; line-height: 40px; font-weight: 700;">地點管理</h1>
+    </div>
+
+    <div style="flex-grow: 1; padding: 0 32px 32px; display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 24px; align-items: start;">
+
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+        <div style="background: #ffffff; border: 2px solid #2f4a6d; border-radius: 20px; box-shadow: 0 4px 0 #2f4a6d; padding: 24px; display: flex; flex-direction: column;">
+          <div style="display: grid; grid-template-columns: 160px 120px minmax(0, 1fr) 128px; gap: 16px; align-items: center; padding-bottom: 12px;">
+            <span style="font-size: 13px; line-height: 20px; color: #5c748f;">名稱</span>
+            <span style="font-size: 13px; line-height: 20px; color: #5c748f;">所屬地區</span>
+            <span style="font-size: 13px; line-height: 20px; color: #5c748f;">地址</span>
+            <span style="font-size: 13px; line-height: 20px; color: #5c748f;">操作</span>
+          </div>
+          <sc-for list="{{rows}}" as="r" hint-placeholder-count="3">
+            <div style="{{r.rowStyle}}">
+              <span style="font-size: 15px; line-height: 26px; font-weight: 700;">{{r.name}}</span>
+              <span style="justify-self: start; display: inline-flex; align-items: center; height: 26px; padding: 0 8px; background: #e9f2f8; border-radius: 8px; font-size: 13px; line-height: 20px; font-weight: 700;">{{r.area}}</span>
+              <span style="font-size: 15px; line-height: 26px;">{{r.addr}}</span>
+              <div style="display: flex; gap: 8px;">
+                <button type="button" onClick="{{r.pick}}" aria-label="{{r.editLabel}}" style="{{r.editStyle}}">{{r.editText}}</button>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin: 0; font-size: 13px; line-height: 20px; color: #5c748f;">地區是前台「單堂預約」的篩選條件，同一個地區可以有多個館別。已有課程的地點不能直接刪除，先把課程下架。</p>
+      </div>
+
+      <div style="background: #ffffff; border: 2px solid #2f4a6d; border-radius: 20px; box-shadow: 0 4px 0 #2f4a6d; padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+        <h2 style="margin: 0; font-size: 22px; line-height: 30px; font-weight: 700;">{{panelTitle}}</h2>
+
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <label for="v-name" style="font-size: 15px; line-height: 26px; font-weight: 700;">名稱（必填）</label>
+          <input id="v-name" name="vname" type="text" value="{{fName}}" onChange="{{setName}}" placeholder="永康館" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <label for="v-area" style="font-size: 15px; line-height: 26px; font-weight: 700;">所屬地區（必填）</label>
+          <select id="v-area" value="{{fArea}}" onChange="{{setArea}}" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+            <option value="永康區">永康區</option>
+            <option value="東區">東區</option>
+            <option value="仁德區">仁德區</option>
+          </select>
+          <span style="font-size: 13px; line-height: 20px; color: #5c748f;">要新增地區，先在這裡選不到時聯絡維護人員加選項。</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <label for="v-addr" style="font-size: 15px; line-height: 26px; font-weight: 700;">地址（必填）</label>
+          <input id="v-addr" name="vaddr" type="text" value="{{fAddr}}" onChange="{{setAddr}}" placeholder="台南市永康區中華路 000 號" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+          <span style="font-size: 13px; line-height: 20px; color: #5c748f;">這個地址會直接出現在報名完成頁與通知簡訊。</span>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-top: 4px;">
+          <button type="button" style="flex-grow: 1; height: 48px; background: #f2c2cb; color: #24405f; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 4px 0 #dd94a2; font-family: inherit; font-size: 15px; line-height: 26px; font-weight: 700; cursor: pointer;">儲存</button>
+          <button type="button" onClick="{{newVenue}}" style="height: 48px; padding: 0 24px; background: #ffffff; color: #2f4a6d; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 4px 0 #2f4a6d; font-family: inherit; font-size: 15px; line-height: 26px; font-weight: 700; cursor: pointer;">新增一筆</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":760}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sel: 0,
+      form: { name: '永康館', area: '永康區', addr: '台南市永康區 [路名門牌]' }
+    };
+  }
+  renderVals() {
+    var self = this;
+    var VENUES = [
+      { name: '永康館', area: '永康區', addr: '台南市永康區 [路名門牌]' },
+      { name: '東寧館', area: '東區', addr: '台南市東區 [路名門牌]' },
+      { name: '仁德館', area: '仁德區', addr: '台南市仁德區 [路名門牌]' }
+    ];
+    var rows = VENUES.map(function (v, i) {
+      var on = self.state.sel === i;
+      return {
+        name: v.name, area: v.area, addr: v.addr,
+        rowStyle: 'display:grid;grid-template-columns:160px 120px minmax(0,1fr) 128px;gap:16px;align-items:center;padding:14px 0;border-top:1px solid #ccd8e4;' + (i % 2 === 1 ? 'background:#faf7f3;' : ''),
+        editLabel: '編輯 ' + v.name,
+        editText: on ? '編輯中' : '編輯',
+        editStyle: 'height:40px;padding:0 16px;border:2px solid #2f4a6d;border-radius:12px;font-family:inherit;font-size:13px;line-height:20px;font-weight:700;cursor:pointer;' + (on ? 'background:#f2c2cb;color:#24405f;box-shadow:0 3px 0 #dd94a2;' : 'background:#ffffff;color:#2f4a6d;box-shadow:0 3px 0 #2f4a6d;'),
+        pick: function () { self.setState({ sel: i, form: { name: v.name, area: v.area, addr: v.addr } }); }
+      };
+    });
+    var patch = function (p) {
+      var f = { name: self.state.form.name, area: self.state.form.area, addr: self.state.form.addr };
+      for (var k in p) { f[k] = p[k]; }
+      self.setState({ form: f });
+    };
+    return {
+      rows: rows,
+      panelTitle: this.state.sel === null ? '新增地點' : '編輯地點',
+      fName: this.state.form.name,
+      fArea: this.state.form.area,
+      fAddr: this.state.form.addr,
+      setName: function (e) { patch({ name: e.target.value }); },
+      setArea: function (e) { patch({ area: e.target.value }); },
+      setAddr: function (e) { patch({ addr: e.target.value }); },
+      newVenue: function () { self.setState({ sel: null, form: { name: '', area: '永康區', addr: '' } }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
