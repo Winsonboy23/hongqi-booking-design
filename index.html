@@ -10,17 +10,17 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap">
 <style>
 /* 簡約風：取自 project/Main-Minimal-A.dc.html（簡約 A・清爽）——白底、1px 細線、8px 圓角、無陰影、
-   思源黑體，深藍是唯一主色。只換畫廊外框，畫板本身不動。 */
+   思源黑體，深藍是唯一主色，文字一律黑色。只換畫廊外框，畫板本身不動。 */
 :root {
   --bg: #ffffff;          /* 頁面底 */
   --bg-soft: #f1f3f6;     /* 縮圖底：比頁面深一階，畫板像放在桌面上 */
   --card: #ffffff;
-  --ink: #1f2f45;         /* 內文與標題 */
-  --muted: #5b6b7f;       /* 次要文字 */
-  --faint: #8a96a5;       /* 註記 */
+  --ink: #000000;         /* 文字一律黑色 */
+  --muted: #555555;       /* 小標籤 */
+  --faint: #767676;       /* 註記：尺寸、張數、更新日期 */
   --line: #e1e5ea;        /* 分隔線、卡片外框 */
   --line-strong: #cfd6de; /* 控制項外框 */
-  --primary: #2f4a6d;     /* 唯一主色：選中分頁、編號 */
+  --primary: #2f4a6d;     /* 唯一主色：選中分頁 */
   --tabbar-h: 58px;
 }
 
@@ -38,9 +38,9 @@ body {
 
 /* ---------- 頁首 ---------- */
 header { padding: 48px 24px 28px; max-width: 1400px; margin: 0 auto; }
-.brand { margin: 0 0 10px; font-size: 13px; line-height: 20px; font-weight: 700; letter-spacing: .12em; color: var(--muted); }
+.brand { margin: 0 0 10px; font-size: 13px; line-height: 20px; font-weight: 700; letter-spacing: .12em; color: var(--ink); }
 h1 { margin: 0 0 14px; font-size: 28px; line-height: 38px; font-weight: 700; }
-.intro { margin: 0; max-width: 64ch; color: var(--muted); }
+.intro { margin: 0; max-width: 64ch; color: var(--ink); }
 .intro + .intro { margin-top: 8px; }
 .meta { margin: 16px 0 0; font-size: 13px; line-height: 20px; color: var(--faint); }
 
@@ -59,7 +59,7 @@ h1 { margin: 0 0 14px; font-size: 28px; line-height: 38px; font-weight: 700; }
 .tab {
   display: inline-flex; align-items: center; gap: 8px;
   height: 38px; padding: 0 14px;
-  background: transparent; color: var(--muted);
+  background: transparent; color: var(--ink);
   border: 0; border-radius: 8px;
   font-family: inherit; font-size: 15px; font-weight: 500; cursor: pointer;
 }
@@ -71,7 +71,7 @@ h1 { margin: 0 0 14px; font-size: 28px; line-height: 38px; font-weight: 700; }
 /* ---------- 卡片網格 ---------- */
 main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
 .panel[hidden] { display: none; }
-.panel-note { margin: 0 0 20px; color: var(--muted); font-size: 14px; line-height: 22px; }
+.panel-note { margin: 0 0 20px; color: var(--ink); font-size: 14px; line-height: 22px; }
 .grid { display: grid; gap: 24px; }
 .grid.mobile { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
 .grid.wide { grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); }
@@ -109,7 +109,7 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
   flex: none;
   display: inline-flex; align-items: center; justify-content: center;
   min-width: 24px; height: 24px; padding: 0 6px;
-  background: var(--bg-soft); color: var(--primary);
+  background: var(--bg-soft); color: var(--ink);
   border-radius: 4px;
   font-size: 13px; line-height: 20px; font-weight: 700;
 }
