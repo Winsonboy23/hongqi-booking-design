@@ -4,26 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>弘淇羽球報名系統 — 介面設計稿</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23f2c2cb' stroke='%232f4a6d' stroke-width='2.5'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%232f4a6d'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Noto+Sans+TC:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap">
 <style>
-/* 色票直接取自 project/ds/hongqi/tokens.json 的淺色主題，畫廊與設計稿同一套 */
+/* 簡約風：取自 project/Main-Minimal-A.dc.html（簡約 A・清爽）——白底、1px 細線、8px 圓角、無陰影、
+   思源黑體，深藍是唯一主色。只換畫廊外框，畫板本身不動。 */
 :root {
-  --bg: #f0eae3;          /* surface-sunken：頁面底，比縮圖底深一階，卡片才浮得起來 */
-  --bg-soft: #faf7f3;     /* surface-page：縮圖底＝畫板底色，接縫看不出來 */
-  --card: #ffffff;        /* surface-card */
-  --ink: #2f4a6d;         /* ink */
-  --muted: #5c748f;       /* ink-muted */
-  --outline: #2f4a6d;     /* outline：2px 描邊是這套風格的骨架 */
-  --line: #ccd8e4;        /* outline-soft：只畫分隔線 */
-  --accent: #f2c2cb;      /* blush：只當底色 */
-  --accent-strong: #dd94a2;
-  --accent-tint: #fbe8ec;
-  --on-accent: #24405f;   /* ink-on-fill：落在填色上的文字 */
-  --sky-tint: #e9f2f8;
-  --tabbar-h: 60px;
+  --bg: #ffffff;          /* 頁面底 */
+  --bg-soft: #f1f3f6;     /* 縮圖底：比頁面深一階，畫板像放在桌面上 */
+  --card: #ffffff;
+  --ink: #1f2f45;         /* 內文與標題 */
+  --muted: #5b6b7f;       /* 次要文字 */
+  --faint: #8a96a5;       /* 註記 */
+  --line: #e1e5ea;        /* 分隔線、卡片外框 */
+  --line-strong: #cfd6de; /* 控制項外框 */
+  --primary: #2f4a6d;     /* 唯一主色：選中分頁、編號 */
+  --tabbar-h: 58px;
 }
 
 * { box-sizing: border-box; }
@@ -32,56 +30,48 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: "Zen Maru Gothic", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
   font-size: 15px;
   line-height: 26px;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ---------- 頁首 ---------- */
-header { padding: 40px 24px 24px; max-width: 1400px; margin: 0 auto; }
-.brand {
-  font-family: "Caveat", cursive; font-size: 26px; line-height: 32px;
-  font-weight: 600; color: var(--accent-strong); margin: 0 0 4px;
-}
-h1 { margin: 0 0 12px; font-size: 32px; line-height: 44px; font-weight: 700; }
-h1 em { font-style: normal; background: linear-gradient(transparent 62%, var(--accent) 62%); }
+header { padding: 48px 24px 28px; max-width: 1400px; margin: 0 auto; }
+.brand { margin: 0 0 10px; font-size: 13px; line-height: 20px; font-weight: 700; letter-spacing: .12em; color: var(--muted); }
+h1 { margin: 0 0 14px; font-size: 28px; line-height: 38px; font-weight: 700; }
 .intro { margin: 0; max-width: 64ch; color: var(--muted); }
-.intro + .intro { margin-top: 10px; }
-.meta { margin: 16px 0 0; font-size: 13px; line-height: 20px; color: var(--muted); }
+.intro + .intro { margin-top: 8px; }
+.meta { margin: 16px 0 0; font-size: 13px; line-height: 20px; color: var(--faint); }
 
 /* ---------- 分頁列 ---------- */
 .tabs {
   position: sticky; top: 0; z-index: 20;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  border-bottom: 2px solid var(--outline);
+  border-bottom: 1px solid var(--line);
 }
 .tabs-inner {
   max-width: 1400px; margin: 0 auto; padding: 10px 24px;
-  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  display: flex; gap: 4px; flex-wrap: wrap; align-items: center;
   min-height: var(--tabbar-h);
 }
 .tab {
   display: inline-flex; align-items: center; gap: 8px;
-  height: 40px; padding: 0 16px;
-  background: var(--card); color: var(--ink);
-  border: 2px solid var(--outline); border-radius: 12px;
-  font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer;
+  height: 38px; padding: 0 14px;
+  background: transparent; color: var(--muted);
+  border: 0; border-radius: 8px;
+  font-family: inherit; font-size: 15px; font-weight: 500; cursor: pointer;
 }
-.tab:hover { background: var(--sky-tint); }
-.tab[aria-selected="true"] { background: var(--accent); color: var(--on-accent); box-shadow: 0 3px 0 var(--accent-strong); }
-.tab .count {
-  display: inline-flex; align-items: center; justify-content: center;
-  min-width: 22px; height: 22px; padding: 0 6px;
-  background: var(--bg-soft); border-radius: 999px;
-  font-size: 12px; line-height: 20px; color: var(--muted);
-}
-.tab[aria-selected="true"] .count { background: var(--card); color: var(--on-accent); }
+.tab:hover { background: var(--bg-soft); color: var(--ink); }
+.tab[aria-selected="true"] { background: var(--primary); color: #fff; }
+.tab .count { font-size: 12px; line-height: 18px; color: var(--faint); }
+.tab[aria-selected="true"] .count { color: #ffffffb3; }
 
 /* ---------- 卡片網格 ---------- */
 main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
 .panel[hidden] { display: none; }
-.panel-note { margin: 0 0 20px; color: var(--muted); font-size: 14px; }
+.panel-note { margin: 0 0 20px; color: var(--muted); font-size: 14px; line-height: 22px; }
 .grid { display: grid; gap: 24px; }
 .grid.mobile { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
 .grid.wide { grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); }
@@ -89,15 +79,14 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
 
 .card {
   background: var(--card);
-  border: 2px solid var(--outline); border-radius: 16px;
+  border: 1px solid var(--line); border-radius: 8px;
   overflow: hidden; display: flex; flex-direction: column;
-  box-shadow: 0 4px 0 var(--line);
 }
 .shot {
   position: relative; width: 100%;
   aspect-ratio: var(--ar); /* 每組一個比例，節內卡片才等高、標籤才對齊 */
   background: var(--bg-soft);
-  border-bottom: 2px solid var(--outline);
+  border-bottom: 1px solid var(--line);
   overflow: hidden; cursor: zoom-in;
 }
 .shot iframe {
@@ -107,58 +96,54 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
 .shot .skeleton {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
-  color: var(--muted); font-size: 13px;
+  color: var(--faint); font-size: 13px;
 }
 .shot:hover::after {
   content: "點開看大圖";
   position: absolute; inset: auto 0 0 0; padding: 8px 12px;
-  background: color-mix(in srgb, var(--on-accent) 82%, transparent);
+  background: color-mix(in srgb, var(--ink) 88%, transparent);
   color: #fff; font-size: 13px; line-height: 20px; text-align: center;
 }
 .cap { padding: 12px 14px 14px; display: flex; gap: 10px; align-items: flex-start; }
 .step {
   flex: none;
   display: inline-flex; align-items: center; justify-content: center;
-  min-width: 28px; height: 28px; padding: 0 8px;
-  background: var(--accent); color: var(--on-accent);
-  border: 2px solid var(--outline); border-radius: 8px;
-  font-size: 14px; font-weight: 700;
+  min-width: 24px; height: 24px; padding: 0 6px;
+  background: var(--bg-soft); color: var(--primary);
+  border-radius: 4px;
+  font-size: 13px; line-height: 20px; font-weight: 700;
 }
-.cap h3 { margin: 0; font-size: 16px; line-height: 24px; font-weight: 700; }
-.cap .sub { margin: 2px 0 0; font-size: 12px; line-height: 18px; color: var(--muted); }
+.cap h3 { margin: 0; font-size: 15px; line-height: 24px; font-weight: 700; }
+.cap .sub { margin: 2px 0 0; font-size: 12px; line-height: 18px; color: var(--faint); }
 .badge {
-  display: inline-block; margin-left: 6px; padding: 0 7px;
-  background: var(--sky-tint); border-radius: 6px;
-  font-size: 11px; line-height: 18px; font-weight: 700; color: var(--muted);
+  display: inline-block; margin-left: 6px; padding: 0 6px;
+  border: 1px solid var(--line-strong); border-radius: 4px;
+  font-size: 11px; line-height: 16px; font-weight: 500; color: var(--muted);
   vertical-align: 2px;
 }
 
-/* ---------- Tweaks 色塊（簡約提案可切主色）---------- */
+/* ---------- Tweaks 色塊（介面設計new 可切主色）---------- */
 .swatches { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 12px; line-height: 18px; color: var(--muted); }
 .sw {
-  width: 22px; height: 22px; padding: 0;
+  width: 20px; height: 20px; padding: 0;
   background: var(--sw); border: 2px solid var(--card); border-radius: 999px;
-  box-shadow: 0 0 0 1px var(--line); cursor: pointer;
+  box-shadow: 0 0 0 1px var(--line-strong); cursor: pointer;
 }
-.sw[aria-checked="true"] { box-shadow: 0 0 0 2px var(--outline); }
+.sw[aria-checked="true"] { box-shadow: 0 0 0 1.5px var(--ink); }
 .sw-name { margin-left: 2px; }
 .lb-bar .swatches { margin: 0; color: #fff; }
-.lb-bar .sw { border-color: var(--on-accent); box-shadow: 0 0 0 1px #ffffff66; }
-.lb-bar .sw[aria-checked="true"] { box-shadow: 0 0 0 2px #fff; }
+.lb-bar .sw { border-color: var(--ink); box-shadow: 0 0 0 1px #ffffff66; }
+.lb-bar .sw[aria-checked="true"] { box-shadow: 0 0 0 1.5px #fff; }
 
 /* ---------- 燈箱 ---------- */
 .lb[hidden] { display: none; }
 .lb {
   position: fixed; inset: 0; z-index: 50;
-  background: color-mix(in srgb, var(--on-accent) 94%, transparent);
+  background: color-mix(in srgb, var(--ink) 92%, transparent);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   padding: 64px 16px 72px;
 }
-.lb-stage {
-  background: var(--bg-soft);
-  border: 2px solid var(--outline); border-radius: 16px;
-  overflow: hidden; position: relative;
-}
+.lb-stage { background: var(--card); border-radius: 8px; overflow: hidden; position: relative; }
 .lb-stage iframe { border: 0; display: block; transform-origin: top left; }
 .lb-bar {
   position: absolute; left: 0; right: 0; bottom: 0; margin: 0;
@@ -169,27 +154,30 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
 .lb-bar a { color: #fff; font-size: 13px; }
 .lb-btn {
   position: absolute; top: 50%; transform: translateY(-50%);
-  width: 48px; height: 48px;
+  width: 44px; height: 44px;
   background: var(--card); color: var(--ink);
-  border: 2px solid var(--outline); border-radius: 999px;
+  border: 0; border-radius: 999px;
   font-size: 20px; font-family: inherit; cursor: pointer;
 }
-.lb-btn:hover { background: var(--accent); }
+.lb-btn:hover { background: var(--bg-soft); }
 .lb-prev { left: 16px; }
 .lb-next { right: 16px; }
 .lb-close {
   position: absolute; top: 16px; right: 16px;
-  height: 40px; padding: 0 16px;
+  height: 36px; padding: 0 14px;
   background: var(--card); color: var(--ink);
-  border: 2px solid var(--outline); border-radius: 12px;
-  font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer;
+  border: 0; border-radius: 8px;
+  font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer;
 }
-.lb-hint { position: absolute; top: 22px; left: 20px; color: #fff; font-size: 13px; opacity: .8; }
+.lb-close:hover { background: var(--bg-soft); }
+.lb-hint { position: absolute; top: 16px; left: 20px; margin: 0; line-height: 36px; color: #fff; font-size: 13px; opacity: .7; }
 
 @media (max-width: 640px) {
-  header { padding: 28px 16px 16px; }
-  h1 { font-size: 26px; line-height: 36px; }
+  header { padding: 32px 16px 20px; }
+  h1 { font-size: 24px; line-height: 32px; }
   .tabs-inner, main { padding-left: 16px; padding-right: 16px; }
+  .tabs-inner { flex-wrap: nowrap; overflow-x: auto; } /* 手機上分頁排一列、左右滑，sticky 列才不會吃掉半個畫面 */
+  .tab { flex: none; }
   .grid.mobile { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
   .grid.wide { grid-template-columns: 1fr; }
   .lb { padding: 56px 8px 64px; }
@@ -201,10 +189,10 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
 
 <header>
   <p class="brand">弘淇羽球</p>
-  <h1>報名系統 <em>介面設計稿</em></h1>
-  <p class="intro">18 張畫板：前台手機、前台桌機、後台三組介面，加上兩版簡約風格提案與一張系統流程圖。點縮圖可以放大，放大後的畫面是能真的操作的——下拉、月曆、展開都會動，按鈕和連結也會跳到對應的畫板。</p>
+  <h1>報名系統介面設計稿</h1>
+  <p class="intro">18 張畫板：介面設計new 兩版、一張系統流程圖，以及前台手機、前台桌機、後台三組介面。點縮圖可以放大，放大後的畫面是能真的操作的——下拉、月曆、展開都會動，按鈕和連結也會跳到對應的畫板。</p>
   <p class="intro">可點的流程：選地區 → 選館別 → 點月曆日期 → 報名 → 結帳（切統編會即時 +5%）→ 完成 → 查詢。後台側欄五個模組互通。</p>
-  <p class="meta">2026-09-22 更新：新增簡約風格提案 A・B 與系統流程圖・畫面裡的館別、教練、課名、價格、訂單全是示意資料</p>
+  <p class="meta">2026-09-22 更新：新增介面設計new A・B 與系統流程圖・畫面裡的館別、教練、課名、價格、訂單全是示意資料</p>
 </header>
 
 <nav class="tabs" aria-label="介面分類">
@@ -225,6 +213,25 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
 <script>
 /* 資料來源：project/canvas.json。之後增刪畫板改這個陣列就好。 */
 const GROUPS = [
+  {
+    id: "minimal", label: "介面設計new",
+    note: "課程資訊頁的兩種新視覺。資料和操作都跟原稿（前台・手機第 1 張）相同，只換風格；點色塊可以切換主色。選定之後，其餘畫板會跟著換成同一套。",
+    grid: "mobile", w: 390, tallest: 1060,
+    boards: [
+      { step: "A", file: "Main-Minimal-A.dc.html", title: "清爽", h: 1040, live: true,
+        tweak: { key: "primary", label: "主色", options: [["#2f4a6d", "深藍"], ["#1f5f4a", "墨綠"], ["#2b2f36", "炭灰"]] } },
+      { step: "B", file: "Main-Minimal-B.dc.html", title: "運動", h: 1060, live: true,
+        tweak: { key: "accent", label: "強調色", options: [["#d4f24a", "萊姆綠"], ["#7ee0b0", "薄荷綠"], ["#ffd84d", "羽球黃"]] } }
+    ]
+  },
+  {
+    id: "flow", label: "系統流程圖",
+    note: "五個角色 × 七個階段的泳道圖。實線是操作流程，虛線是資料同步；深藍框的方塊點了會跳到對應畫板。圖上標「待確認」的三件事要一起定案。",
+    grid: "full", w: 2200, tallest: 1320,
+    boards: [
+      { file: "System-Flow.dc.html", title: "泳道圖・五個角色 × 七個階段", h: 1320, live: true }
+    ]
+  },
   {
     id: "mobile", label: "前台・手機", note: "390px 寬，民眾在手機上看到的報名流程。",
     grid: "mobile", w: 390, tallest: 1320,
@@ -256,25 +263,6 @@ const GROUPS = [
       { step: "C", file: "Admin-Venues.dc.html",  title: "地點管理",      h: 760,  live: true },
       { step: "D", file: "Admin-Orders.dc.html",  title: "訂單管理",      h: 980,  live: true },
       { step: "E", file: "Admin-Account.dc.html", title: "帳號與登入",     h: 760,  live: false }
-    ]
-  },
-  {
-    id: "minimal", label: "簡約風格提案",
-    note: "課程資訊頁的兩種新視覺。資料和操作都跟原稿（前台・手機第 1 張）相同，只換風格；點色塊可以切換主色。選定之後，其餘畫板會跟著換成同一套。",
-    grid: "mobile", w: 390, tallest: 1060,
-    boards: [
-      { step: "A", file: "Main-Minimal-A.dc.html", title: "清爽", h: 1040, live: true,
-        tweak: { key: "primary", label: "主色", options: [["#2f4a6d", "深藍"], ["#1f5f4a", "墨綠"], ["#2b2f36", "炭灰"]] } },
-      { step: "B", file: "Main-Minimal-B.dc.html", title: "運動", h: 1060, live: true,
-        tweak: { key: "accent", label: "強調色", options: [["#d4f24a", "萊姆綠"], ["#7ee0b0", "薄荷綠"], ["#ffd84d", "羽球黃"]] } }
-    ]
-  },
-  {
-    id: "flow", label: "系統流程圖",
-    note: "五個角色 × 七個階段的泳道圖。實線是操作流程，虛線是資料同步；深藍框的方塊點了會跳到對應畫板。圖上標「待確認」的三件事要一起定案。",
-    grid: "full", w: 2200, tallest: 1320,
-    boards: [
-      { file: "System-Flow.dc.html", title: "泳道圖・五個角色 × 七個階段", h: 1320, live: true }
     ]
   }
 ];
