@@ -122,7 +122,7 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
   vertical-align: 2px;
 }
 
-/* ---------- Tweaks 色塊（介面設計new 可切主色）---------- */
+/* ---------- Tweaks 色塊（介面設計 A、B 可切主色）---------- */
 .swatches { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 12px; line-height: 18px; color: var(--muted); }
 .sw {
   width: 20px; height: 20px; padding: 0;
@@ -190,9 +190,9 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
 <header>
   <p class="brand">弘淇羽球</p>
   <h1>報名系統介面設計稿</h1>
-  <p class="intro">18 張畫板：介面設計new 兩版、一張系統流程圖，以及前台手機、前台桌機、後台三組介面。點縮圖可以放大，放大後的畫面是能真的操作的——下拉、月曆、展開都會動，按鈕和連結也會跳到對應的畫板。</p>
-  <p class="intro">可點的流程：選地區 → 選館別 → 點月曆日期 → 報名 → 結帳（切統編會即時 +5%）→ 完成 → 查詢。後台側欄五個模組互通。</p>
-  <p class="meta">2026-09-22 更新：新增介面設計new A・B 與系統流程圖・畫面裡的館別、教練、課名、價格、訂單全是示意資料</p>
+  <p class="intro">「介面設計」放課程資訊頁的新提案 A、B 和舊版；「介面流程」是民眾在手機上走的報名流程，共 5 張。點縮圖可以放大，放大後的畫面是能真的操作的——下拉、月曆、展開都會動，按鈕和連結也會跳到對應的畫板。</p>
+  <p class="intro">可點的流程：選地區 → 選館別 → 點月曆日期 → 報名 → 結帳（切統編會即時 +5%）→ 完成 → 查詢。</p>
+  <p class="meta">2026-09-22 更新：新增課程資訊頁新提案 A・B・畫面裡的館別、教練、課名、價格、訂單全是示意資料</p>
 </header>
 
 <nav class="tabs" aria-label="介面分類">
@@ -211,21 +211,22 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
 </div>
 
 <script>
-/* 資料來源：project/canvas.json。之後增刪畫板改這個陣列就好。 */
+/* 資料來源：project/canvas.json。之後增刪畫板改這個陣列就好；hidden: true 的組先不顯示，拿掉就會回來。 */
 const GROUPS = [
   {
-    id: "minimal", label: "介面設計new",
-    note: "課程資訊頁的兩種新視覺。資料和操作都跟原稿（前台・手機第 1 張）相同，只換風格；點色塊可以切換主色。選定之後，其餘畫板會跟著換成同一套。",
-    grid: "mobile", w: 390, tallest: 1060,
+    id: "minimal", label: "介面設計",
+    note: "課程資訊頁的三種視覺：新提案 A 清爽、B 運動，以及舊版。資料和操作都一樣，只換風格；點色塊可以切換 A、B 的主色。選定之後，其餘畫板會跟著換成同一套。",
+    grid: "mobile", w: 390, tallest: 1090,
     boards: [
       { step: "A", file: "Main-Minimal-A.dc.html", title: "清爽", h: 1040, live: true,
         tweak: { key: "primary", label: "主色", options: [["#2f4a6d", "深藍"], ["#1f5f4a", "墨綠"], ["#2b2f36", "炭灰"]] } },
       { step: "B", file: "Main-Minimal-B.dc.html", title: "運動", h: 1060, live: true,
-        tweak: { key: "accent", label: "強調色", options: [["#d4f24a", "萊姆綠"], ["#7ee0b0", "薄荷綠"], ["#ffd84d", "羽球黃"]] } }
+        tweak: { key: "accent", label: "強調色", options: [["#d4f24a", "萊姆綠"], ["#7ee0b0", "薄荷綠"], ["#ffd84d", "羽球黃"]] } },
+      { file: "Main.dc.html", title: "舊版", h: 1090, live: true }
     ]
   },
   {
-    id: "flow", label: "系統流程圖",
+    id: "flow", label: "系統流程圖", hidden: true,
     note: "五個角色 × 七個階段的泳道圖。實線是操作流程，虛線是資料同步；深藍框的方塊點了會跳到對應畫板。圖上標「待確認」的三件事要一起定案。",
     grid: "full", w: 2200, tallest: 1320,
     boards: [
@@ -233,7 +234,7 @@ const GROUPS = [
     ]
   },
   {
-    id: "mobile", label: "前台・手機", note: "390px 寬，民眾在手機上看到的報名流程。",
+    id: "mobile", label: "介面流程", note: "390px 寬，民眾在手機上看到的報名流程。",
     grid: "mobile", w: 390, tallest: 1320,
     boards: [
       { step: "1", file: "Main.dc.html",              title: "課程資訊・季報名", h: 1090, live: true },
@@ -244,7 +245,7 @@ const GROUPS = [
     ]
   },
   {
-    id: "desktop", label: "前台・桌機", note: "1280px 寬，同一套流程的電腦版。",
+    id: "desktop", label: "前台・桌機", hidden: true, note: "1280px 寬，同一套流程的電腦版。",
     grid: "wide", w: 1280, tallest: 1060,
     boards: [
       { step: "1", file: "Courses-Desktop.dc.html",     title: "課程資訊・季報名", h: 930,  live: true },
@@ -255,7 +256,7 @@ const GROUPS = [
     ]
   },
   {
-    id: "admin", label: "後台・桌機", note: "1440px 寬，中心內部管理用，側欄五個模組互通。",
+    id: "admin", label: "後台・桌機", hidden: true, note: "1440px 寬，中心內部管理用，側欄五個模組互通。",
     grid: "wide", w: 1440, tallest: 1000,
     boards: [
       { step: "A", file: "Admin-Courses.dc.html", title: "課程／時段管理", h: 1000, live: true },
@@ -267,12 +268,15 @@ const GROUPS = [
   }
 ];
 
-// 燈箱的順序＝畫廊由上到下、由左到右的全域順序；FLAT 直接指向原物件，換色時兩邊同步
+const SHOWN = GROUPS.filter(g => !g.hidden);
+
+// 燈箱的順序＝畫廊由上到下、由左到右的全域順序；FLAT 直接指向原物件，換色時兩邊同步。
+// 同一張畫板可以出現在兩個分頁（例如舊版 = 介面流程第 1 張），各自是獨立的項目。
 GROUPS.forEach(g => g.boards.forEach(b => {
   b.group = g;
   if (b.tweak) b.tweakVal = b.tweak.options[0][0];
 }));
-const FLAT = GROUPS.flatMap(g => g.boards);
+const FLAT = SHOWN.flatMap(g => g.boards);
 
 // embed：燈箱裡的畫板把連結交給這頁處理（見 project/support.js）
 function boardSrc(b, embed) {
@@ -285,7 +289,7 @@ function boardSrc(b, embed) {
 const tabsEl = document.getElementById("tabs");
 const panelsEl = document.getElementById("panels");
 
-GROUPS.forEach((g, gi) => {
+SHOWN.forEach((g, gi) => {
   const tab = document.createElement("button");
   tab.className = "tab";
   tab.type = "button";
@@ -332,7 +336,7 @@ function card(g, b) {
   skel.textContent = "載入中…";
   shot.appendChild(skel);
 
-  const open = () => openLightbox(FLAT.findIndex(x => x.file === b.file));
+  const open = () => openLightbox(FLAT.indexOf(b));
   shot.addEventListener("click", open);
   shot.addEventListener("keydown", e => {
     if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); }
@@ -411,7 +415,7 @@ function pickTweak(b, hex) {
 }
 
 function select(gi) {
-  GROUPS.forEach((g, i) => {
+  SHOWN.forEach((g, i) => {
     document.getElementById("tab-" + g.id).setAttribute("aria-selected", String(i === gi));
     const panel = document.getElementById("panel-" + g.id);
     panel.hidden = i !== gi;
@@ -469,7 +473,9 @@ window.addEventListener("message", e => {
   if (e.origin !== location.origin || !e.data || e.data.type !== "dc:open") return;
   const fr = lbStage.querySelector("iframe");
   if (!fr || e.source !== fr.contentWindow) return;
-  const i = FLAT.findIndex(x => x.file === e.data.file);
+  // 同一張畫板出現在兩個分頁時，優先留在目前這個分頁
+  const here = FLAT.findIndex(x => x.file === e.data.file && x.group === FLAT[cur].group);
+  const i = here >= 0 ? here : FLAT.findIndex(x => x.file === e.data.file);
   if (i >= 0) openLightbox(i);
 });
 
