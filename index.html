@@ -17,7 +17,7 @@
   --card: #ffffff;
   --ink: #000000;         /* 文字一律黑色 */
   --muted: #555555;       /* 小標籤 */
-  --faint: #767676;       /* 註記：尺寸、張數、更新日期 */
+  --faint: #767676;       /* 註記：尺寸、張數 */
   --line: #e1e5ea;        /* 分隔線、卡片外框 */
   --line-strong: #cfd6de; /* 控制項外框 */
   --primary: #2f4a6d;     /* 唯一主色：選中分頁 */
@@ -39,10 +39,7 @@ body {
 /* ---------- 頁首 ---------- */
 header { padding: 48px 24px 28px; max-width: 1400px; margin: 0 auto; }
 .brand { margin: 0 0 10px; font-size: 13px; line-height: 20px; font-weight: 700; letter-spacing: .12em; color: var(--ink); }
-h1 { margin: 0 0 14px; font-size: 28px; line-height: 38px; font-weight: 700; }
-.intro { margin: 0; max-width: 64ch; color: var(--ink); }
-.intro + .intro { margin-top: 8px; }
-.meta { margin: 16px 0 0; font-size: 13px; line-height: 20px; color: var(--faint); }
+h1 { margin: 0; font-size: 28px; line-height: 38px; font-weight: 700; }
 
 /* ---------- 分頁列 ---------- */
 .tabs {
@@ -122,19 +119,6 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
   vertical-align: 2px;
 }
 
-/* ---------- Tweaks 色塊（介面設計 A、B 可切主色）---------- */
-.swatches { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 12px; line-height: 18px; color: var(--muted); }
-.sw {
-  width: 20px; height: 20px; padding: 0;
-  background: var(--sw); border: 2px solid var(--card); border-radius: 999px;
-  box-shadow: 0 0 0 1px var(--line-strong); cursor: pointer;
-}
-.sw[aria-checked="true"] { box-shadow: 0 0 0 1.5px var(--ink); }
-.sw-name { margin-left: 2px; }
-.lb-bar .swatches { margin: 0; color: #fff; }
-.lb-bar .sw { border-color: var(--ink); box-shadow: 0 0 0 1px #ffffff66; }
-.lb-bar .sw[aria-checked="true"] { box-shadow: 0 0 0 1.5px #fff; }
-
 /* ---------- 燈箱 ---------- */
 .lb[hidden] { display: none; }
 .lb {
@@ -190,9 +174,6 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
 <header>
   <p class="brand">弘淇羽球</p>
   <h1>報名系統介面設計稿</h1>
-  <p class="intro">「介面設計」放課程資訊頁的新提案 A、B 和舊版；「介面流程」是民眾在手機上走的報名流程，共 5 張。點縮圖可以放大，放大後的畫面是能真的操作的——下拉、月曆、展開都會動，按鈕和連結也會跳到對應的畫板。</p>
-  <p class="intro">可點的流程：選地區 → 選館別 → 點月曆日期 → 報名 → 結帳（切統編會即時 +5%）→ 完成 → 查詢。</p>
-  <p class="meta">2026-09-22 更新：新增課程資訊頁新提案 A・B・畫面裡的館別、教練、課名、價格、訂單全是示意資料</p>
 </header>
 
 <nav class="tabs" aria-label="介面分類">
@@ -215,14 +196,11 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
 const GROUPS = [
   {
     id: "minimal", label: "介面設計",
-    note: "課程資訊頁的三種視覺：新提案 A 清爽、B 運動，以及舊版。資料和操作都一樣，只換風格；點色塊可以切換 A、B 的主色。選定之後，其餘畫板會跟著換成同一套。",
     grid: "mobile", w: 390, tallest: 1090,
     boards: [
-      { step: "A", file: "Main-Minimal-A.dc.html", title: "清爽", h: 1040, live: true,
-        tweak: { key: "primary", label: "主色", options: [["#2f4a6d", "深藍"], ["#1f5f4a", "墨綠"], ["#2b2f36", "炭灰"]] } },
-      { step: "B", file: "Main-Minimal-B.dc.html", title: "運動", h: 1060, live: true,
-        tweak: { key: "accent", label: "強調色", options: [["#d4f24a", "萊姆綠"], ["#7ee0b0", "薄荷綠"], ["#ffd84d", "羽球黃"]] } },
-      { file: "Main.dc.html", title: "舊版", h: 1090, live: true }
+      { file: "Main-Minimal-A.dc.html", title: "版本A", h: 1040, live: true },
+      { file: "Main-Minimal-B.dc.html", title: "版本B", h: 1060, live: true },
+      { file: "Main.dc.html",           title: "版本C", h: 1090, live: true }
     ]
   },
   {
@@ -270,19 +248,15 @@ const GROUPS = [
 
 const SHOWN = GROUPS.filter(g => !g.hidden);
 
-// 燈箱的順序＝畫廊由上到下、由左到右的全域順序；FLAT 直接指向原物件，換色時兩邊同步。
-// 同一張畫板可以出現在兩個分頁（例如舊版 = 介面流程第 1 張），各自是獨立的項目。
-GROUPS.forEach(g => g.boards.forEach(b => {
-  b.group = g;
-  if (b.tweak) b.tweakVal = b.tweak.options[0][0];
-}));
+// 燈箱的順序＝畫廊由上到下、由左到右的全域順序；FLAT 直接指向原物件。
+// 同一張畫板可以出現在兩個分頁（例如版本C = 介面流程第 1 張），各自是獨立的項目。
+GROUPS.forEach(g => g.boards.forEach(b => { b.group = g; }));
 const FLAT = SHOWN.flatMap(g => g.boards);
 
 // embed：燈箱裡的畫板把連結交給這頁處理（見 project/support.js）
 function boardSrc(b, embed) {
   const q = new URLSearchParams();
   if (embed) q.set("embed", "1");
-  if (b.tweak) q.set(b.tweak.key, b.tweakVal);
   const qs = q.toString();
   return "project/" + b.file + (qs ? "?" + qs : "");
 }
@@ -308,10 +282,12 @@ SHOWN.forEach((g, gi) => {
   panel.setAttribute("aria-labelledby", tab.id);
   panel.hidden = gi !== 0;
 
-  const note = document.createElement("p");
-  note.className = "panel-note";
-  note.textContent = g.note;
-  panel.appendChild(note);
+  if (g.note) {
+    const note = document.createElement("p");
+    note.className = "panel-note";
+    note.textContent = g.note;
+    panel.appendChild(note);
+  }
 
   const grid = document.createElement("div");
   grid.className = "grid " + g.grid;
@@ -351,7 +327,6 @@ function card(g, b) {
     (b.live ? "" : '<span class="badge">靜態</span>') +
     "</h3>" +
     '<p class="sub">' + g.w + " × " + b.h + "</p></div>";
-  if (b.tweak) cap.lastChild.appendChild(b._cardSw = swatches(b));
   el.appendChild(cap);
 
   // 縮圖只在該分頁第一次打開時才建 iframe，避免所有畫板同時載入
@@ -359,7 +334,6 @@ function card(g, b) {
     if (el._mounted) return;
     el._mounted = true;
     const fr = document.createElement("iframe");
-    b._thumb = fr;
     fr.src = boardSrc(b, false);
     fr.width = g.w;
     fr.height = b.h;
@@ -375,43 +349,6 @@ function card(g, b) {
     new ResizeObserver(fit).observe(shot);
   };
   return el;
-}
-
-// 色塊：卡片與燈箱共用，換色後兩邊一起更新
-function swatches(b) {
-  const wrap = document.createElement("div");
-  wrap.className = "swatches";
-  wrap.setAttribute("role", "radiogroup");
-  wrap.setAttribute("aria-label", b.tweak.label);
-  b.tweak.options.forEach(([hex, name]) => {
-    const s = document.createElement("button");
-    s.type = "button";
-    s.className = "sw";
-    s.style.setProperty("--sw", hex);
-    s.title = name;
-    s.setAttribute("role", "radio");
-    s.setAttribute("aria-label", b.tweak.label + "：" + name);
-    s.setAttribute("aria-checked", String(hex === b.tweakVal));
-    s.addEventListener("click", () => pickTweak(b, hex));
-    wrap.appendChild(s);
-  });
-  const name = document.createElement("span");
-  name.className = "sw-name";
-  name.textContent = b.tweak.label + "：" + b.tweak.options.find(o => o[0] === b.tweakVal)[1];
-  wrap.appendChild(name);
-  return wrap;
-}
-
-function pickTweak(b, hex) {
-  if (hex === b.tweakVal) return;
-  b.tweakVal = hex;
-  if (b._thumb) b._thumb.src = boardSrc(b, false);
-  if (b._cardSw) {
-    const next = swatches(b);
-    b._cardSw.replaceWith(next);
-    b._cardSw = next;
-  }
-  if (!lb.hidden && FLAT[cur] === b) openLightbox(cur);
 }
 
 function select(gi) {
@@ -464,7 +401,6 @@ function openLightbox(i) {
   full.rel = "noopener";
   full.textContent = "開新分頁看原尺寸";
   lbBar.replaceChildren(label);
-  if (b.tweak) lbBar.appendChild(swatches(b));
   lbBar.appendChild(full);
 }
 
