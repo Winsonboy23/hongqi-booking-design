@@ -13,6 +13,10 @@
  *   onClick / onChange="{{fn}}"      事件；文字欄位另外綁 input 讓畫面即時更新
  *   value / checked / disabled / aria-*  依型別套到屬性或 property
  *   hint-placeholder-*         畫布的設計期提示，渲染時忽略
+ *   data-props 的 Tweaks       {"primary":{"editor":"color","default":…,"options":[…]}}
+ *                              取 default 當 this.props.primary；網址 ?primary=%23… 可換成 options 裡的其他值
+ *   <a href="X.dc.html">       畫板之間的連結。網址帶 ?embed（畫廊燈箱）時改成通知外層換畫板，
+ *                              單獨開啟時照一般連結跳頁
  *
  * 元件合約：class Component extends DCLogic，用 this.state、this.setState()、renderVals()。
  */
@@ -193,7 +197,40 @@
     }
   }
 
+  // Tweaks 定義（帶 editor 與 default 的物件）換成實際值；網址參數只接受 options 裡列出的值
+  function resolveProps(raw) {
+    var query = new URLSearchParams(location.search);
+    var props = {};
+    for (var k in raw) {
+      if (!Object.prototype.hasOwnProperty.call(raw, k)) continue;
+      var v = raw[k];
+      if (v && typeof v === "object" && "editor" in v && "default" in v) {
+        var asked = query.get(k);
+        var allowed = !v.options || v.options.indexOf(asked) >= 0;
+        props[k] = asked !== null && allowed ? asked : v.default;
+      } else {
+        props[k] = v;
+      }
+    }
+    return props;
+  }
+
+  var BOARD_LINK = /^[A-Za-z0-9_-]+\.dc\.html$/;
+
+  // 在畫廊燈箱裡（?embed），畫板連結交給外層切換，外框尺寸與標題才會跟著換
+  function routeBoardLinks() {
+    if (window.parent === window || !new URLSearchParams(location.search).has("embed")) return;
+    document.addEventListener("click", function (e) {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var a = e.target.closest && e.target.closest("a[href]");
+      if (!a || !BOARD_LINK.test(a.getAttribute("href"))) return;
+      e.preventDefault();
+      window.parent.postMessage({ type: "dc:open", file: a.getAttribute("href") }, location.origin);
+    });
+  }
+
   function boot() {
+    routeBoardLinks();
     var root = document.querySelector("x-dc");
     var script = document.querySelector("script[data-dc-script]");
     if (!root || !script) return;
@@ -214,7 +251,7 @@
 
     var props = {};
     try {
-      props = JSON.parse(script.getAttribute("data-props") || "{}");
+      props = resolveProps(JSON.parse(script.getAttribute("data-props") || "{}"));
     } catch (e) {
       console.warn("[support] data-props 解析失敗", e);
     }

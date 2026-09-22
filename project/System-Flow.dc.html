@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>系統流程圖</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #ffffff; color: #1f2f45; font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
+a { color: #1f2f45; } a:hover { color: #2f4a6d; }
+</style>
+</helmet>
+<div style="position: relative; width: 2200px; height: 1320px; background: #ffffff; overflow: hidden;">
+
+  <div style="position: absolute; left: 40px; top: 40px; width: 1100px; display: flex; flex-direction: column; gap: 8px;">
+    <h1 style="margin: 0; font-size: 32px; line-height: 40px; font-weight: 700;">系統流程圖</h1>
+    <p style="margin: 0; font-size: 15px; line-height: 24px; color: #5b6b7f;">弘淇羽球報名系統：從後台建課、學員報名付款，到手開發票與會計對帳。季報名與單堂預約兩條線在結帳頁會合。</p>
+  </div>
+
+  <div style="position: absolute; left: 1160px; top: 58px; width: 1000px; display: flex; justify-content: flex-end; align-items: center; gap: 24px;">
+    <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; line-height: 20px; color: #5b6b7f;">
+      <svg width="36" height="10" viewBox="0 0 36 10" fill="none" aria-hidden="true"><path d="M0 5 H30" stroke="#2f4a6d" stroke-width="1.5"></path><polygon points="36,5 28,0.5 28,9.5" fill="#2f4a6d"></polygon></svg>操作流程
+    </span>
+    <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; line-height: 20px; color: #5b6b7f;">
+      <svg width="36" height="10" viewBox="0 0 36 10" fill="none" aria-hidden="true"><path d="M0 5 H30" stroke="#2f4a6d" stroke-width="1.5" stroke-dasharray="6 5"></path><polygon points="36,5 28,0.5 28,9.5" fill="#2f4a6d"></polygon></svg>資料同步
+    </span>
+    <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; line-height: 20px; color: #5b6b7f;">
+      <span style="font-size: 11px; line-height: 16px; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: #e8edf3; color: #2f4a6d;">畫面 1</span>深藍框可點，跳到該畫板
+    </span>
+    <span style="display: flex; align-items: center; gap: 8px; font-size: 13px; line-height: 20px; color: #5b6b7f;">
+      <span style="font-size: 11px; line-height: 16px; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: #fbf3e6; color: #9a6318;">待確認</span>規格未定，見下方
+    </span>
+  </div>
+
+  <div style="position: absolute; left: 40px; top: 160px; width: 160px; height: 44px; display: flex; align-items: center; padding: 0 16px; border-bottom: 1px solid #1f2f45; font-size: 12px; line-height: 18px; color: #5b6b7f;">角色 ＼ 階段</div>
+  <div style="position: absolute; left: 200px; top: 160px; width: 1960px; height: 44px; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); border-bottom: 1px solid #1f2f45;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 8px;"><span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">01</span><span style="font-size: 14px; line-height: 20px; font-weight: 700;">事前設定</span></div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 8px;"><span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">02</span><span style="font-size: 14px; line-height: 20px; font-weight: 700;">選課</span></div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 8px;"><span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">03</span><span style="font-size: 14px; line-height: 20px; font-weight: 700;">結帳</span></div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 8px;"><span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">04</span><span style="font-size: 14px; line-height: 20px; font-weight: 700;">付款</span></div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 8px;"><span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">05</span><span style="font-size: 14px; line-height: 20px; font-weight: 700;">付款結果</span></div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 8px;"><span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">06</span><span style="font-size: 14px; line-height: 20px; font-weight: 700;">完成・查詢</span></div>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 8px;"><span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">07</span><span style="font-size: 14px; line-height: 20px; font-weight: 700;">開票・對帳</span></div>
+  </div>
+
+  <div style="position: absolute; left: 40px; top: 204px; width: 2120px; height: 260px; display: flex; background: #ffffff; border-bottom: 1px solid #e1e5ea;">
+    <div style="width: 160px; flex-shrink: 0; padding: 0 16px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid #e1e5ea;"><span style="font-size: 15px; line-height: 22px; font-weight: 700;">學員</span><span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">手機／桌機</span></div>
+  </div>
+  <div style="position: absolute; left: 40px; top: 464px; width: 2120px; height: 180px; display: flex; background: #f6f7f9; border-bottom: 1px solid #e1e5ea;">
+    <div style="width: 160px; flex-shrink: 0; padding: 0 16px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid #e1e5ea;"><span style="font-size: 15px; line-height: 22px; font-weight: 700;">前台網站</span><span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">系統自動處理</span></div>
+  </div>
+  <div style="position: absolute; left: 40px; top: 644px; width: 2120px; height: 200px; display: flex; background: #ffffff; border-bottom: 1px solid #e1e5ea;">
+    <div style="width: 160px; flex-shrink: 0; padding: 0 16px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid #e1e5ea;"><span style="font-size: 15px; line-height: 22px; font-weight: 700;">金流商</span><span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">[金流商名稱]</span></div>
+  </div>
+  <div style="position: absolute; left: 40px; top: 844px; width: 2120px; height: 220px; display: flex; background: #f6f7f9; border-bottom: 1px solid #e1e5ea;">
+    <div style="width: 160px; flex-shrink: 0; padding: 0 16px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid #e1e5ea;"><span style="font-size: 15px; line-height: 22px; font-weight: 700;">後台・管理員</span><span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">單一管理員帳號</span></div>
+  </div>
+  <div style="position: absolute; left: 40px; top: 1064px; width: 2120px; height: 140px; display: flex; background: #ffffff; border-bottom: 1px solid #e1e5ea;">
+    <div style="width: 160px; flex-shrink: 0; padding: 0 16px; display: flex; flex-direction: column; justify-content: center; border-right: 1px solid #e1e5ea;"><span style="font-size: 15px; line-height: 22px; font-weight: 700;">會計</span><span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">用匯出表對帳</span></div>
+  </div>
+
+  <svg width="2200" height="1320" viewBox="0 0 2200 1320" fill="none" aria-hidden="true" style="position: absolute; left: 0; top: 0; pointer-events: none;">
+    <path d="M340 940 V968" stroke="#2f4a6d" stroke-width="1.5"></path>
+    <polygon points="340,968 335.5,960 344.5,960" fill="#2f4a6d"></polygon>
+
+    <path d="M450 1004 H620 V590" stroke="#2f4a6d" stroke-width="1.5" stroke-dasharray="6 5" stroke-linejoin="round"></path>
+    <polygon points="620,590 615.5,598 624.5,598" fill="#2f4a6d"></polygon>
+
+    <path d="M620 518 V420" stroke="#2f4a6d" stroke-width="1.5"></path>
+    <polygon points="620,420 615.5,428 624.5,428" fill="#2f4a6d"></polygon>
+
+    <path d="M730 284 H760 V334 H790" stroke="#2f4a6d" stroke-width="1.5" stroke-linejoin="round"></path>
+    <path d="M730 384 H760 V334" stroke="#2f4a6d" stroke-width="1.5" stroke-linejoin="round"></path>
+    <polygon points="790,334 782,329.5 782,338.5" fill="#2f4a6d"></polygon>
+
+    <path d="M900 370 V518" stroke="#2f4a6d" stroke-width="1.5"></path>
+    <polygon points="900,518 895.5,510 904.5,510" fill="#2f4a6d"></polygon>
+
+    <path d="M1010 554 H1180 V698" stroke="#2f4a6d" stroke-width="1.5" stroke-linejoin="round"></path>
+    <polygon points="1180,698 1175.5,690 1184.5,690" fill="#2f4a6d"></polygon>
+
+    <path d="M1290 734 H1380" stroke="#2f4a6d" stroke-width="1.5"></path>
+    <polygon points="1380,734 1372,729.5 1372,738.5" fill="#2f4a6d"></polygon>
+
+    <polygon points="1380,734 1460,686 1540,734 1460,782" fill="#ffffff" stroke="#9aa6b4" stroke-width="1.5"></polygon>
+
+    <path d="M1460 686 V590" stroke="#2f4a6d" stroke-width="1.5"></path>
+    <polygon points="1460,590 1455.5,598 1464.5,598" fill="#2f4a6d"></polygon>
+
+    <path d="M1460 782 V812 H1180 V770" stroke="#2f4a6d" stroke-width="1.5" stroke-linejoin="round"></path>
+    <polygon points="1180,770 1175.5,778 1184.5,778" fill="#2f4a6d"></polygon>
+
+    <path d="M1570 554 H1600 V284 H1630" stroke="#2f4a6d" stroke-width="1.5" stroke-linejoin="round"></path>
+    <polygon points="1630,284 1622,279.5 1622,288.5" fill="#2f4a6d"></polygon>
+    <path d="M1600 554 V954 H1630" stroke="#2f4a6d" stroke-width="1.5" stroke-dasharray="6 5" stroke-linejoin="round"></path>
+    <polygon points="1630,954 1622,949.5 1622,958.5" fill="#2f4a6d"></polygon>
+    <circle cx="1600" cy="554" r="3.5" fill="#2f4a6d"></circle>
+
+    <path d="M1740 320 V348" stroke="#2f4a6d" stroke-width="1.5"></path>
+    <polygon points="1740,348 1735.5,340 1744.5,340" fill="#2f4a6d"></polygon>
+
+    <path d="M1740 420 V518" stroke="#2f4a6d" stroke-width="1.5"></path>
+    <polygon points="1740,518 1735.5,510 1744.5,510" fill="#2f4a6d"></polygon>
+
+    <path d="M1850 954 H1880 V904 H1910" stroke="#2f4a6d" stroke-width="1.5" stroke-linejoin="round"></path>
+    <polygon points="1910,904 1902,899.5 1902,908.5" fill="#2f4a6d"></polygon>
+
+    <path d="M2020 940 V968" stroke="#2f4a6d" stroke-width="1.5"></path>
+    <polygon points="2020,968 2015.5,960 2024.5,960" fill="#2f4a6d"></polygon>
+
+    <path d="M2020 1040 V1098" stroke="#2f4a6d" stroke-width="1.5"></path>
+    <polygon points="2020,1098 2015.5,1090 2024.5,1090" fill="#2f4a6d"></polygon>
+
+    <path d="M2020 868 V554 H1850" stroke="#2f4a6d" stroke-width="1.5" stroke-dasharray="6 5" stroke-linejoin="round"></path>
+    <polygon points="1850,554 1858,549.5 1858,558.5" fill="#2f4a6d"></polygon>
+  </svg>
+
+  <span style="position: absolute; left: 628px; top: 800px; font-size: 12px; line-height: 18px; color: #5b6b7f;">上架後出現在前台</span>
+  <span style="position: absolute; left: 628px; top: 460px; font-size: 12px; line-height: 18px; color: #5b6b7f;">課程・剩餘名額</span>
+  <span style="position: absolute; left: 908px; top: 434px; font-size: 12px; line-height: 18px; color: #5b6b7f;">送出</span>
+  <span style="position: absolute; left: 1188px; top: 600px; font-size: 12px; line-height: 18px; color: #5b6b7f;">導向金流</span>
+  <span style="position: absolute; left: 1468px; top: 630px; font-size: 12px; line-height: 18px; font-weight: 700; color: #3f7f68;">是</span>
+  <span style="position: absolute; left: 1196px; top: 818px; font-size: 12px; line-height: 18px; color: #5b6b7f;"><span style="font-weight: 700; color: #b04747;">否</span>：重新付款，訂單維持待付款 ③</span>
+  <span style="position: absolute; left: 1530px; top: 430px; font-size: 12px; line-height: 18px; color: #5b6b7f;">導向完成頁</span>
+  <span style="position: absolute; left: 1518px; top: 870px; font-size: 12px; line-height: 18px; color: #5b6b7f;">新訂單進後台</span>
+  <span style="position: absolute; left: 1748px; top: 460px; font-size: 12px; line-height: 18px; color: #5b6b7f;">查詢</span>
+  <span style="position: absolute; left: 2028px; top: 700px; font-size: 12px; line-height: 18px; color: #5b6b7f;">發票號碼同步到查詢頁</span>
+
+  <span style="position: absolute; left: 1400px; top: 724px; width: 120px; text-align: center; font-size: 14px; line-height: 20px; font-weight: 700;">付款成功？</span>
+
+  <a href="Admin-Coaches.dc.html" style="position: absolute; left: 230px; top: 868px; width: 220px; height: 72px; padding: 12px; background: #ffffff; border: 1px solid #2f4a6d; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; gap: 4px; color: #1f2f45; text-decoration: none;">
+    <div style="display: flex; align-items: center; gap: 6px;"><span style="flex-grow: 1; font-size: 14px; line-height: 20px; font-weight: 700;">教練管理・地點管理</span><span style="flex-shrink: 0; font-size: 11px; line-height: 16px; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: #e8edf3; color: #2f4a6d;">後台 B・C</span></div>
+    <span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">可教地區、館名與地址</span>
+  </a>
+
+  <a href="Admin-Courses.dc.html" style="position: absolute; left: 230px; top: 968px; width: 220px; height: 72px; padding: 12px; background: #ffffff; border: 1px solid #2f4a6d; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; gap: 4px; color: #1f2f45; text-decoration: none;">
+    <div style="display: flex; align-items: center; gap: 6px;"><span style="flex-grow: 1; font-size: 14px; line-height: 20px; font-weight: 700;">課程／時段管理</span><span style="flex-shrink: 0; font-size: 11px; line-height: 16px; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: #e8edf3; color: #2f4a6d;">後台 A</span></div>
+    <span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">上下架、複製下一季</span>
+  </a>
+
+  <div style="position: absolute; left: 510px; top: 518px; width: 220px; height: 72px; padding: 12px; background: #ffffff; border: 1px solid #cfd6de; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; gap: 4px;">
+    <span style="font-size: 14px; line-height: 20px; font-weight: 700;">顯示上架課程</span>
+    <span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">剩餘名額即時計算</span>
+  </div>
+
+  <a href="Main.dc.html" style="position: absolute; left: 510px; top: 248px; width: 220px; height: 72px; padding: 12px; background: #ffffff; border: 1px solid #2f4a6d; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; gap: 4px; color: #1f2f45; text-decoration: none;">
+    <div style="display: flex; align-items: center; gap: 6px;"><span style="flex-grow: 1; font-size: 14px; line-height: 20px; font-weight: 700;">課程資訊頁・季報名</span><span style="flex-shrink: 0; font-size: 11px; line-height: 16px; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: #e8edf3; color: #2f4a6d;">畫面 1</span></div>
+    <span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">地區 → 館別 → 月曆日期</span>
+  </a>
+
+  <a href="BookingList-Mobile.dc.html" style="position: absolute; left: 510px; top: 348px; width: 220px; height: 72px; padding: 12px; background: #ffffff; border: 1px solid #2f4a6d; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; gap: 4px; color: #1f2f45; text-decoration: none;">
+    <div style="display: flex; align-items: center; gap: 6px;"><span style="flex-grow: 1; font-size: 14px; line-height: 20px; font-weight: 700;">預約列表頁・單堂</span><span style="flex-shrink: 0; font-size: 11px; line-height: 16px; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: #e8edf3; color: #2f4a6d;">畫面 2</span></div>
+    <span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">地區 → 教練 篩選時段</span>
+  </a>
+
+  <a href="Checkout-Mobile.dc.html" style="position: absolute; left: 790px; top: 298px; width: 220px; height: 72px; padding: 12px; background: #ffffff; border: 1px solid #2f4a6d; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; gap: 4px; color: #1f2f45; text-decoration: none;">
+    <div style="display: flex; align-items: center; gap: 6px;"><span style="flex-grow: 1; font-size: 14px; line-height: 20px; font-weight: 700;">結帳頁</span><span style="flex-shrink: 0; font-size: 11px; line-height: 16px; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: #e8edf3; color: #2f4a6d;">畫面 3</span></div>
+    <span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">資料、程度備註、發票類型</span>
+  </a>
+
+  <div style="position: absolute; left: 790px; top: 518px; width: 220px; height: 72px; padding: 12px; background: #ffffff; border: 1px solid #cfd6de; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; gap: 4px;">
+    <span style="font-size: 14px; line-height: 20px; font-weight: 700;">建立訂單「待付款」</span>
+    <span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">統編發票金額 +5%</span>
+  </div>
+
+  <div style="position: absolute; left: 1070px; top: 698px; width: 220px; height: 72px; padding: 12px; background: #ffffff; border: 1px solid #cfd6de; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; gap: 4px;">
+    <span style="font-size: 14px; line-height: 20px; font-weight: 700;">金流付款頁</span>
+    <span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">信用卡／ATM 轉帳</span>
+  </div>
+
+  <div style="position: absolute; left: 1350px; top: 518px; width: 220px; height: 72px; padding: 12px; background: #ffffff; border: 1px solid #cfd6de; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; gap: 4px;">
+    <div style="display: flex; align-items: center; gap: 6px;"><span style="flex-grow: 1; font-size: 14px; line-height: 20px; font-weight: 700;">訂單改「已付款」</span><span style="flex-shrink: 0; font-size: 11px; line-height: 16px; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: #fbf3e6; color: #9a6318;">待確認 ①②</span></div>
+    <span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">並扣除名額</span>
+  </div>
+
+  <a href="Done-Mobile.dc.html" style="position: absolute; left: 1630px; top: 248px; width: 220px; height: 72px; padding: 12px; background: #ffffff; border: 1px solid #2f4a6d; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; gap: 4px; color: #1f2f45; text-decoration: none;">
+    <div style="display: flex; align-items: center; gap: 6px;"><span style="flex-grow: 1; font-size: 14px; line-height: 20px; font-weight: 700;">完成頁</span><span style="flex-shrink: 0; font-size: 11px; line-height: 16px; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: #e8edf3; color: #2f4a6d;">畫面 4</span></div>
+    <span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">訂單編號・發票將手開寄出</span>
+  </a>
+
+  <a href="Lookup-Mobile.dc.html" style="position: absolute; left: 1630px; top: 348px; width: 220px; height: 72px; padding: 12px; background: #ffffff; border: 1px solid #2f4a6d; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; gap: 4px; color: #1f2f45; text-decoration: none;">
+    <div style="display: flex; align-items: center; gap: 6px;"><span style="flex-grow: 1; font-size: 14px; line-height: 20px; font-weight: 700;">查詢頁</span><span style="flex-shrink: 0; font-size: 11px; line-height: 16px; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: #e8edf3; color: #2f4a6d;">畫面 5</span></div>
+    <span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">電話＋訂單編號，免會員</span>
+  </a>
+
+  <div style="position: absolute; left: 1630px; top: 518px; width: 220px; height: 72px; padding: 12px; background: #ffffff; border: 1px solid #cfd6de; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; gap: 4px;">
+    <span style="font-size: 14px; line-height: 20px; font-weight: 700;">比對電話＋訂單編號</span>
+    <span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">顯示狀態與發票號碼</span>
+  </div>
+
+  <a href="Admin-Orders.dc.html" style="position: absolute; left: 1630px; top: 918px; width: 220px; height: 72px; padding: 12px; background: #ffffff; border: 1px solid #2f4a6d; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; gap: 4px; color: #1f2f45; text-decoration: none;">
+    <div style="display: flex; align-items: center; gap: 6px;"><span style="flex-grow: 1; font-size: 14px; line-height: 20px; font-weight: 700;">訂單管理</span><span style="flex-shrink: 0; font-size: 11px; line-height: 16px; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: #e8edf3; color: #2f4a6d;">後台 D</span></div>
+    <span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">手動改狀態；取消會釋出名額</span>
+  </a>
+
+  <a href="Admin-Orders.dc.html" style="position: absolute; left: 1910px; top: 868px; width: 220px; height: 72px; padding: 12px; background: #ffffff; border: 1px solid #2f4a6d; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; gap: 4px; color: #1f2f45; text-decoration: none;">
+    <div style="display: flex; align-items: center; gap: 6px;"><span style="flex-grow: 1; font-size: 14px; line-height: 20px; font-weight: 700;">手開收據／發票</span><span style="flex-shrink: 0; font-size: 11px; line-height: 16px; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: #e8edf3; color: #2f4a6d;">後台 D</span></div>
+    <span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">勾「發票已開」＋填號碼</span>
+  </a>
+
+  <a href="Admin-Orders.dc.html" style="position: absolute; left: 1910px; top: 968px; width: 220px; height: 72px; padding: 12px; background: #ffffff; border: 1px solid #2f4a6d; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; gap: 4px; color: #1f2f45; text-decoration: none;">
+    <div style="display: flex; align-items: center; gap: 6px;"><span style="flex-grow: 1; font-size: 14px; line-height: 20px; font-weight: 700;">匯出 Excel</span><span style="flex-shrink: 0; font-size: 11px; line-height: 16px; font-weight: 700; padding: 1px 6px; border-radius: 4px; background: #e8edf3; color: #2f4a6d;">後台 D</span></div>
+    <span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">含統編、含稅金額、發票號碼</span>
+  </a>
+
+  <div style="position: absolute; left: 1910px; top: 1098px; width: 220px; height: 72px; padding: 12px; background: #ffffff; border: 1px solid #cfd6de; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; gap: 4px;">
+    <span style="font-size: 14px; line-height: 20px; font-weight: 700;">對帳</span>
+    <span style="font-size: 12px; line-height: 18px; color: #5b6b7f;">發票號碼 × 含稅金額</span>
+  </div>
+
+  <div style="position: absolute; left: 40px; top: 1228px; width: 2120px; display: flex; flex-direction: column; gap: 2px;">
+    <span style="font-size: 13px; line-height: 20px; font-weight: 700; color: #9a6318;">待確認（要跟客戶定案）</span>
+    <span style="font-size: 13px; line-height: 20px; color: #5b6b7f;">① 金流回傳付款成功時，要系統自動改成「已付款」，還是照規格全部由管理員手動改？圖上先畫成自動，後台仍可手動調整。</span>
+    <span style="font-size: 13px; line-height: 20px; color: #5b6b7f;">② 名額在付款成功才扣，還是建立訂單（待付款）時就先保留？先保留的話，要搭配 ③ 才不會被佔位。</span>
+    <span style="font-size: 13px; line-height: 20px; color: #5b6b7f;">③ 一直沒付款的「待付款」訂單，要不要逾時自動取消並釋出名額？時限多久？</span>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":2200,"height":1320}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>課程資訊・簡約 A 清爽（手機）</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #ffffff; color: #1f2f45; font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
+a { color: #1f2f45; } a:hover { color: #2f4a6d; }
+</style>
+</helmet>
+<div style="width: 390px; height: 1040px; background: #ffffff; display: flex; flex-direction: column; overflow: hidden; font-variant-numeric: tabular-nums;">
+
+  <div style="height: 56px; padding: 0 20px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #e1e5ea; flex-shrink: 0;">
+    <span style="flex-grow: 1; font-size: 16px; line-height: 24px; font-weight: 700; letter-spacing: 0.12em;">弘淇羽球</span>
+    <a href="Lookup-Mobile.dc.html" style="font-size: 14px; line-height: 22px; color: #5b6b7f; text-decoration: none;">查詢報名</a>
+  </div>
+
+  <div style="flex-grow: 1; padding: 24px 20px; display: flex; flex-direction: column; gap: 24px;">
+
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+      <h1 style="margin: 0; font-size: 24px; line-height: 32px; font-weight: 700;">2026 秋季班報名</h1>
+      <p style="margin: 0; font-size: 14px; line-height: 22px; color: #5b6b7f;">每期 12 堂，額滿為止。選好地區與館別，再點日期看當天的課。</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <label for="a-area" style="font-size: 13px; line-height: 18px; font-weight: 500; color: #5b6b7f;">地區</label>
+        <select id="a-area" value="{{area}}" onChange="{{setArea}}" style="height: 44px; padding: 0 12px; background: #ffffff; border: 1px solid #cfd6de; border-radius: 8px; font-family: inherit; font-size: 15px; color: #1f2f45;">
+          <option value="永康區">永康區</option>
+          <option value="東區">東區</option>
+          <option value="仁德區">仁德區</option>
+        </select>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <label for="a-venue" style="font-size: 13px; line-height: 18px; font-weight: 500; color: #5b6b7f;">館別</label>
+        <select id="a-venue" value="{{venue}}" onChange="{{setVenue}}" style="height: 44px; padding: 0 12px; background: #ffffff; border: 1px solid #cfd6de; border-radius: 8px; font-family: inherit; font-size: 15px; color: #1f2f45;">
+          <sc-for list="{{venueOpts}}" as="o" hint-placeholder-count="2">
+            <option value="{{o.id}}">{{o.name}}</option>
+          </sc-for>
+        </select>
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span style="flex-grow: 1; font-size: 16px; line-height: 24px; font-weight: 700;">2026 年 10 月</span>
+        <span style="width: 6px; height: 6px; border-radius: 999px; background: {{primary}};"></span>
+        <span style="font-size: 13px; line-height: 18px; color: #5b6b7f;">有開課</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px;">
+        <div style="text-align: center; font-size: 12px; line-height: 18px; color: #5b6b7f;">日</div>
+        <div style="text-align: center; font-size: 12px; line-height: 18px; color: #5b6b7f;">一</div>
+        <div style="text-align: center; font-size: 12px; line-height: 18px; color: #5b6b7f;">二</div>
+        <div style="text-align: center; font-size: 12px; line-height: 18px; color: #5b6b7f;">三</div>
+        <div style="text-align: center; font-size: 12px; line-height: 18px; color: #5b6b7f;">四</div>
+        <div style="text-align: center; font-size: 12px; line-height: 18px; color: #5b6b7f;">五</div>
+        <div style="text-align: center; font-size: 12px; line-height: 18px; color: #5b6b7f;">六</div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px;">
+        <sc-for list="{{cells}}" as="c" hint-placeholder-count="35">
+          <div style="height: 44px; display: flex; align-items: center; justify-content: center;">
+            <sc-if value="{{c.has}}" hint-placeholder-val="{{yes}}">
+              <button type="button" onClick="{{c.pick}}" disabled="{{c.off}}" aria-pressed="{{c.sel}}" aria-label="{{c.aria}}" style="{{c.style}}"><span>{{c.d}}</span><span style="{{c.dot}}"></span></button>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="height: 1px; background: #e1e5ea;"></div>
+
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <div style="display: flex; align-items: baseline; gap: 8px;">
+        <h2 style="margin: 0; flex-grow: 1; font-size: 18px; line-height: 26px; font-weight: 700;">{{dateLabel}}</h2>
+        <span style="font-size: 13px; line-height: 18px; color: #5b6b7f;">{{countLabel}}</span>
+      </div>
+      <div style="display: flex; flex-direction: column; border-top: 1px solid #e1e5ea;">
+        <sc-for list="{{lessons}}" as="l" hint-placeholder-count="2">
+          <div style="padding: 16px 0; border-bottom: 1px solid #e1e5ea; display: flex; flex-direction: column; gap: 2px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <h3 style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 700;">{{l.name}}</h3>
+              <span style="font-size: 12px; line-height: 18px; padding: 1px 6px; background: #f1f3f6; border-radius: 4px; color: #5b6b7f;">{{l.type}}</span>
+            </div>
+            <p style="margin: 0; font-size: 14px; line-height: 22px; color: #5b6b7f;">{{l.coach}} 教練 · {{l.time}}</p>
+            <div style="display: flex; align-items: center; gap: 12px; margin-top: 10px;">
+              <div style="flex-grow: 1; display: flex; flex-direction: column;">
+                <span style="font-size: 16px; line-height: 24px; font-weight: 700;">{{l.price}} <span style="font-size: 13px; font-weight: 400; color: #5b6b7f;">／ {{l.unit}}</span></span>
+                <span style="{{l.statusStyle}}">{{l.statusText}}</span>
+              </div>
+              <sc-if value="{{l.open}}" hint-placeholder-val="{{yes}}">
+                <a href="Checkout-Mobile.dc.html" style="display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 24px; background: {{primary}}; color: #ffffff; border-radius: 8px; font-size: 15px; line-height: 22px; font-weight: 500; text-decoration: none;">報名</a>
+              </sc-if>
+              <sc-if value="{{l.full}}" hint-placeholder-val="{{no}}">
+                <button type="button" disabled style="height: 44px; padding: 0 20px; background: #f1f3f6; color: #8a96a5; border: none; border-radius: 8px; font-family: inherit; font-size: 15px; line-height: 22px; font-weight: 500;">已額滿</button>
+              </sc-if>
+            </div>
+            <sc-if value="{{l.full}}" hint-placeholder-val="{{no}}">
+              <p style="margin: 8px 0 0; font-size: 13px; line-height: 20px; color: #5b6b7f;">這個時段已額滿，週六 09:00 的兒童啟蒙班還有名額。</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <p style="margin: 0; font-size: 13px; line-height: 20px; color: #5b6b7f;">開課前三日可全額退費。找單堂或一對一？<a href="BookingList-Mobile.dc.html" style="color: #1f2f45;">看單堂預約</a></p>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"primary":{"editor":"color","default":"#2f4a6d","options":["#2f4a6d","#1f5f4a","#2b2f36"]},"$preview":{"width":390,"height":1040}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { area: '永康區', venue: 'yk', day: 8 };
+  }
+  renderVals() {
+    var self = this;
+    var primary = this.props.primary ?? '#2f4a6d';
+    var AREAS = [
+      { name: '永康區', venues: [{ id: 'yk', name: '永康館' }, { id: 'zh', name: '中華館' }] },
+      { name: '東區', venues: [{ id: 'dn', name: '東寧館' }] },
+      { name: '仁德區', venues: [{ id: 'rd', name: '仁德館' }] }
+    ];
+    var SCHED = {
+      yk: [
+        { dow: 2, name: '成人初級班', type: '季課程', coach: '林彥廷', time: '19:00–21:00', left: 3, price: 'NT$4,800', unit: '12 堂' },
+        { dow: 4, name: '成人進階班', type: '季課程', coach: '陳怡君', time: '19:00–21:00', left: 5, price: 'NT$4,800', unit: '12 堂' },
+        { dow: 4, name: '樂齡羽球班', type: '季課程', coach: '張雅婷', time: '14:00–15:30', left: 0, price: 'NT$3,200', unit: '12 堂' },
+        { dow: 6, name: '兒童啟蒙班', type: '季課程', coach: '黃柏勛', time: '09:00–10:30', left: 6, price: 'NT$3,600', unit: '12 堂' }
+      ],
+      zh: [
+        { dow: 3, name: '成人初級班', type: '季課程', coach: '陳怡君', time: '19:30–21:30', left: 7, price: 'NT$4,800', unit: '12 堂' },
+        { dow: 5, name: '上班族夜間班', type: '季課程', coach: '林彥廷', time: '20:00–22:00', left: 2, price: 'NT$4,800', unit: '12 堂' }
+      ],
+      dn: [
+        { dow: 1, name: '青少年培訓班', type: '季課程', coach: '黃柏勛', time: '18:30–20:30', left: 2, price: 'NT$5,200', unit: '12 堂' },
+        { dow: 3, name: '成人初級班', type: '季課程', coach: '張雅婷', time: '19:30–21:30', left: 8, price: 'NT$4,800', unit: '12 堂' }
+      ],
+      rd: [
+        { dow: 5, name: '成人初級班', type: '季課程', coach: '林彥廷', time: '19:00–21:00', left: 4, price: 'NT$4,800', unit: '12 堂' },
+        { dow: 0, name: '親子羽球班', type: '季課程', coach: '陳怡君', time: '10:00–11:30', left: 7, price: 'NT$3,600', unit: '10 堂' }
+      ]
+    };
+    var WD = ['日', '一', '二', '三', '四', '五', '六'];
+    var dow = function (d) { return (3 + d) % 7; };
+    var venuesOf = function (areaName) {
+      for (var i = 0; i < AREAS.length; i++) {
+        if (AREAS[i].name === areaName) { return AREAS[i].venues; }
+      }
+      return [];
+    };
+    var lessonsOf = function (v, d) {
+      if (!SCHED[v]) { return []; }
+      return SCHED[v].filter(function (s) { return s.dow === dow(d); });
+    };
+    var firstOpen = function (v) {
+      for (var d = 1; d <= 31; d++) { if (lessonsOf(v, d).length) { return d; } }
+      return 1;
+    };
+    var cells = [];
+    for (var i = 0; i < 35; i++) {
+      var d = i - 3;
+      if (d < 1 || d > 31) {
+        cells.push({ has: false, d: '', sel: false, off: true, style: '', dot: '', aria: '', pick: null });
+        continue;
+      }
+      var open = lessonsOf(this.state.venue, d).length > 0;
+      var sel = d === this.state.day;
+      var st = 'width:40px;height:40px;border:none;border-radius:999px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-family:inherit;font-size:15px;line-height:18px;';
+      if (sel) { st += 'background:' + primary + ';color:#ffffff;font-weight:700;cursor:pointer;'; }
+      else if (open) { st += 'background:transparent;color:#1f2f45;font-weight:700;cursor:pointer;'; }
+      else { st += 'background:transparent;color:#8a96a5;font-weight:400;cursor:default;'; }
+      cells.push({
+        has: true,
+        d: String(d),
+        sel: sel,
+        off: !open,
+        style: st,
+        dot: 'width:4px;height:4px;border-radius:999px;background:' + (open ? (sel ? '#ffffff' : primary) : 'transparent') + ';',
+        aria: '10 月 ' + d + ' 日' + (open ? '，有開課' : '，未開課'),
+        pick: (function (n) { return function () { self.setState({ day: n }); }; })(d)
+      });
+    }
+    var sd = this.state.day;
+    var lessons = lessonsOf(this.state.venue, sd).map(function (s) {
+      var full = s.left === 0;
+      var low = !full && s.left <= 3;
+      var t = full ? '已額滿' : (low ? '剩 ' + s.left + ' 個名額' : '尚有 ' + s.left + ' 個名額');
+      var c = full ? '#b04747' : (low ? '#9a6318' : '#3f7f68');
+      return {
+        name: s.name, type: s.type, coach: s.coach, time: s.time,
+        price: s.price, unit: s.unit,
+        open: !full, full: full,
+        statusText: t,
+        statusStyle: 'font-size:13px;line-height:20px;font-weight:500;color:' + c + ';'
+      };
+    });
+    return {
+      primary: primary,
+      area: this.state.area,
+      venue: this.state.venue,
+      venueOpts: venuesOf(this.state.area),
+      setArea: function (e) {
+        var a = e.target.value;
+        var vs = venuesOf(a);
+        var v = vs.length ? vs[0].id : '';
+        self.setState({ area: a, venue: v, day: firstOpen(v) });
+      },
+      setVenue: function (e) {
+        var v = e.target.value;
+        self.setState({ venue: v, day: firstOpen(v) });
+      },
+      cells: cells,
+      lessons: lessons,
+      dateLabel: '10 月 ' + sd + ' 日（' + WD[dow(sd)] + '）',
+      countLabel: lessons.length + ' 堂課',
+      yes: true,
+      no: false
+    };
+  }
+}
+</script>
+</body>
+</html>

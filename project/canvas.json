@@ -111,6 +111,22 @@
       "x": 1880,
       "y": 0
     },
+    "Main-Minimal-A.dc.html": {
+      "h": 1040,
+      "is_interactive": true,
+      "title": "簡約 A・清爽",
+      "w": 390,
+      "x": 2750,
+      "y": 0
+    },
+    "Main-Minimal-B.dc.html": {
+      "h": 1060,
+      "is_interactive": true,
+      "title": "簡約 B・運動",
+      "w": 390,
+      "x": 3220,
+      "y": 0
+    },
     "Main.dc.html": {
       "h": 1090,
       "is_interactive": true,
@@ -118,6 +134,14 @@
       "w": 390,
       "x": 0,
       "y": 0
+    },
+    "System-Flow.dc.html": {
+      "h": 1320,
+      "is_interactive": true,
+      "title": "系統流程圖",
+      "w": 2200,
+      "x": 0,
+      "y": 4140
     }
   },
   "createdOnFiles": {
@@ -167,6 +191,14 @@
       "w": 320,
       "x": 2350,
       "y": 0
+    },
+    "n5": {
+      "kind": "title1",
+      "maxW": 860,
+      "text": "簡約風格提案",
+      "w": 240,
+      "x": 2750,
+      "y": -300
     }
   },
   "order": [
@@ -184,7 +216,10 @@
     "Admin-Coaches.dc.html",
     "Admin-Venues.dc.html",
     "Admin-Orders.dc.html",
-    "Admin-Account.dc.html"
+    "Admin-Account.dc.html",
+    "Main-Minimal-A.dc.html",
+    "Main-Minimal-B.dc.html",
+    "System-Flow.dc.html"
   ],
   "pages": [],
   "title": "弘淇羽球報名系統"

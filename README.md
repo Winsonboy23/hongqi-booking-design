@@ -1,6 +1,6 @@
 # 弘淇羽球報名系統 — 介面設計稿
 
-Design 畫布「弘淇羽球報名系統」的原始檔（版本 5，2026-09-20）。共 15 張畫板：前台手機 5、前台桌機 5、後台桌機 5。
+Design 畫布「弘淇羽球報名系統」的原始檔（版本 5，2026-09-20）。共 18 張畫板：前台手機 5、前台桌機 5、後台桌機 5，加上 2026-09-22 新增的簡約風格提案 2 與系統流程圖 1（說明見 [README-2026-09-22.md](README-2026-09-22.md)）。
 
 每張 `.dc.html` 是一張獨立畫板，全部樣式內嵌（字體走 Google Fonts）。畫板的資料綁定與互動由同目錄的 `support.js` 提供，用瀏覽器直接開就能看到完整內容，下拉、月曆、展開也都會動。
 
@@ -8,7 +8,7 @@ Design 畫布「弘淇羽球報名系統」的原始檔（版本 5，2026-09-20�
 
 線上版：<https://winsonboy23.github.io/hongqi-booking-design/>（GitHub Pages，push 到 main 就自動更新）
 
-`index.html` 是給業主看的設計稿畫廊：三個分頁（前台手機／前台桌機／後台），縮圖是實際運作中的畫板，點開可以放大操作，支援 ← → 換頁與 Esc 關閉。
+`index.html` 是給業主看的設計稿畫廊：五個分頁（前台手機／前台桌機／後台／簡約風格提案／系統流程圖），縮圖是實際運作中的畫板，點開可以放大操作，支援 ← → 換頁與 Esc 關閉。畫板裡連到其他畫板的按鈕會直接換到那張；簡約提案的卡片與燈箱有色塊可以切換 Tweaks 主色。
 
 本地預覽：
 
@@ -20,7 +20,7 @@ Design 畫布「弘淇羽球報名系統」的原始檔（版本 5，2026-09-20�
 
 ## 關於 support.js
 
-原本 Design 畫布的 runtime 沒有隨檔案匯出，`project/support.js` 是照畫板實際用到的語法重寫的一份，涵蓋 `{{插值}}`、`<sc-for>`、`<sc-if>`、`onClick`／`onChange`、`DCLogic` + `setState`。15 張畫板都驗過：沒有殘留的 `{{}}`、沒有 console 錯誤、互動正常。
+原本 Design 畫布的 runtime 沒有隨檔案匯出，`project/support.js` 是照畫板實際用到的語法重寫的一份，涵蓋 `{{插值}}`、`<sc-for>`、`<sc-if>`、`onClick`／`onChange`、`DCLogic` + `setState`、`data-props` 的 Tweaks（取 default，網址 `?primary=%23…` 可換成 options 裡的值）與畫板間連結（網址帶 `?embed` 時交給畫廊換頁）。18 張畫板都驗過：沒有殘留的 `{{}}`、沒有 console 錯誤、互動正常。
 
 它只服務預覽，不是要進實作的程式碼。之後若拿到官方匯出的 `support.js`，直接覆蓋即可。
 
@@ -54,6 +54,15 @@ Design 畫布「弘淇羽球報名系統」的原始檔（版本 5，2026-09-20�
     Admin-Venues.dc.html            C 地點管理
     Admin-Orders.dc.html            D 訂單管理（狀態、發票已開、發票號碼、詳情）
     Admin-Account.dc.html           E 帳號與登入頁
+
+### 簡約風格提案・手機 390（2026-09-22）
+
+    Main-Minimal-A.dc.html          A 清爽：課程資訊頁，Tweaks 可切主色（深藍／墨綠／炭灰）
+    Main-Minimal-B.dc.html          B 運動：課程資訊頁，Tweaks 可切強調色（萊姆綠／薄荷綠／羽球黃）
+
+### 系統流程圖・2200（2026-09-22）
+
+    System-Flow.dc.html             泳道圖：五個角色 × 七個階段，含三件待確認事項
 
 ## 進實作前要換掉的東西
 

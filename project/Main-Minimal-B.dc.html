@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>課程資訊・簡約 B 運動（手機）</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #ffffff; color: #0e1a2b; font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
+a { color: #0e1a2b; } a:hover { color: #56657a; }
+</style>
+</helmet>
+<div style="width: 390px; height: 1060px; background: #ffffff; display: flex; flex-direction: column; overflow: hidden;">
+
+  <div style="background: #0e1a2b; color: #ffffff; padding: 0 20px 24px; display: flex; flex-direction: column; flex-shrink: 0;">
+    <div style="height: 56px; display: flex; align-items: center; gap: 8px;">
+      <span style="font-size: 16px; line-height: 24px; font-weight: 900; letter-spacing: 0.06em;">弘淇羽球</span>
+      <span style="flex-grow: 1; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; line-height: 18px; font-weight: 600; letter-spacing: 0.18em; color: {{accent}};">BADMINTON</span>
+      <a href="Lookup-Mobile.dc.html" style="font-size: 14px; line-height: 22px; color: #c3ccd8; text-decoration: none;">查詢報名</a>
+    </div>
+    <span style="margin-top: 8px; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; line-height: 20px; font-weight: 600; letter-spacing: 0.16em; color: {{accent}};">AUTUMN 2026 · 12 SESSIONS</span>
+    <h1 style="margin: 4px 0 0; font-size: 30px; line-height: 38px; font-weight: 900; color: #ffffff;">秋季班報名</h1>
+    <p style="margin: 6px 0 0; font-size: 14px; line-height: 22px; color: #c3ccd8;">額滿為止。選好地區與館別，再點日期看當天的課。</p>
+    <div style="margin-top: 20px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <label for="b-area" style="font-size: 13px; line-height: 18px; font-weight: 500; color: #c3ccd8;">地區</label>
+        <select id="b-area" value="{{area}}" onChange="{{setArea}}" style="height: 44px; padding: 0 12px; background: #1a2940; border: 1px solid #3a4b62; border-radius: 4px; font-family: inherit; font-size: 15px; color: #ffffff;">
+          <option value="永康區">永康區</option>
+          <option value="東區">東區</option>
+          <option value="仁德區">仁德區</option>
+        </select>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <label for="b-venue" style="font-size: 13px; line-height: 18px; font-weight: 500; color: #c3ccd8;">館別</label>
+        <select id="b-venue" value="{{venue}}" onChange="{{setVenue}}" style="height: 44px; padding: 0 12px; background: #1a2940; border: 1px solid #3a4b62; border-radius: 4px; font-family: inherit; font-size: 15px; color: #ffffff;">
+          <sc-for list="{{venueOpts}}" as="o" hint-placeholder-count="2">
+            <option value="{{o.id}}">{{o.name}}</option>
+          </sc-for>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 24px 20px 0; display: flex; flex-direction: column; gap: 12px;">
+    <div style="display: flex; align-items: flex-end; gap: 10px;">
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 52px; line-height: 44px; font-weight: 700;">10</span>
+      <div style="flex-grow: 1; display: flex; flex-direction: column;">
+        <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px; line-height: 18px; font-weight: 600; letter-spacing: 0.12em;">OCT</span>
+        <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 14px; line-height: 18px; font-weight: 500; color: #56657a;">2026</span>
+      </div>
+      <span style="width: 14px; height: 3px; background: #0e1a2b; margin-bottom: 7px;"></span>
+      <span style="font-size: 13px; line-height: 18px; color: #56657a;">有開課</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr));">
+      <div style="text-align: center; font-size: 12px; line-height: 18px; font-weight: 500; color: #56657a;">日</div>
+      <div style="text-align: center; font-size: 12px; line-height: 18px; font-weight: 500; color: #56657a;">一</div>
+      <div style="text-align: center; font-size: 12px; line-height: 18px; font-weight: 500; color: #56657a;">二</div>
+      <div style="text-align: center; font-size: 12px; line-height: 18px; font-weight: 500; color: #56657a;">三</div>
+      <div style="text-align: center; font-size: 12px; line-height: 18px; font-weight: 500; color: #56657a;">四</div>
+      <div style="text-align: center; font-size: 12px; line-height: 18px; font-weight: 500; color: #56657a;">五</div>
+      <div style="text-align: center; font-size: 12px; line-height: 18px; font-weight: 500; color: #56657a;">六</div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 1px; background: #e3e7ec; border: 1px solid #e3e7ec;">
+      <sc-for list="{{cells}}" as="c" hint-placeholder-count="35">
+        <div style="height: 46px; background: #ffffff; display: flex;">
+          <sc-if value="{{c.has}}" hint-placeholder-val="{{yes}}">
+            <button type="button" onClick="{{c.pick}}" disabled="{{c.off}}" aria-pressed="{{c.sel}}" aria-label="{{c.aria}}" style="{{c.style}}"><span>{{c.d}}</span><span style="{{c.bar}}"></span></button>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="padding: 24px 20px 0; display: flex; align-items: baseline; gap: 10px;">
+    <h2 style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-size: 30px; line-height: 34px; font-weight: 700;">{{dayEn}}</h2>
+    <span style="flex-grow: 1; font-size: 14px; line-height: 22px; color: #56657a;">{{dateZh}}</span>
+    <span style="font-size: 13px; line-height: 18px; font-weight: 500;">{{countLabel}}</span>
+  </div>
+
+  <div style="margin: 12px 20px 0; border-top: 2px solid #0e1a2b; display: flex; flex-direction: column;">
+    <sc-for list="{{lessons}}" as="l" hint-placeholder-count="2">
+      <div style="padding: 16px 0; border-bottom: 1px solid #e3e7ec; display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 16px;">
+        <div style="display: flex; flex-direction: column;">
+          <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 26px; line-height: 28px; font-weight: 700;">{{l.start}}</span>
+          <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px; line-height: 20px; font-weight: 500; color: #56657a;">– {{l.end}}</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 2px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <h3 style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 700;">{{l.name}}</h3>
+            <span style="font-size: 12px; line-height: 16px; font-weight: 500; padding: 1px 5px; border: 1px solid #0e1a2b; border-radius: 2px;">{{l.type}}</span>
+          </div>
+          <span style="font-size: 13px; line-height: 20px; color: #56657a;">{{l.coach}} 教練</span>
+          <div style="display: flex; align-items: center; gap: 12px; margin-top: 8px;">
+            <div style="flex-grow: 1; display: flex; flex-direction: column;">
+              <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 22px; line-height: 24px; font-weight: 700;">{{l.price}} <span style="font-family: 'Noto Sans TC', sans-serif; font-size: 12px; font-weight: 400; color: #56657a;">／ {{l.unit}}</span></span>
+              <span style="{{l.statusStyle}}">{{l.statusText}}</span>
+            </div>
+            <sc-if value="{{l.open}}" hint-placeholder-val="{{yes}}">
+              <a href="Checkout-Mobile.dc.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 44px; padding: 0 18px; background: {{accent}}; color: #0e1a2b; border-radius: 2px; font-size: 15px; line-height: 22px; font-weight: 700; text-decoration: none;">報名<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7 H12 M8 3 L12 7 L8 11" stroke="#0e1a2b" stroke-width="2" stroke-linecap="square"></path></svg></a>
+            </sc-if>
+            <sc-if value="{{l.full}}" hint-placeholder-val="{{no}}">
+              <button type="button" disabled style="height: 44px; padding: 0 18px; background: #eef1f4; color: #8a96a5; border: none; border-radius: 2px; font-family: inherit; font-size: 15px; line-height: 22px; font-weight: 700;">額滿</button>
+            </sc-if>
+          </div>
+          <sc-if value="{{l.full}}" hint-placeholder-val="{{no}}">
+            <p style="margin: 8px 0 0; font-size: 13px; line-height: 20px; color: #56657a;">這個時段已額滿，週六 09:00 的兒童啟蒙班還有名額。</p>
+          </sc-if>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <p style="margin: 16px 20px 24px; font-size: 13px; line-height: 20px; color: #56657a;">開課前三日可全額退費。找單堂或一對一？<a href="BookingList-Mobile.dc.html" style="font-weight: 700;">看單堂預約</a></p>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#d4f24a","options":["#d4f24a","#7ee0b0","#ffd84d"]},"$preview":{"width":390,"height":1060}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { area: '永康區', venue: 'yk', day: 8 };
+  }
+  renderVals() {
+    var self = this;
+    var accent = this.props.accent ?? '#d4f24a';
+    var AREAS = [
+      { name: '永康區', venues: [{ id: 'yk', name: '永康館' }, { id: 'zh', name: '中華館' }] },
+      { name: '東區', venues: [{ id: 'dn', name: '東寧館' }] },
+      { name: '仁德區', venues: [{ id: 'rd', name: '仁德館' }] }
+    ];
+    var SCHED = {
+      yk: [
+        { dow: 2, name: '成人初級班', type: '季課程', coach: '林彥廷', time: '19:00–21:00', left: 3, price: 'NT$4,800', unit: '12 堂' },
+        { dow: 4, name: '成人進階班', type: '季課程', coach: '陳怡君', time: '19:00–21:00', left: 5, price: 'NT$4,800', unit: '12 堂' },
+        { dow: 4, name: '樂齡羽球班', type: '季課程', coach: '張雅婷', time: '14:00–15:30', left: 0, price: 'NT$3,200', unit: '12 堂' },
+        { dow: 6, name: '兒童啟蒙班', type: '季課程', coach: '黃柏勛', time: '09:00–10:30', left: 6, price: 'NT$3,600', unit: '12 堂' }
+      ],
+      zh: [
+        { dow: 3, name: '成人初級班', type: '季課程', coach: '陳怡君', time: '19:30–21:30', left: 7, price: 'NT$4,800', unit: '12 堂' },
+        { dow: 5, name: '上班族夜間班', type: '季課程', coach: '林彥廷', time: '20:00–22:00', left: 2, price: 'NT$4,800', unit: '12 堂' }
+      ],
+      dn: [
+        { dow: 1, name: '青少年培訓班', type: '季課程', coach: '黃柏勛', time: '18:30–20:30', left: 2, price: 'NT$5,200', unit: '12 堂' },
+        { dow: 3, name: '成人初級班', type: '季課程', coach: '張雅婷', time: '19:30–21:30', left: 8, price: 'NT$4,800', unit: '12 堂' }
+      ],
+      rd: [
+        { dow: 5, name: '成人初級班', type: '季課程', coach: '林彥廷', time: '19:00–21:00', left: 4, price: 'NT$4,800', unit: '12 堂' },
+        { dow: 0, name: '親子羽球班', type: '季課程', coach: '陳怡君', time: '10:00–11:30', left: 7, price: 'NT$3,600', unit: '10 堂' }
+      ]
+    };
+    var WD = ['日', '一', '二', '三', '四', '五', '六'];
+    var EN = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+    var dow = function (d) { return (3 + d) % 7; };
+    var venuesOf = function (areaName) {
+      for (var i = 0; i < AREAS.length; i++) {
+        if (AREAS[i].name === areaName) { return AREAS[i].venues; }
+      }
+      return [];
+    };
+    var lessonsOf = function (v, d) {
+      if (!SCHED[v]) { return []; }
+      return SCHED[v].filter(function (s) { return s.dow === dow(d); });
+    };
+    var firstOpen = function (v) {
+      for (var d = 1; d <= 31; d++) { if (lessonsOf(v, d).length) { return d; } }
+      return 1;
+    };
+    var cells = [];
+    for (var i = 0; i < 35; i++) {
+      var d = i - 3;
+      if (d < 1 || d > 31) {
+        cells.push({ has: false, d: '', sel: false, off: true, style: '', bar: '', aria: '', pick: null });
+        continue;
+      }
+      var open = lessonsOf(this.state.venue, d).length > 0;
+      var sel = d === this.state.day;
+      var st = 'width:100%;height:100%;border:none;border-radius:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-family:"Barlow Condensed",sans-serif;font-size:20px;line-height:22px;';
+      if (sel) { st += 'background:' + accent + ';color:#0e1a2b;font-weight:700;cursor:pointer;'; }
+      else if (open) { st += 'background:#ffffff;color:#0e1a2b;font-weight:700;cursor:pointer;'; }
+      else { st += 'background:#ffffff;color:#a3adba;font-weight:500;cursor:default;'; }
+      cells.push({
+        has: true,
+        d: String(d),
+        sel: sel,
+        off: !open,
+        style: st,
+        bar: 'width:14px;height:3px;background:' + (open ? '#0e1a2b' : 'transparent') + ';',
+        aria: '10 月 ' + d + ' 日' + (open ? '，有開課' : '，未開課'),
+        pick: (function (n) { return function () { self.setState({ day: n }); }; })(d)
+      });
+    }
+    var sd = this.state.day;
+    var lessons = lessonsOf(this.state.venue, sd).map(function (s) {
+      var full = s.left === 0;
+      var low = !full && s.left <= 3;
+      var t = full ? '已額滿' : (low ? '剩 ' + s.left + ' 個名額' : '尚有 ' + s.left + ' 個名額');
+      var c = full ? '#b04747' : (low ? '#9a6318' : '#3f7f68');
+      var parts = s.time.split('–');
+      return {
+        name: s.name, type: s.type, coach: s.coach,
+        start: parts[0], end: parts[1],
+        price: s.price, unit: s.unit,
+        open: !full, full: full,
+        statusText: t,
+        statusStyle: 'font-size:13px;line-height:20px;font-weight:500;color:' + c + ';'
+      };
+    });
+    return {
+      accent: accent,
+      area: this.state.area,
+      venue: this.state.venue,
+      venueOpts: venuesOf(this.state.area),
+      setArea: function (e) {
+        var a = e.target.value;
+        var vs = venuesOf(a);
+        var v = vs.length ? vs[0].id : '';
+        self.setState({ area: a, venue: v, day: firstOpen(v) });
+      },
+      setVenue: function (e) {
+        var v = e.target.value;
+        self.setState({ venue: v, day: firstOpen(v) });
+      },
+      cells: cells,
+      lessons: lessons,
+      dayEn: EN[dow(sd)] + ' 10.' + (sd < 10 ? '0' + sd : String(sd)),
+      dateZh: '10 月 ' + sd + ' 日（' + WD[dow(sd)] + '）',
+      countLabel: lessons.length + ' 堂課',
+      yes: true,
+      no: false
+    };
+  }
+}
+</script>
+</body>
+</html>

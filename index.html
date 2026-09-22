@@ -85,6 +85,7 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
 .grid { display: grid; gap: 24px; }
 .grid.mobile { grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
 .grid.wide { grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); }
+.grid.full { grid-template-columns: 1fr; }
 
 .card {
   background: var(--card);
@@ -132,6 +133,19 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
   vertical-align: 2px;
 }
 
+/* ---------- Tweaks 色塊（簡約提案可切主色）---------- */
+.swatches { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 12px; line-height: 18px; color: var(--muted); }
+.sw {
+  width: 22px; height: 22px; padding: 0;
+  background: var(--sw); border: 2px solid var(--card); border-radius: 999px;
+  box-shadow: 0 0 0 1px var(--line); cursor: pointer;
+}
+.sw[aria-checked="true"] { box-shadow: 0 0 0 2px var(--outline); }
+.sw-name { margin-left: 2px; }
+.lb-bar .swatches { margin: 0; color: #fff; }
+.lb-bar .sw { border-color: var(--on-accent); box-shadow: 0 0 0 1px #ffffff66; }
+.lb-bar .sw[aria-checked="true"] { box-shadow: 0 0 0 2px #fff; }
+
 /* ---------- 燈箱 ---------- */
 .lb[hidden] { display: none; }
 .lb {
@@ -147,11 +161,12 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
 }
 .lb-stage iframe { border: 0; display: block; transform-origin: top left; }
 .lb-bar {
-  position: absolute; left: 0; right: 0; bottom: 0;
-  padding: 16px 20px; display: flex; gap: 12px;
+  position: absolute; left: 0; right: 0; bottom: 0; margin: 0;
+  padding: 16px 20px; display: flex; flex-wrap: wrap; gap: 8px 16px;
   align-items: center; justify-content: center;
   color: #fff; font-size: 14px;
 }
+.lb-bar a { color: #fff; font-size: 13px; }
 .lb-btn {
   position: absolute; top: 50%; transform: translateY(-50%);
   width: 48px; height: 48px;
@@ -187,9 +202,9 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
 <header>
   <p class="brand">弘淇羽球</p>
   <h1>報名系統 <em>介面設計稿</em></h1>
-  <p class="intro">15 張畫板，涵蓋前台手機、前台桌機與後台三組介面。點縮圖可以放大，放大後的畫面是能真的操作的——下拉、月曆、展開都會動。</p>
+  <p class="intro">18 張畫板：前台手機、前台桌機、後台三組介面，加上兩版簡約風格提案與一張系統流程圖。點縮圖可以放大，放大後的畫面是能真的操作的——下拉、月曆、展開都會動，按鈕和連結也會跳到對應的畫板。</p>
   <p class="intro">可點的流程：選地區 → 選館別 → 點月曆日期 → 報名 → 結帳（切統編會即時 +5%）→ 完成 → 查詢。後台側欄五個模組互通。</p>
-  <p class="meta">版本 5・2026-09-20・畫面裡的館別、教練、課名、價格、訂單全是示意資料</p>
+  <p class="meta">2026-09-22 更新：新增簡約風格提案 A・B 與系統流程圖・畫面裡的館別、教練、課名、價格、訂單全是示意資料</p>
 </header>
 
 <nav class="tabs" aria-label="介面分類">
@@ -204,7 +219,7 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
   <button class="lb-btn lb-prev" type="button" id="lbPrev" aria-label="上一張">‹</button>
   <div class="lb-stage" id="lbStage"></div>
   <button class="lb-btn lb-next" type="button" id="lbNext" aria-label="下一張">›</button>
-  <p class="lb-bar" id="lbBar"></p>
+  <div class="lb-bar" id="lbBar"></div>
 </div>
 
 <script>
@@ -242,13 +257,43 @@ const GROUPS = [
       { step: "D", file: "Admin-Orders.dc.html",  title: "訂單管理",      h: 980,  live: true },
       { step: "E", file: "Admin-Account.dc.html", title: "帳號與登入",     h: 760,  live: false }
     ]
+  },
+  {
+    id: "minimal", label: "簡約風格提案",
+    note: "課程資訊頁的兩種新視覺。資料和操作都跟原稿（前台・手機第 1 張）相同，只換風格；點色塊可以切換主色。選定之後，其餘畫板會跟著換成同一套。",
+    grid: "mobile", w: 390, tallest: 1060,
+    boards: [
+      { step: "A", file: "Main-Minimal-A.dc.html", title: "清爽", h: 1040, live: true,
+        tweak: { key: "primary", label: "主色", options: [["#2f4a6d", "深藍"], ["#1f5f4a", "墨綠"], ["#2b2f36", "炭灰"]] } },
+      { step: "B", file: "Main-Minimal-B.dc.html", title: "運動", h: 1060, live: true,
+        tweak: { key: "accent", label: "強調色", options: [["#d4f24a", "萊姆綠"], ["#7ee0b0", "薄荷綠"], ["#ffd84d", "羽球黃"]] } }
+    ]
+  },
+  {
+    id: "flow", label: "系統流程圖",
+    note: "五個角色 × 七個階段的泳道圖。實線是操作流程，虛線是資料同步；深藍框的方塊點了會跳到對應畫板。圖上標「待確認」的三件事要一起定案。",
+    grid: "full", w: 2200, tallest: 1320,
+    boards: [
+      { file: "System-Flow.dc.html", title: "泳道圖・五個角色 × 七個階段", h: 1320, live: true }
+    ]
   }
 ];
 
-const SRC = g => b => "project/" + b.file;
-// 燈箱的順序＝畫廊由上到下、由左到右的全域順序
-const FLAT = GROUPS.flatMap(g => g.boards.map(b => ({ ...b, group: g })));
+// 燈箱的順序＝畫廊由上到下、由左到右的全域順序；FLAT 直接指向原物件，換色時兩邊同步
+GROUPS.forEach(g => g.boards.forEach(b => {
+  b.group = g;
+  if (b.tweak) b.tweakVal = b.tweak.options[0][0];
+}));
+const FLAT = GROUPS.flatMap(g => g.boards);
 
+// embed：燈箱裡的畫板把連結交給這頁處理（見 project/support.js）
+function boardSrc(b, embed) {
+  const q = new URLSearchParams();
+  if (embed) q.set("embed", "1");
+  if (b.tweak) q.set(b.tweak.key, b.tweakVal);
+  const qs = q.toString();
+  return "project/" + b.file + (qs ? "?" + qs : "");
+}
 const tabsEl = document.getElementById("tabs");
 const panelsEl = document.getElementById("panels");
 
@@ -309,19 +354,21 @@ function card(g, b) {
   const cap = document.createElement("div");
   cap.className = "cap";
   cap.innerHTML =
-    '<span class="step">' + b.step + "</span>" +
+    (b.step ? '<span class="step">' + b.step + "</span>" : "") +
     "<div><h3>" + b.title +
     (b.live ? "" : '<span class="badge">靜態</span>') +
     "</h3>" +
     '<p class="sub">' + g.w + " × " + b.h + "</p></div>";
+  if (b.tweak) cap.lastChild.appendChild(b._cardSw = swatches(b));
   el.appendChild(cap);
 
-  // 縮圖只在該分頁第一次打開時才建 iframe，避免 15 個畫板同時載入
+  // 縮圖只在該分頁第一次打開時才建 iframe，避免所有畫板同時載入
   el._mount = () => {
     if (el._mounted) return;
     el._mounted = true;
     const fr = document.createElement("iframe");
-    fr.src = SRC(g)(b);
+    b._thumb = fr;
+    fr.src = boardSrc(b, false);
     fr.width = g.w;
     fr.height = b.h;
     fr.loading = "lazy";
@@ -336,6 +383,43 @@ function card(g, b) {
     new ResizeObserver(fit).observe(shot);
   };
   return el;
+}
+
+// 色塊：卡片與燈箱共用，換色後兩邊一起更新
+function swatches(b) {
+  const wrap = document.createElement("div");
+  wrap.className = "swatches";
+  wrap.setAttribute("role", "radiogroup");
+  wrap.setAttribute("aria-label", b.tweak.label);
+  b.tweak.options.forEach(([hex, name]) => {
+    const s = document.createElement("button");
+    s.type = "button";
+    s.className = "sw";
+    s.style.setProperty("--sw", hex);
+    s.title = name;
+    s.setAttribute("role", "radio");
+    s.setAttribute("aria-label", b.tweak.label + "：" + name);
+    s.setAttribute("aria-checked", String(hex === b.tweakVal));
+    s.addEventListener("click", () => pickTweak(b, hex));
+    wrap.appendChild(s);
+  });
+  const name = document.createElement("span");
+  name.className = "sw-name";
+  name.textContent = b.tweak.label + "：" + b.tweak.options.find(o => o[0] === b.tweakVal)[1];
+  wrap.appendChild(name);
+  return wrap;
+}
+
+function pickTweak(b, hex) {
+  if (hex === b.tweakVal) return;
+  b.tweakVal = hex;
+  if (b._thumb) b._thumb.src = boardSrc(b, false);
+  if (b._cardSw) {
+    const next = swatches(b);
+    b._cardSw.replaceWith(next);
+    b._cardSw = next;
+  }
+  if (!lb.hidden && FLAT[cur] === b) openLightbox(cur);
 }
 
 function select(gi) {
@@ -369,7 +453,7 @@ function openLightbox(i) {
   const k = Math.min(1, maxW / g.w, maxH / b.h);
 
   const fr = document.createElement("iframe");
-  fr.src = SRC(g)(b);
+  fr.src = boardSrc(b, true);
   fr.width = g.w;
   fr.height = b.h;
   fr.title = b.title;
@@ -378,10 +462,28 @@ function openLightbox(i) {
   lbStage.style.height = Math.round(b.h * k) + "px";
   lbStage.appendChild(fr);
 
-  lbBar.textContent =
-    (cur + 1) + " / " + FLAT.length + " ・ " + g.label + " " + b.step + " " + b.title +
+  const label = document.createElement("span");
+  label.textContent =
+    (cur + 1) + " / " + FLAT.length + " ・ " + g.label + " " + (b.step ? b.step + " " : "") + b.title +
     (b.live ? "（可操作）" : "（靜態畫面）");
+  const full = document.createElement("a");
+  full.href = boardSrc(b, false);
+  full.target = "_blank";
+  full.rel = "noopener";
+  full.textContent = "開新分頁看原尺寸";
+  lbBar.replaceChildren(label);
+  if (b.tweak) lbBar.appendChild(swatches(b));
+  lbBar.appendChild(full);
 }
+
+// 燈箱裡的畫板點了連結（support.js 送來 dc:open）→ 換到那張畫板
+window.addEventListener("message", e => {
+  if (e.origin !== location.origin || !e.data || e.data.type !== "dc:open") return;
+  const fr = lbStage.querySelector("iframe");
+  if (!fr || e.source !== fr.contentWindow) return;
+  const i = FLAT.findIndex(x => x.file === e.data.file);
+  if (i >= 0) openLightbox(i);
+});
 
 function closeLightbox() {
   lb.hidden = true;
