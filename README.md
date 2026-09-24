@@ -1,14 +1,23 @@
-# 弘淇羽球報名系統 — 介面設計稿
+# 弘淇羽球報名系統 — 介面設計稿（完整版．2026-09-24）
 
-Design 畫布「弘淇羽球報名系統」的原始檔（版本 5，2026-09-20）。共 20 張畫板：前台手機 5、前台桌機 5、後台桌機 5，加上 2026-09-22 新增的簡約風格提案 2 與系統流程圖 1（說明見 [README-2026-09-22.md](README-2026-09-22.md)）。
+Design 畫布「弘淇羽球報名系統」的完整原始檔，共 24 張畫板。這一包已經包含先前 9/20 與 9/22 兩包的內容，可以直接取代它們。
 
-每張 `.dc.html` 是一張獨立畫板，全部樣式內嵌（字體走 Google Fonts）。畫板的資料綁定與互動由同目錄的 `support.js` 提供，用瀏覽器直接開就能看到完整內容，下拉、月曆、展開也都會動。
+每張 `.dc.html` 是一張獨立畫板，樣式全部內嵌（字體走 Google Fonts）。這個 repo 另外補了 `project/support.js`，所以瀏覽器直接開就能看到完整內容，下拉、月曆、展開也都會動（見下方說明）。
 
 ## 預覽
 
 線上版：<https://winsonboy23.github.io/hongqi-booking-design/>（GitHub Pages，push 到 main 就自動更新）
 
-`index.html` 是給業主看的設計稿畫廊：兩個分頁——「介面設計」放課程資訊頁的五個版本（版本A＝`Main-Minimal-A`、版本B＝`Main-Minimal-B`、版本C＝`Main-Minimal-C1` 霧藍、版本D＝`Main-Minimal-C2` 粉藍、版本E＝舊版 `Main.dc.html`；頁面上只顯示版本代號，不標新舊與風格名），「介面流程」放前台手機 5 張。系統流程圖、前台桌機、後台目前先隱藏，要放回來把 `index.html` 裡那一組的 `hidden: true` 拿掉即可。縮圖是實際運作中的畫板，點開可以放大操作，支援 ← → 換頁與 Esc 關閉。畫板裡連到其他畫板的按鈕會直接換到那張。畫廊外框的樣式照簡約 A・清爽（白底、1px 細線、8px 圓角、無陰影、思源黑體），文字一律黑色，畫板本身不受影響。
+`index.html` 是給業主看的設計稿畫廊，兩個分頁：
+
+- **介面設計**：課程資訊頁的八個版本，頁面上只顯示版本代號，不標風格名。
+  版本A＝`Main-Minimal-A`、版本B＝`Main-Minimal-B`、版本C＝`Main-Minimal-C1`、版本D＝`Main-Minimal-C2`、
+  版本E＝`Main-Warm-N1`、版本F＝`Main-Warm-N2`、版本G＝`Main-Warm-N3`、版本H＝`Main-Warm-N4`。
+- **介面流程**：前台手機 5 張。第 1 張 `Main.dc.html` 已換成藍色版，其餘 4 張仍是粉色，風格定案後會一起換。
+
+系統流程圖、前台桌機、後台目前先隱藏，要放回來把 `index.html` 裡那一組的 `hidden: true` 拿掉即可。
+縮圖是實際運作中的畫板，點開可以放大操作，支援 ← → 換頁與 Esc 關閉；畫板裡連到其他畫板的按鈕會直接換到那張。
+畫廊外框的樣式照簡約 A・清爽（白底、1px 細線、8px 圓角、無陰影、思源黑體），文字一律黑色，畫板本身不受影響。
 
 本地預覽：
 
@@ -20,58 +29,71 @@ Design 畫布「弘淇羽球報名系統」的原始檔（版本 5，2026-09-20�
 
 ## 關於 support.js
 
-原本 Design 畫布的 runtime 沒有隨檔案匯出，`project/support.js` 是照畫板實際用到的語法重寫的一份，涵蓋 `{{插值}}`、`<sc-for>`、`<sc-if>`、`onClick`／`onChange`、`DCLogic` + `setState`、`data-props` 的 Tweaks（取 default，網址 `?primary=%23…` 可換成 options 裡的值）、SVG 圖示（`<svg>` 以下用 SVG 命名空間建立）與畫板間連結（網址帶 `?embed` 時交給畫廊換頁）。20 張畫板都驗過：沒有殘留的 `{{}}`、沒有 console 錯誤、互動正常。
+原本 Design 畫布的 runtime 沒有隨檔案匯出，`project/support.js` 是照畫板實際用到的語法重寫的一份，涵蓋 `{{插值}}`、`<sc-for>`、`<sc-if>`、`onClick`／`onChange`、`DCLogic` + `setState`、`data-props` 的 Tweaks（取 default，網址 `?primary=%23…` 可換成 options 裡的值）、SVG 圖示（`<svg>` 以下用 SVG 命名空間建立）與畫板間連結（網址帶 `?embed` 時交給畫廊換頁）。24 張畫板都驗過：沒有殘留的 `{{}}`、沒有 console 錯誤、互動正常。
 
-它只服務預覽，不是要進實作的程式碼。之後若拿到官方匯出的 `support.js`，直接覆蓋即可。
+它只服務預覽，不是要進實作的程式碼。之後若拿到官方匯出的 `support.js`，直接覆蓋即可。這一包沒有附 runtime，所以更新時不要刪掉它。
 
-## 檔案
+## 一、主線：15 張完整流程
 
-    index.html                      設計稿畫廊（給業主看的預覽站）
-    project/support.js              畫板 runtime（重建版，見上方說明）
-    project/canvas.json             畫布索引：每張畫板的座標、尺寸、標題、是否可互動
-    project/ds/hongqi/tokens.json   設計系統 token（色彩、字級、間距、圓角、描邊、陰影）
-
-### 前台・手機 390（畫廊分頁「介面流程」）
-
-    Main.dc.html                    1 課程資訊・季報名（地區 → 館別 → 月曆 → 當日課程）
-    BookingList-Mobile.dc.html      2 單堂預約列表（地區 → 教練 篩選）
-    Checkout-Mobile.dc.html         3 結帳（報名資料 + 發票，統編即時 +5%）
+### 前台・手機 390
+    Main.dc.html                    1 課程資訊・季報名（現為藍色版）
+    BookingList-Mobile.dc.html      2 單堂預約列表
+    Checkout-Mobile.dc.html         3 結帳
     Done-Mobile.dc.html             4 報名完成
-    Lookup-Mobile.dc.html           5 查詢（電話 + 訂單編號）
+    Lookup-Mobile.dc.html           5 查詢
 
-### 前台・桌機 1280（畫廊先隱藏）
-
+### 前台・桌機 1280
     Courses-Desktop.dc.html         1 課程資訊・季報名
     BookingList-Desktop.dc.html     2 單堂預約列表
     Checkout-Desktop.dc.html        3 結帳
     Done-Desktop.dc.html            4 報名完成
     Lookup-Desktop.dc.html          5 查詢
 
-### 後台・桌機 1440（畫廊先隱藏）
-
-    Admin-Courses.dc.html           A 課程／時段管理（含複製、上下架）
+### 後台・桌機 1440
+    Admin-Courses.dc.html           A 課程／時段管理（複製、上下架）
     Admin-Coaches.dc.html           B 教練管理
     Admin-Venues.dc.html            C 地點管理
-    Admin-Orders.dc.html            D 訂單管理（狀態、發票已開、發票號碼、詳情）
-    Admin-Account.dc.html           E 帳號與登入頁
+    Admin-Orders.dc.html            D 訂單管理（狀態、發票已開、發票號碼）
+    Admin-Account.dc.html           E 帳號與登入
 
-### 簡約風格提案・手機 390（2026-09-22，畫廊分頁「介面設計」）
+## 二、風格提案：8 張課程資訊頁
 
-    Main-Minimal-A.dc.html          A 清爽：課程資訊頁，Tweaks 可切主色（深藍／墨綠／炭灰）
-    Main-Minimal-B.dc.html          B 運動：課程資訊頁，Tweaks 可切強調色（深藍灰／深青／深藍）
-    Main-Minimal-C1.dc.html         C1 霧藍：同 B 版型，換霧藍強調色（2026-09-24）
-    Main-Minimal-C2.dc.html         C2 粉藍：同 B 版型，換粉藍強調色（2026-09-24）
+同一頁的不同視覺方向，版面與互動都相同，只差在視覺語言。
 
-### 系統流程圖・2200（2026-09-22，畫廊先隱藏）
+### 簡約系列（脫離可愛風）
+    Main-Minimal-A.dc.html          A・清爽：白底細線、思源黑體、品牌深藍
+    Main-Minimal-B.dc.html          B・運動：深色頂部、窄體粗字、藍綠 #4b6876
+    Main-Minimal-C1.dc.html         C1・霧藍 #8fb8cc
+    Main-Minimal-C2.dc.html         C2・粉藍 #bcd8e6
 
-    System-Flow.dc.html             泳道圖：五個角色 × 七個階段，含三件待確認事項
+### 貼紙風配色（保留可愛版型，只換色系）
+    Main-Warm-N1.dc.html            N1・黃＋米咖啡
+    Main-Warm-N2.dc.html            N2・淡綠＋黃
+    Main-Warm-N3.dc.html            N3・陶土＋燕麥
+    Main-Warm-N4.dc.html            N4・藍
 
-## 進實作前要換掉的東西
+B、C1、C2 的 Tweaks 可以現場換強調色，文字顏色會自動跟著調（亮色配深字、暗色配白字）。N 系列每組各自配了一支深色當文字與描邊，不是只換按鈕。
+
+## 三、其他
+
+    System-Flow.dc.html             系統流程圖（2200 寬，泳道式）
+    project/canvas.json             畫布索引：每張畫板的座標、尺寸、標題
+    project/ds/hongqi/tokens.json   設計系統 token
+    project/support.js              畫板 runtime（重建版，見上方說明）
+    index.html                      設計稿畫廊（給業主看的預覽站）
+
+## 進實作前要處理的事
 
 館別、地區、教練、課名、價格、名額、訂單全部是示意資料。方括號欄位等你填：`[中心電話]`、`[館址]`、`[金流商名稱]`、`[網域]`、`[網站維護聯絡人]`、`[路名門牌]`、`[公司抬頭]`。
 
-吉祥物與圖示：設計系統目前沒有正式資產。完成頁與空狀態的羽球圖是用 token 幾何暫代的，位置已預留，換成正式 SVG 即可。
+吉祥物與圖示：設計系統目前沒有正式資產，完成頁與空狀態用 token 幾何暫代，位置已預留。
 
-字體：`Zen Maru Gothic` 是日文圓體，繁體專用字會掉到後備字。上線前請自架「jf open 粉圓」或思源圓體，並補進 `tokens.json` 的 `type.fonts`。
+字體：`Zen Maru Gothic` 是日文圓體，繁體專用字會掉到後備字。上線前要自架「jf open 粉圓」或思源圓體，並補進 `tokens.json` 的 `type.fonts`。
 
-按鈕層級：設計系統規定一頁一顆 Primary，但列表每一列都有「報名／預約」，這裡把重複列的同一個動作當成一顆，仍用 blush Primary，其餘動作一律降成 outline。要嚴格照規範的話，把列表列改成 sky 次要色即可。
+風格定案後：設計系統要出新版本，主線那 15 張也要跟著換。目前只有 `Main.dc.html` 換成藍色，其餘 13 張可愛風畫板仍是粉色。
+
+## 流程圖上的三個待確認
+
+1. 金流回傳付款成功後，要自動改成「已付款」，還是照規格全部手動改？
+2. 名額在付款成功才扣，還是建立訂單時就先保留？
+3. 一直沒付款的「待付款」訂單，要不要逾時自動取消並釋出名額？時限多久？

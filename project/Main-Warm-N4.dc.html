@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
-<title>課程資訊・季報名（手機）</title>
+<title>課程資訊・配色 N4 藍（手機）</title>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -11,11 +11,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Noto+Sans+TC:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap">
 <style>
 * { box-sizing: border-box; }
-body { margin: 0; background: #faf7f3; color: #2f4a6d; font-family: "Zen Maru Gothic", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
+body { margin: 0; background: #f5f8fa; color: #2f4a6d; font-family: "Zen Maru Gothic", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
 a { color: #2f4a6d; } a:hover { color: #4b6876; }
 </style>
 </helmet>
-<div style="width: 390px; height: 1090px; background: #faf7f3; display: flex; flex-direction: column; overflow: hidden;">
+<div style="width: 390px; height: 1090px; background: #f5f8fa; display: flex; flex-direction: column; overflow: hidden;">
 
   <div style="height: 56px; padding: 0 16px; display: flex; align-items: center; gap: 8px; background: #ffffff; border-bottom: 2px solid #2f4a6d; flex-shrink: 0;">
     <span style="flex-grow: 1; font-size: 18px; line-height: 26px; font-weight: 700;">弘淇羽球</span>
@@ -34,16 +34,16 @@ a { color: #2f4a6d; } a:hover { color: #4b6876; }
 
     <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px;">
       <div style="display: flex; flex-direction: column; gap: 4px;">
-        <label for="m-area" style="font-size: 15px; line-height: 26px; font-weight: 700;">地區</label>
-        <select id="m-area" value="{{area}}" onChange="{{setArea}}" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+        <label for="n4-area" style="font-size: 15px; line-height: 26px; font-weight: 700;">地區</label>
+        <select id="n4-area" value="{{area}}" onChange="{{setArea}}" style="height: 44px; padding: 0 12px; background: #e7edf2; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
           <option value="永康區">永康區</option>
           <option value="東區">東區</option>
           <option value="仁德區">仁德區</option>
         </select>
       </div>
       <div style="display: flex; flex-direction: column; gap: 4px;">
-        <label for="m-venue" style="font-size: 15px; line-height: 26px; font-weight: 700;">館別</label>
-        <select id="m-venue" value="{{venue}}" onChange="{{setVenue}}" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+        <label for="n4-venue" style="font-size: 15px; line-height: 26px; font-weight: 700;">館別</label>
+        <select id="n4-venue" value="{{venue}}" onChange="{{setVenue}}" style="height: 44px; padding: 0 12px; background: #e7edf2; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
           <sc-for list="{{venueOpts}}" as="o" hint-placeholder-count="2">
             <option value="{{o.id}}">{{o.name}}</option>
           </sc-for>
@@ -54,7 +54,7 @@ a { color: #2f4a6d; } a:hover { color: #4b6876; }
     <div style="background: #ffffff; border: 2px solid #2f4a6d; border-radius: 20px; box-shadow: 0 4px 0 #2f4a6d; padding: 12px; display: flex; flex-direction: column; gap: 8px;">
       <div style="display: flex; align-items: center; gap: 8px;">
         <span style="flex-grow: 1; font-size: 18px; line-height: 26px; font-weight: 700;">2026 年 10 月</span>
-        <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; background: #eaf3f8; border-radius: 8px; font-size: 13px; line-height: 20px; font-weight: 700;">藍底＝有開課</span>
+        <span style="display: inline-flex; align-items: center; height: 26px; padding: 0 8px; background: #eaf3f8; border-radius: 8px; font-size: 13px; line-height: 20px; font-weight: 700;">有底色＝有開課</span>
       </div>
       <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px;">
         <div style="text-align: center; font-size: 13px; line-height: 20px; color: #5c748f;">日</div>
@@ -94,7 +94,7 @@ a { color: #2f4a6d; } a:hover { color: #4b6876; }
               <a href="Checkout-Mobile.dc.html" style="display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 24px; background: #bcd8e6; color: #24405f; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 4px 0 #8fb8cc; font-size: 15px; line-height: 26px; font-weight: 700; text-decoration: none;">立即報名</a>
             </sc-if>
             <sc-if value="{{l.full}}" hint-placeholder-val="{{no}}">
-              <button type="button" disabled style="height: 44px; padding: 0 24px; background: #f0eae3; color: #5c748f; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; line-height: 26px; font-weight: 700;">已額滿</button>
+              <button type="button" disabled style="height: 44px; padding: 0 24px; background: #e7edf2; color: #5c748f; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; line-height: 26px; font-weight: 700;">已額滿</button>
             </sc-if>
           </div>
           <sc-if value="{{l.full}}" hint-placeholder-val="{{no}}">
@@ -170,7 +170,7 @@ class Component extends DCLogic {
       var st = 'width:40px;height:40px;border-radius:12px;font-family:inherit;font-size:15px;line-height:26px;font-weight:700;';
       if (sel) { st += 'background:#bcd8e6;color:#24405f;border:2px solid #2f4a6d;box-shadow:0 3px 0 #8fb8cc;cursor:pointer;'; }
       else if (open) { st += 'background:#eaf3f8;color:#2f4a6d;border:2px solid #2f4a6d;cursor:pointer;'; }
-      else { st += 'background:transparent;color:#5c748f;border:2px solid transparent;cursor:default;'; }
+      else { st += 'background:transparent;color:#93a5b8;border:2px solid transparent;cursor:default;'; }
       cells.push({
         has: true,
         d: String(d),

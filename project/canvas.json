@@ -127,6 +127,54 @@
       "x": 3220,
       "y": 0
     },
+    "Main-Minimal-C1.dc.html": {
+      "h": 1060,
+      "is_interactive": true,
+      "title": "簡約 C1・霧藍",
+      "w": 390,
+      "x": 3690,
+      "y": 0
+    },
+    "Main-Minimal-C2.dc.html": {
+      "h": 1060,
+      "is_interactive": true,
+      "title": "簡約 C2・粉藍",
+      "w": 390,
+      "x": 4160,
+      "y": 0
+    },
+    "Main-Warm-N1.dc.html": {
+      "h": 1090,
+      "is_interactive": true,
+      "title": "配色 N1・黃＋米咖啡",
+      "w": 390,
+      "x": 4630,
+      "y": 0
+    },
+    "Main-Warm-N2.dc.html": {
+      "h": 1090,
+      "is_interactive": true,
+      "title": "配色 N2・淡綠＋黃",
+      "w": 390,
+      "x": 5100,
+      "y": 0
+    },
+    "Main-Warm-N3.dc.html": {
+      "h": 1090,
+      "is_interactive": true,
+      "title": "配色 N3・陶土＋燕麥",
+      "w": 390,
+      "x": 5570,
+      "y": 0
+    },
+    "Main-Warm-N4.dc.html": {
+      "h": 1090,
+      "is_interactive": true,
+      "title": "配色 N4・藍",
+      "w": 390,
+      "x": 6040,
+      "y": 0
+    },
     "Main.dc.html": {
       "h": 1090,
       "is_interactive": true,
@@ -194,10 +242,18 @@
     },
     "n5": {
       "kind": "title1",
-      "maxW": 860,
+      "maxW": 1800,
       "text": "簡約風格提案",
       "w": 240,
       "x": 2750,
+      "y": -300
+    },
+    "n6": {
+      "kind": "title1",
+      "maxW": 1800,
+      "text": "貼紙風配色提案",
+      "w": 240,
+      "x": 4630,
       "y": -300
     }
   },
@@ -219,6 +275,12 @@
     "Admin-Account.dc.html",
     "Main-Minimal-A.dc.html",
     "Main-Minimal-B.dc.html",
+    "Main-Minimal-C1.dc.html",
+    "Main-Minimal-C2.dc.html",
+    "Main-Warm-N1.dc.html",
+    "Main-Warm-N2.dc.html",
+    "Main-Warm-N3.dc.html",
+    "Main-Warm-N4.dc.html",
     "System-Flow.dc.html"
   ],
   "pages": [],
