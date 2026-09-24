@@ -26,6 +26,7 @@
   var INTERP = /\{\{([^}]*)\}\}/g;
   var ONLY_INTERP = /^\s*\{\{([^}]*)\}\}\s*$/;
   var LIVE_INPUT = /^(text|tel|email|search|number|url|password)$/;
+  var SVG_NS = "http://www.w3.org/2000/svg";
 
   function DCLogic(props) {
     this.props = props || {};
@@ -77,8 +78,10 @@
     el.setAttribute(name, String(value));
   }
 
-  function buildElement(node, scope, out) {
-    var el = document.createElement(node.tagName.toLowerCase());
+  function buildElement(node, scope, out, ns) {
+    // <svg> 以下要用 SVG 命名空間建，否則瀏覽器當成未知的 HTML 標籤，圖示畫不出來
+    var childNs = node.localName === "svg" ? SVG_NS : ns;
+    var el = childNs ? document.createElementNS(childNs, node.localName) : document.createElement(node.localName);
     var pendingValue;
     var hasPendingValue = false;
 
@@ -105,7 +108,7 @@
       applyAttr(el, name, v);
     }
 
-    buildChildren(node, scope, el);
+    buildChildren(node, scope, el, childNs);
 
     if (hasPendingValue && pendingValue !== null && pendingValue !== undefined) {
       var tag = el.tagName;
@@ -129,7 +132,7 @@
     }
   }
 
-  function buildNode(node, scope, out) {
+  function buildNode(node, scope, out, ns) {
     if (node.nodeType === 3) {
       var text = node.nodeValue;
       out.push(document.createTextNode(text.indexOf("{{") >= 0 ? String(interpolate(text, scope)) : text));
@@ -137,7 +140,7 @@
     }
     if (node.nodeType !== 1) return;
 
-    var tag = node.tagName.toLowerCase();
+    var tag = node.localName;
 
     if (tag === "sc-for") {
       var list = interpolate(node.getAttribute("list") || "", scope);
@@ -146,26 +149,26 @@
       for (var i = 0; i < list.length; i++) {
         var childScope = Object.create(scope);
         childScope[as] = list[i];
-        buildChildrenInto(node, childScope, out);
+        buildChildrenInto(node, childScope, out, ns);
       }
       return;
     }
 
     if (tag === "sc-if") {
-      if (interpolate(node.getAttribute("value") || "", scope)) buildChildrenInto(node, scope, out);
+      if (interpolate(node.getAttribute("value") || "", scope)) buildChildrenInto(node, scope, out, ns);
       return;
     }
 
-    buildElement(node, scope, out);
+    buildElement(node, scope, out, ns);
   }
 
-  function buildChildrenInto(node, scope, out) {
-    for (var i = 0; i < node.childNodes.length; i++) buildNode(node.childNodes[i], scope, out);
+  function buildChildrenInto(node, scope, out, ns) {
+    for (var i = 0; i < node.childNodes.length; i++) buildNode(node.childNodes[i], scope, out, ns);
   }
 
-  function buildChildren(node, scope, parentEl) {
+  function buildChildren(node, scope, parentEl, ns) {
     var out = [];
-    buildChildrenInto(node, scope, out);
+    buildChildrenInto(node, scope, out, ns);
     for (var i = 0; i < out.length; i++) parentEl.appendChild(out[i]);
   }
 

@@ -1,6 +1,6 @@
 # 弘淇羽球報名系統 — 介面設計稿
 
-Design 畫布「弘淇羽球報名系統」的原始檔（版本 5，2026-09-20）。共 18 張畫板：前台手機 5、前台桌機 5、後台桌機 5，加上 2026-09-22 新增的簡約風格提案 2 與系統流程圖 1（說明見 [README-2026-09-22.md](README-2026-09-22.md)）。
+Design 畫布「弘淇羽球報名系統」的原始檔（版本 5，2026-09-20）。共 20 張畫板：前台手機 5、前台桌機 5、後台桌機 5，加上 2026-09-22 新增的簡約風格提案 2 與系統流程圖 1（說明見 [README-2026-09-22.md](README-2026-09-22.md)）。
 
 每張 `.dc.html` 是一張獨立畫板，全部樣式內嵌（字體走 Google Fonts）。畫板的資料綁定與互動由同目錄的 `support.js` 提供，用瀏覽器直接開就能看到完整內容，下拉、月曆、展開也都會動。
 
@@ -8,7 +8,7 @@ Design 畫布「弘淇羽球報名系統」的原始檔（版本 5，2026-09-20�
 
 線上版：<https://winsonboy23.github.io/hongqi-booking-design/>（GitHub Pages，push 到 main 就自動更新）
 
-`index.html` 是給業主看的設計稿畫廊：兩個分頁——「介面設計」放課程資訊頁的三個版本（版本A＝簡約 A `Main-Minimal-A`、版本B＝簡約 B `Main-Minimal-B`、版本C＝舊版 `Main.dc.html`；頁面上只顯示版本代號，不標新舊與風格名），「介面流程」放前台手機 5 張。系統流程圖、前台桌機、後台目前先隱藏，要放回來把 `index.html` 裡那一組的 `hidden: true` 拿掉即可。縮圖是實際運作中的畫板，點開可以放大操作，支援 ← → 換頁與 Esc 關閉。畫板裡連到其他畫板的按鈕會直接換到那張。畫廊外框的樣式照簡約 A・清爽（白底、1px 細線、8px 圓角、無陰影、思源黑體），文字一律黑色，畫板本身不受影響。
+`index.html` 是給業主看的設計稿畫廊：兩個分頁——「介面設計」放課程資訊頁的五個版本（版本A＝`Main-Minimal-A`、版本B＝`Main-Minimal-B`、版本C＝`Main-Minimal-C1` 霧藍、版本D＝`Main-Minimal-C2` 粉藍、版本E＝舊版 `Main.dc.html`；頁面上只顯示版本代號，不標新舊與風格名），「介面流程」放前台手機 5 張。系統流程圖、前台桌機、後台目前先隱藏，要放回來把 `index.html` 裡那一組的 `hidden: true` 拿掉即可。縮圖是實際運作中的畫板，點開可以放大操作，支援 ← → 換頁與 Esc 關閉。畫板裡連到其他畫板的按鈕會直接換到那張。畫廊外框的樣式照簡約 A・清爽（白底、1px 細線、8px 圓角、無陰影、思源黑體），文字一律黑色，畫板本身不受影響。
 
 本地預覽：
 
@@ -20,7 +20,7 @@ Design 畫布「弘淇羽球報名系統」的原始檔（版本 5，2026-09-20�
 
 ## 關於 support.js
 
-原本 Design 畫布的 runtime 沒有隨檔案匯出，`project/support.js` 是照畫板實際用到的語法重寫的一份，涵蓋 `{{插值}}`、`<sc-for>`、`<sc-if>`、`onClick`／`onChange`、`DCLogic` + `setState`、`data-props` 的 Tweaks（取 default，網址 `?primary=%23…` 可換成 options 裡的值）與畫板間連結（網址帶 `?embed` 時交給畫廊換頁）。18 張畫板都驗過：沒有殘留的 `{{}}`、沒有 console 錯誤、互動正常。
+原本 Design 畫布的 runtime 沒有隨檔案匯出，`project/support.js` 是照畫板實際用到的語法重寫的一份，涵蓋 `{{插值}}`、`<sc-for>`、`<sc-if>`、`onClick`／`onChange`、`DCLogic` + `setState`、`data-props` 的 Tweaks（取 default，網址 `?primary=%23…` 可換成 options 裡的值）、SVG 圖示（`<svg>` 以下用 SVG 命名空間建立）與畫板間連結（網址帶 `?embed` 時交給畫廊換頁）。20 張畫板都驗過：沒有殘留的 `{{}}`、沒有 console 錯誤、互動正常。
 
 它只服務預覽，不是要進實作的程式碼。之後若拿到官方匯出的 `support.js`，直接覆蓋即可。
 
@@ -58,7 +58,9 @@ Design 畫布「弘淇羽球報名系統」的原始檔（版本 5，2026-09-20�
 ### 簡約風格提案・手機 390（2026-09-22，畫廊分頁「介面設計」）
 
     Main-Minimal-A.dc.html          A 清爽：課程資訊頁，Tweaks 可切主色（深藍／墨綠／炭灰）
-    Main-Minimal-B.dc.html          B 運動：課程資訊頁，Tweaks 可切強調色（萊姆綠／薄荷綠／羽球黃）
+    Main-Minimal-B.dc.html          B 運動：課程資訊頁，Tweaks 可切強調色（深藍灰／深青／深藍）
+    Main-Minimal-C1.dc.html         C1 霧藍：同 B 版型，換霧藍強調色（2026-09-24）
+    Main-Minimal-C2.dc.html         C2 粉藍：同 B 版型，換粉藍強調色（2026-09-24）
 
 ### 系統流程圖・2200（2026-09-22，畫廊先隱藏）
 
