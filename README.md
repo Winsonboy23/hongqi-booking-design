@@ -10,9 +10,11 @@ Design 畫布「弘淇羽球報名系統」的完整原始檔，共 24 張畫板
 
 `index.html` 是給業主看的設計稿畫廊，兩個分頁：
 
-- **介面設計**：課程資訊頁的八個版本，頁面上只顯示版本代號，不標風格名。
-  版本A＝`Main-Minimal-A`、版本B＝`Main-Minimal-B`、版本C＝`Main-Minimal-C1`、版本D＝`Main-Minimal-C2`、
-  版本E＝`Main-Warm-N1`、版本F＝`Main-Warm-N2`、版本G＝`Main-Warm-N3`、版本H＝`Main-Warm-N4`。
+- **介面設計**：課程資訊頁的六個版本，頁面上只顯示版本代號，不標風格名。
+  版本A＝`Main-Minimal-A`、版本B＝`Main-Minimal-B-v2`、版本C＝`Main-Warm-N1`、版本D＝`Main-Warm-N2`、
+  版本E＝`Main-Warm-N3`、版本F＝`Main-Warm-N4`。
+  `Main-Minimal-B-v2.html` 是設計師另外給的靜態預覽稿（不是 `.dc.html`，沒有 support.js，點了不會動），
+  用來取代原本的簡約 B、C1、C2 三張；那三個 `.dc.html` 檔仍留在 `project/`，只是不進畫廊。
 - **介面流程**：前台手機 5 張。第 1 張 `Main.dc.html` 已換成藍色版，其餘 4 張仍是粉色，風格定案後會一起換。
 
 系統流程圖、前台桌機、後台目前先隱藏，要放回來把 `index.html` 裡那一組的 `hidden: true` 拿掉即可。
@@ -62,9 +64,10 @@ Design 畫布「弘淇羽球報名系統」的完整原始檔，共 24 張畫板
 
 ### 簡約系列（脫離可愛風）
     Main-Minimal-A.dc.html          A・清爽：白底細線、思源黑體、品牌深藍
-    Main-Minimal-B.dc.html          B・運動：深色頂部、窄體粗字、藍綠 #4b6876
-    Main-Minimal-C1.dc.html         C1・霧藍 #8fb8cc
-    Main-Minimal-C2.dc.html         C2・粉藍 #bcd8e6
+    Main-Minimal-B.dc.html          B・運動：深色頂部、窄體粗字、藍綠 #4b6876（已不在畫廊）
+    Main-Minimal-B-v2.html          B 改版：淺藍頂部的靜態預覽稿，畫廊的版本B
+    Main-Minimal-C1.dc.html         C1・霧藍 #8fb8cc（已不在畫廊）
+    Main-Minimal-C2.dc.html         C2・粉藍 #bcd8e6（已不在畫廊）
 
 ### 貼紙風配色（保留可愛版型，只換色系）
     Main-Warm-N1.dc.html            N1・黃＋米咖啡
