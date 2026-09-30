@@ -15,7 +15,7 @@ body { margin: 0; background: #ffffff; color: #0e1a2b; font-family: "Noto Sans T
 a { color: #0e1a2b; } a:hover { color: #3c4f61; }
 </style>
 </helmet>
-<div style="width: 390px; height: 1320px; background: #ffffff; display: flex; flex-direction: column; overflow: hidden;">
+<div style="width: 390px; height: 1660px; background: #ffffff; display: flex; flex-direction: column; overflow: hidden;">
 
   <div style="background: #b3d9ec; color: #0e1a2b; border-bottom: 1px solid #7996a8; padding: 0 20px 24px; display: flex; flex-direction: column; flex-shrink: 0;">
     <div style="height: 56px; display: flex; align-items: center; gap: 12px;">
@@ -106,6 +106,64 @@ a { color: #0e1a2b; } a:hover { color: #3c4f61; }
 
   <div style="margin: 20px 20px 0;">
     <div style="display: flex; align-items: baseline; gap: 8px; padding-bottom: 8px; border-bottom: 2px solid #0e1a2b;">
+      <h2 style="margin: 0; flex-grow: 1; font-size: 16px; line-height: 24px; font-weight: 700;">同意條款</h2>
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 13px; line-height: 18px; font-weight: 600; letter-spacing: 0.12em; color: #56657a;">AGREEMENTS</span>
+    </div>
+    <div style="padding-top: 10px; display: flex; flex-direction: column; gap: 10px;">
+
+      <label style="{{termRowStyle}}">
+        <input type="checkbox" checked="{{term}}" onChange="{{toggleTerm}}" style="width: 18px; height: 18px; flex-shrink: 0; accent-color: #0e1a2b;">
+        <span style="flex-grow: 1; font-size: 15px; line-height: 22px; font-weight: 700;">我已閱讀並同意退費機制與課程注意事項</span>
+        <span style="flex-shrink: 0; font-size: 12px; line-height: 16px; font-weight: 500; padding: 1px 5px; border: 1px solid #0e1a2b; border-radius: 2px;">必要</span>
+      </label>
+      <button type="button" onClick="{{toggleTermText}}" aria-expanded="{{termOpen}}" style="align-self: flex-start; background: transparent; border: none; padding: 0; font-family: inherit; font-size: 13px; line-height: 20px; font-weight: 700; color: #0e1a2b; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 2px; cursor: pointer;">{{termTextLabel}}</button>
+      <sc-if value="{{termOpen}}" hint-placeholder-val="{{no}}">
+        <div style="padding: 14px; background: #e9f2f8; border: 1px solid #7996a8; border-radius: 4px; display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-size: 14px; line-height: 22px; font-weight: 700;">壹、退費機制（報名繳費後，因故不參加者）</span>
+            <span style="font-size: 13px; line-height: 21px; color: #3c4f61;">1. 開課前（活動日）30 天以上提出者：全額退費。</span>
+            <span style="font-size: 13px; line-height: 21px; color: #3c4f61;">2. 開課前（活動日）14 天以前提出者：退費七成。</span>
+            <span style="font-size: 13px; line-height: 21px; color: #3c4f61;">3. 開課前（活動日）8–13 天提出者：退費五成。</span>
+            <span style="font-size: 13px; line-height: 21px; color: #3c4f61;">4. 開課前 7 天提出者及開課後，既不退費。</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 4px;">
+            <span style="font-size: 14px; line-height: 22px; font-weight: 700;">貳、課程注意事項</span>
+            <span style="font-size: 13px; line-height: 21px; color: #3c4f61;">1. 營隊屬團體課程，學員請假不予補課及退費。</span>
+            <span style="font-size: 13px; line-height: 21px; color: #3c4f61;">2. 若人數不足未能開班，將會全額退費。</span>
+            <span style="font-size: 13px; line-height: 21px; color: #3c4f61;">3. 遇天災並公告北北基宣布停班停課，則當日課程全額退費。</span>
+            <span style="font-size: 13px; line-height: 21px; color: #3c4f61;">4. 本公司保有變動課程之權利，若有任何變動會依照本公司公告為主。</span>
+            <span style="font-size: 13px; line-height: 21px; color: #3c4f61;">5. 本課程所使用之教學場館，均為單純租借活動場地進行，如有問題請直接聯繫 0974078401（王小姐）。</span>
+          </div>
+        </div>
+      </sc-if>
+
+      <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 4px;">
+        <span style="flex-grow: 1; font-size: 15px; line-height: 22px; font-weight: 700;">肖像授權</span>
+        <span style="flex-shrink: 0; font-size: 12px; line-height: 16px; font-weight: 500; padding: 1px 5px; border: 1px solid #a3adba; border-radius: 2px; color: #56657a;">可選</span>
+      </div>
+      <label style="{{p1Style}}">
+        <input type="radio" name="portrait" value="yes" checked="{{pYes}}" onChange="{{pickPYes}}" style="width: 18px; height: 18px; flex-shrink: 0; accent-color: #0e1a2b;">
+        <span style="flex-grow: 1; font-size: 15px; line-height: 22px; font-weight: 700;">同意授權活動照片使用</span>
+      </label>
+      <label style="{{p2Style}}">
+        <input type="radio" name="portrait" value="no" checked="{{pNo}}" onChange="{{pickPNo}}" style="width: 18px; height: 18px; flex-shrink: 0; accent-color: #0e1a2b;">
+        <span style="flex-grow: 1; font-size: 15px; line-height: 22px; font-weight: 700;">不同意，請勿拍攝我</span>
+      </label>
+      <button type="button" onClick="{{togglePortraitText}}" aria-expanded="{{portraitOpen}}" style="align-self: flex-start; background: transparent; border: none; padding: 0; font-family: inherit; font-size: 13px; line-height: 20px; font-weight: 700; color: #0e1a2b; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 2px; cursor: pointer;">{{portraitTextLabel}}</button>
+      <sc-if value="{{portraitOpen}}" hint-placeholder-val="{{no}}">
+        <div style="padding: 14px; background: #e9f2f8; border: 1px solid #7996a8; border-radius: 4px; display: flex; flex-direction: column; gap: 10px;">
+          <span style="font-size: 14px; line-height: 22px; font-weight: 700;">肖像授權同意書</span>
+          <span style="font-size: 13px; line-height: 21px; color: #3c4f61;">被拍攝者／未成年之法定代理人，同意並授權拍攝者（手機、相機、數位攝影設備）拍攝、修飾、使用、公開展示本人之肖像，由拍攝者使用於弘淇運動行銷有限公司所舉辦的活動作品上。本人同意上述著作（內含上述授權之肖像），該拍攝者就該攝影著作享完整之著作權。</span>
+          <span style="font-size: 13px; line-height: 21px; color: #3c4f61;">以上不得使用於違法事宜。</span>
+        </div>
+      </sc-if>
+      <span style="{{pNoteStyle}}">{{pNote}}</span>
+
+    </div>
+  </div>
+
+  <div style="margin: 20px 20px 0;">
+    <div style="display: flex; align-items: baseline; gap: 8px; padding-bottom: 8px; border-bottom: 2px solid #0e1a2b;">
       <h2 style="margin: 0; font-size: 16px; line-height: 24px; font-weight: 700;">金額</h2>
       <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 13px; line-height: 18px; font-weight: 600; letter-spacing: 0.12em; color: #56657a;">TOTAL</span>
     </div>
@@ -129,17 +187,23 @@ a { color: #0e1a2b; } a:hover { color: #3c4f61; }
   </div>
 
   <div style="margin: 20px 20px 24px; display: flex; flex-direction: column; gap: 8px;">
-    <a href="Done-Mobile.dc.html" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; background: #b3d9ec; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-size: 17px; line-height: 24px; font-weight: 700; text-decoration: none;">前往付款 {{total}}<svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7 H12 M8 3 L12 7 L8 11" stroke="#0e1a2b" stroke-width="2" stroke-linecap="square"></path></svg></a>
-    <p style="margin: 0; text-align: center; font-size: 13px; line-height: 20px; color: #56657a;">將跳轉至 [金流商名稱] 付款頁，支援信用卡與轉帳。開課前三日可全額退費。</p>
+    <sc-if value="{{term}}" hint-placeholder-val="{{yes}}">
+      <a href="Done-Mobile.dc.html" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 52px; background: #b3d9ec; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-size: 17px; line-height: 24px; font-weight: 700; text-decoration: none;">前往付款 {{total}}<svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7 H12 M8 3 L12 7 L8 11" stroke="#0e1a2b" stroke-width="2" stroke-linecap="square"></path></svg></a>
+    </sc-if>
+    <sc-if value="{{noTerm}}" hint-placeholder-val="{{no}}">
+      <button type="button" disabled style="height: 52px; background: #eef1f4; color: #8a96a5; border: none; border-radius: 2px; font-family: inherit; font-size: 17px; line-height: 24px; font-weight: 700;">前往付款 {{total}}</button>
+      <p style="margin: 0; text-align: center; font-size: 13px; line-height: 20px; font-weight: 500; color: #9a6318;">請先勾選「我已閱讀並同意退費機制與課程注意事項」。</p>
+    </sc-if>
+    <p style="margin: 0; text-align: center; font-size: 13px; line-height: 20px; color: #56657a;">將跳轉至 [金流商名稱] 付款頁，支援信用卡與轉帳。開課前 30 天以上全額退費，之後依天數遞減，7 天內不退。</p>
   </div>
 
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1320}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1660}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { inv: 'b2c' };
+    this.state = { inv: 'b2c', term: false, termOpen: false, portrait: 'yes', portraitOpen: false };
   }
   renderVals() {
     var self = this;
@@ -148,6 +212,12 @@ class Component extends DCLogic {
     var row = function (on) {
       return 'display:flex;align-items:center;gap:12px;height:52px;padding:0 14px;border:1px solid #0e1a2b;border-radius:2px;cursor:pointer;' + (on ? 'background:#b3d9ec;' : 'background:#ffffff;');
     };
+    var term = this.state.term;
+    var pYes = this.state.portrait !== 'no';
+    var optRow = function (on) {
+      return 'display:flex;align-items:center;gap:12px;min-height:52px;padding:10px 14px;border:1px solid #0e1a2b;border-radius:2px;cursor:pointer;'
+        + (on ? 'background:#b3d9ec;' : 'background:#ffffff;');
+    };
     return {
       isB2C: !b2b,
       isB2B: b2b,
@@ -155,7 +225,28 @@ class Component extends DCLogic {
       pickB2B: function () { self.setState({ inv: 'b2b' }); },
       r1Style: row(!b2b),
       r2Style: row(b2b),
+      term: term,
+      termRowStyle: optRow(term),
+      toggleTerm: function () { self.setState({ term: !self.state.term }); },
+      termOpen: this.state.termOpen,
+      termTextLabel: this.state.termOpen ? '收合全文' : '展開全文（退費機制與課程注意事項）',
+      toggleTermText: function () { self.setState({ termOpen: !self.state.termOpen }); },
+      pYes: pYes,
+      pNo: !pYes,
+      p1Style: optRow(pYes),
+      p2Style: optRow(!pYes),
+      pickPYes: function () { self.setState({ portrait: 'yes' }); },
+      pickPNo: function () { self.setState({ portrait: 'no' }); },
+      portraitOpen: this.state.portraitOpen,
+      portraitTextLabel: this.state.portraitOpen ? '收合全文' : '展開全文（肖像授權同意書）',
+      togglePortraitText: function () { self.setState({ portraitOpen: !self.state.portraitOpen }); },
+      pNote: pYes
+        ? '活動照片可能出現在中心的社群與宣傳品上。'
+        : '已記下不同意授權，現場人員會避開你入鏡，報名不受影響。',
+      pNoteStyle: 'font-size:13px;line-height:20px;color:' + (pYes ? '#56657a' : '#9a6318') + ';',
+      noTerm: !term,
       total: 'NT$' + total.toLocaleString('en-US'),
+      yes: true,
       no: false
     };
   }

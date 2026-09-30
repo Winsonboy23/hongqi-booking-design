@@ -196,22 +196,22 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
 const GROUPS = [
   {
     id: "mobile", label: "介面流程", note: "390px 寬，民眾在手機上看到的報名流程。",
-    grid: "mobile", w: 390, tallest: 1320,
+    grid: "mobile", w: 390, tallest: 1660,
     boards: [
       { step: "1", file: "Main.dc.html",               title: "課程資訊・季報名", h: 1060, live: true },
       { step: "2", file: "BookingList-Mobile.dc.html", title: "預約列表・單堂",   h: 1180, live: true },
-      { step: "3", file: "Checkout-Mobile.dc.html",    title: "結帳",            h: 1320, live: true },
+      { step: "3", file: "Checkout-Mobile.dc.html",    title: "結帳",            h: 1660, live: true },
       { step: "4", file: "Done-Mobile.dc.html",        title: "完成",            h: 860,  live: true },
       { step: "5", file: "Lookup-Mobile.dc.html",      title: "查詢",            h: 900,  live: true }
     ]
   },
   {
     id: "desktop", label: "前台・桌機", note: "1280px 寬，同一套流程的電腦版。",
-    grid: "wide", w: 1280, tallest: 980,
+    grid: "wide", w: 1280, tallest: 1180,
     boards: [
       { step: "1", file: "Courses-Desktop.dc.html",     title: "課程資訊・季報名", h: 880, live: true },
       { step: "2", file: "BookingList-Desktop.dc.html", title: "預約列表・單堂",   h: 880, live: true },
-      { step: "3", file: "Checkout-Desktop.dc.html",    title: "結帳",            h: 980, live: true },
+      { step: "3", file: "Checkout-Desktop.dc.html",    title: "結帳",           h: 1180, live: true },
       { step: "4", file: "Done-Desktop.dc.html",        title: "完成",            h: 760, live: true },
       { step: "5", file: "Lookup-Desktop.dc.html",      title: "查詢",            h: 820, live: true }
     ]
@@ -229,7 +229,7 @@ const GROUPS = [
   },
   {
     id: "flow", label: "系統流程圖",
-    note: "五個角色 × 七個階段的泳道圖。實線是操作流程，虛線是資料同步；深藍框的方塊點了會跳到對應畫板。圖上標「待確認」的三件事要一起定案。",
+    note: "五個角色 × 七個階段的泳道圖。實線是操作流程，虛線是資料同步；深藍框的方塊點了會跳到對應畫板。圖上標「待確認」的六件事要一起定案。",
     grid: "full", w: 2200, tallest: 1320,
     boards: [
       { file: "System-Flow.dc.html", title: "泳道圖・五個角色 × 七個階段", h: 1320, live: true }

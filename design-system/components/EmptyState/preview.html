@@ -1,0 +1,37 @@
+<!-- @dsCard group="顯示" height=300 subtitle="篩選無結果與尚未查詢兩種空狀態" -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+  html, body { margin: 0; }
+  body {
+    background: var(--surface-page); color: var(--ink);
+    font-family: var(--font-sans); padding: var(--space-5);
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5);
+  }
+  .box { padding: var(--space-6) var(--space-5); display: flex; flex-direction: column; align-items: center; gap: var(--space-3); text-align: center; }
+  .solid { border-top: var(--border-rule) solid var(--ink); border-bottom: var(--border-hair) solid var(--line); }
+  .dashed { border: var(--border-hair) dashed var(--accent-edge); border-radius: var(--radius-field); }
+  h3 { margin: 0; font-size: 18px; line-height: 26px; font-weight: 700; }
+  p { margin: 0; font-size: 13px; line-height: 20px; color: var(--ink-muted); }
+  .btn { font: inherit; font-weight: 700; font-size: 15px; min-height: 44px; padding: 0 var(--space-5); background: var(--surface-card); color: var(--ink); border: var(--border-hair) solid var(--ink); border-radius: var(--radius-control); cursor: pointer; }
+</style>
+
+<div class="box solid">
+  <svg width="64" height="64" viewBox="0 0 72 72" fill="none" aria-hidden="true">
+    <circle cx="36" cy="46" r="15" fill="var(--accent)" stroke="var(--ink)" stroke-width="2"/>
+    <path d="M36 31 L24 10 M36 31 L36 8 M36 31 L48 10" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M24 10 Q36 2 48 10" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+  <h3>這個條件沒有開放時段</h3>
+  <p>把地區或教練改回「不指定」，就能看到全部六個時段。</p>
+  <button class="btn">清除條件</button>
+</div>
+
+<div class="box dashed">
+  <svg width="64" height="64" viewBox="0 0 72 72" fill="none" aria-hidden="true">
+    <circle cx="36" cy="46" r="15" fill="var(--accent)" stroke="var(--ink)" stroke-width="2"/>
+    <path d="M36 31 L24 10 M36 31 L36 8 M36 31 L48 10" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M24 10 Q36 2 48 10" stroke="var(--ink)" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+  <h3>還沒有查詢結果</h3>
+  <p>填好上面兩欄再按查詢。</p>
+</div>

@@ -1,0 +1,47 @@
+<!-- @dsCard height=288 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+  html, body { margin: 0; }
+  body { background: var(--surface-page); font-family: var(--font-sans); }
+  .wrap { width: 960px; height: 288px; position: relative; }
+  svg { display: block; }
+  .band { fill: var(--accent); }
+  .soft { fill: var(--accent-soft); }
+  .tint { fill: var(--accent-tint); }
+  .slab { fill: var(--ink); }
+  .rule { stroke: var(--ink); stroke-width: 2; }
+  .hair { stroke: var(--accent-edge); stroke-width: 1; }
+  .name { fill: var(--ink); font-family: var(--font-sans); font-weight: 900; font-size: 56px; }
+  .tag  { fill: var(--ink-muted); font-family: var(--font-sans); font-weight: 400; font-size: 14px; }
+  .over { fill: var(--ink-on-band); font-family: var(--font-num); font-weight: 600; font-size: 15px; letter-spacing: 2.4px; }
+</style>
+
+<div class="wrap">
+<!--
+  blocks:   accent 420×104 · accent-soft 210×104 · ink 90×104 · accent-tint 240×104，齊平橫帶，直角
+  arrange:  top-band 骨架（名稱八個中文字，56px 寬約 448px，超出 440px 側邊區，改用頂部橫帶）
+  pattern:  direct／structural／2px rules → 等距垂直刻度線；沿基線排列，因為這個系統的識別就是那條 2px 分隔線
+  scales:   刻度 h=16/24/32（space-4~6）· 帶高 104 = space-7×2 + space-2 · 刻度間距 30
+-->
+<svg width="960" height="288" viewBox="0 0 960 288" role="img" aria-label="弘淇羽球設計系統封面">
+  <rect class="band" x="0"   y="0" width="420" height="104"/>
+  <rect class="soft" x="420" y="0" width="210" height="104"/>
+  <rect class="slab" x="630" y="0" width="90"  height="104"/>
+  <rect class="tint" x="720" y="0" width="240" height="104"/>
+
+  <g class="rule">
+    <path d="M30 104 V72 M60 104 V88 M90 104 V88 M120 104 V80 M150 104 V88 M180 104 V88 M210 104 V72 M240 104 V88 M270 104 V88 M300 104 V80 M330 104 V88 M360 104 V88 M390 104 V72"/>
+  </g>
+  <g class="rule" stroke="var(--accent-tint)">
+    <path d="M660 104 V72 M690 104 V88"/>
+  </g>
+
+  <text class="over" x="48" y="46">HONGQI BADMINTON · DESIGN SYSTEM</text>
+
+  <line class="hair" x1="0" y1="104" x2="960" y2="104"/>
+
+  <text class="name" x="48" y="196">弘淇羽球設計系統</text>
+  <line x1="48" y1="216" x2="560" y2="216" class="rule"/>
+  <text class="tag"  x="48" y="246">淡、直、清——淺藍只鋪在頁首與主要按鈕，其餘留白；圓角 2px，沒有陰影</text>
+</svg>
+</div>

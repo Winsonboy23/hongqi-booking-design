@@ -1,0 +1,45 @@
+<!-- @dsCard group="顯示" height=220 subtitle="分類標籤、狀態文字與統計數字" -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+  html, body { margin: 0; }
+  body {
+    background: var(--surface-page); color: var(--ink);
+    font-family: var(--font-sans); padding: var(--space-5);
+    display: flex; flex-direction: column; gap: var(--space-5);
+  }
+  .row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+  .tag { font-size: 12px; line-height: 16px; font-weight: 500; padding: 2px 7px; border: var(--border-hair) solid var(--ink); border-radius: var(--radius-control); }
+  .tag.fill { background: var(--accent-tint); font-weight: 700; }
+  .st { font-size: 14px; line-height: 22px; font-weight: 500; }
+  .ok { color: var(--success); } .warn { color: var(--warning); } .bad { color: var(--danger); }
+  .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-4); }
+  .stat { padding-top: var(--space-2); border-top: var(--border-rule) solid var(--ink); display: flex; flex-direction: column; }
+  .stat span { font-size: 13px; line-height: 20px; color: var(--ink-muted); }
+  .stat b { font-family: var(--font-num); font-size: 34px; line-height: 38px; font-weight: 700; }
+  .cap { margin: 0; font-size: 13px; line-height: 20px; color: var(--ink-muted); }
+</style>
+
+<div class="row">
+  <span class="tag">季課程</span>
+  <span class="tag">單堂</span>
+  <span class="tag fill">永康區</span>
+  <span class="tag fill">仁德區</span>
+</div>
+
+<div class="row">
+  <span class="st ok">尚有 5 個名額</span>
+  <span class="st warn">剩 2 個名額</span>
+  <span class="st bad">已額滿</span>
+  <span class="st ok">已付款</span>
+  <span class="st warn">待付款</span>
+  <span class="st bad">已取消</span>
+</div>
+
+<div class="stats">
+  <div class="stat"><span>本季訂單</span><b>68</b></div>
+  <div class="stat"><span>待付款</span><b class="warn">5</b></div>
+  <div class="stat"><span>已付款金額</span><b>NT$298,560</b></div>
+  <div class="stat"><span>待開發票</span><b class="bad">7</b></div>
+</div>
+
+<p class="cap">狀態是「有顏色的文字」，不是彩色藥丸。藥丸底色會和 accent 打架，也會讓一整欄狀態看起來像一排按鈕。</p>

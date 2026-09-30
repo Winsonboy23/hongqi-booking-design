@@ -1,0 +1,54 @@
+<!-- @dsCard group="控制項" height=250 subtitle="主要／次要／中性／危險，以及 hover 與停用狀態" -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+  html, body { margin: 0; }
+  body {
+    background: var(--surface-page); color: var(--ink);
+    font-family: var(--font-sans); padding: var(--space-5);
+    display: flex; flex-direction: column; gap: var(--space-4);
+  }
+  .row { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+  .cap { margin: 0; font-size: 13px; line-height: 20px; color: var(--ink-muted); }
+  .btn {
+    font: inherit; font-weight: 700; font-size: 15px;
+    min-height: 48px; padding: 0 var(--space-6);
+    display: inline-flex; align-items: center; gap: var(--space-2);
+    border: var(--border-hair) solid var(--ink);
+    border-radius: var(--radius-control);
+    background: var(--surface-card); color: var(--ink);
+    cursor: pointer;
+    transition: background-color 140ms ease, color 140ms ease;
+  }
+  .primary { background: var(--accent); color: var(--ink-on-accent); }
+  .primary:hover { background: var(--accent-deep); }
+  .secondary:hover { background: var(--accent-tint); }
+  .danger { color: var(--danger); border-color: var(--danger); }
+  .danger:hover { background: var(--accent-tint); }
+  .quiet { border-color: transparent; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+  .small { min-height: 36px; padding: 0 var(--space-3); font-size: 13px; }
+  .btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .btn:disabled {
+    background: var(--surface-sunken); color: var(--ink-disabled);
+    border-color: transparent; cursor: not-allowed;
+  }
+  svg { display: block; }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+</style>
+
+<div class="row">
+  <button class="btn primary">立即報名
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7 H12 M8 3 L12 7 L8 11" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></svg>
+  </button>
+  <button class="btn secondary">查看場次</button>
+  <button class="btn danger">取消報名</button>
+  <button class="btn" disabled>已額滿</button>
+</div>
+
+<div class="row">
+  <button class="btn primary small">匯出 Excel</button>
+  <button class="btn secondary small">編輯</button>
+  <button class="btn danger small">刪除</button>
+  <button class="btn quiet small">改天再說</button>
+</div>
+
+<p class="cap">主要按鈕是 accent 填色「加」1px ink 外框——淺藍在白底上單獨出現時邊界會糊掉，外框是結構不是裝飾。停用狀態是唯一可以沒有外框的狀態，並且要在按鈕旁用 caption 寫清楚原因。hover 只換顏色，不位移也不縮放。</p>

@@ -1,0 +1,19 @@
+{
+  "v": 3,
+  "layout": "files",
+  "createdOnFiles": { "v": 1, "at": "2026-09-20T15:40:00+08:00" },
+  "title": "弘淇羽球設計系統",
+  "namespace": "HongQi",
+  "libraries": [],
+  "sections": {},
+  "groups": [],
+  "assetGroups": {},
+  "blobs": {},
+  "docs": { "readme": "project/README.md", "sections": [] },
+  "lastChange": {
+    "by": "Winson",
+    "at": "2026-09-30T23:10:00+08:00",
+    "via": "Cowork",
+    "note": "客戶定案「簡約 B」：色票改為 LOGO 淺藍、圓角收到 2px、移除貼紙陰影與圓體字，七個元件與品牌書一併改寫"
+  }
+}

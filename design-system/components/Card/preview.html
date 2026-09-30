@@ -1,0 +1,54 @@
+<!-- @dsCard group="容器" height=300 subtitle="清單列、說明區塊與摘要卡三種容器" -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+  html, body { margin: 0; }
+  body {
+    background: var(--surface-page); color: var(--ink);
+    font-family: var(--font-sans); padding: var(--space-5);
+    display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: var(--space-6); align-items: start;
+  }
+  .list { border-top: var(--border-rule) solid var(--ink); }
+  .row { padding: var(--space-4) 0; border-bottom: var(--border-hair) solid var(--line); display: grid; grid-template-columns: 76px minmax(0, 1fr) auto; gap: var(--space-5); align-items: center; }
+  .t { display: flex; flex-direction: column; }
+  .t b { font-family: var(--font-num); font-size: 24px; line-height: 28px; font-weight: 700; }
+  .t span { font-family: var(--font-num); font-size: 17px; line-height: 21px; font-weight: 500; color: var(--ink-muted); }
+  h3 { margin: 0; font-size: 17px; line-height: 26px; font-weight: 700; }
+  .sub { font-size: 13px; line-height: 20px; color: var(--ink-muted); }
+  .ok { font-size: 13px; line-height: 20px; font-weight: 500; color: var(--success); }
+  .btn { font: inherit; font-weight: 700; font-size: 15px; min-height: 44px; padding: 0 var(--space-5); background: var(--accent); color: var(--ink-on-accent); border: var(--border-hair) solid var(--ink); border-radius: var(--radius-control); cursor: pointer; }
+  .note { padding: var(--space-4); background: var(--accent-tint); border: var(--border-hair) solid var(--accent-edge); border-radius: var(--radius-field); }
+  .note b { display: block; font-size: 15px; line-height: 24px; }
+  .note span { display: block; margin-top: var(--space-1); font-size: 13px; line-height: 20px; color: var(--ink-on-band); }
+  .sum { margin-top: var(--space-5); padding-top: var(--space-3); border-top: var(--border-rule) solid var(--ink); display: flex; align-items: baseline; }
+  .sum span { flex-grow: 1; font-size: 15px; font-weight: 700; }
+  .sum b { font-family: var(--font-num); font-size: 32px; line-height: 34px; font-weight: 700; }
+</style>
+
+<div class="list">
+  <div class="row">
+    <div class="t"><b>19:00</b><span>– 21:00</span></div>
+    <div>
+      <h3>成人進階班</h3>
+      <div class="sub">陳怡君 教練・永康館</div>
+      <div class="ok">尚有 5 個名額</div>
+    </div>
+    <button class="btn">報名</button>
+  </div>
+  <div class="row">
+    <div class="t"><b>14:00</b><span>– 15:30</span></div>
+    <div>
+      <h3>樂齡羽球班</h3>
+      <div class="sub">張雅婷 教練・永康館</div>
+      <div class="ok">尚有 4 個名額</div>
+    </div>
+    <button class="btn">報名</button>
+  </div>
+</div>
+
+<div>
+  <div class="note">
+    <b>發票將手開後寄出</b>
+    <span>三個工作天內開立，寄到你留的地址。</span>
+  </div>
+  <div class="sum"><span>應付金額</span><b>NT$5,040</b></div>
+</div>

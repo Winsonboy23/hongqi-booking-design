@@ -1,0 +1,57 @@
+<!-- @dsCard group="控制項" height=300 subtitle="輸入框、下拉選單、單選列與勾選欄" -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+  html, body { margin: 0; }
+  body {
+    background: var(--surface-page); color: var(--ink);
+    font-family: var(--font-sans); padding: var(--space-5);
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4) var(--space-6); align-items: start;
+  }
+  .f { display: flex; flex-direction: column; gap: var(--space-1); }
+  label { font-size: 13px; line-height: 18px; font-weight: 500; color: var(--ink-muted); }
+  input[type=text], input[type=tel], select {
+    height: 46px; padding: 0 var(--space-3);
+    background: var(--surface-card); color: var(--ink);
+    border: var(--border-hair) solid var(--ink); border-radius: var(--radius-field);
+    font-family: inherit; font-size: 15px;
+  }
+  input:focus-visible, select:focus-visible, .opt:focus-within { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .hint { font-size: 13px; line-height: 20px; color: var(--ink-muted); }
+  .err { font-size: 13px; line-height: 20px; color: var(--danger); font-weight: 500; }
+  .bad { border-color: var(--danger); }
+  input:disabled { background: var(--surface-sunken); color: var(--ink-disabled); border-color: transparent; }
+  .opt {
+    display: flex; align-items: center; gap: var(--space-3);
+    min-height: 52px; padding: 0 var(--space-4);
+    border: var(--border-hair) solid var(--ink); border-radius: var(--radius-control);
+    background: var(--surface-card); cursor: pointer; font-size: 15px; font-weight: 700;
+  }
+  .opt.on { background: var(--accent); color: var(--ink-on-accent); }
+  .opt small { display: block; font-size: 13px; font-weight: 400; color: var(--ink-muted); }
+  .opt.on small { color: var(--ink-on-band); }
+  input[type=radio], input[type=checkbox] { width: 18px; height: 18px; accent-color: var(--ink); }
+  .chk { display: flex; align-items: center; gap: var(--space-2); font-size: 15px; }
+</style>
+
+<div class="f">
+  <label for="a">姓名（必填）</label>
+  <input id="a" type="text" placeholder="王小明">
+</div>
+<div class="f">
+  <label for="b">手機號碼（必填）</label>
+  <input id="b" type="tel" class="bad" value="0912-345">
+  <span class="err">手機號碼要 10 碼，看起來少了幾位。</span>
+</div>
+<div class="f">
+  <label for="c">地區</label>
+  <select id="c"><option>永康區</option><option>東區</option><option>仁德區</option></select>
+  <span class="hint">換地區時，館別會跳到該區第一個館。</span>
+</div>
+<div class="f">
+  <label for="d">訂單編號（唯讀）</label>
+  <input id="d" type="text" value="HQ-20260920-0137" disabled>
+</div>
+<label class="opt on"><input type="radio" name="inv" checked><span>統一編號發票<small>公司報帳用，加收 5% 稅額。</small></span></label>
+<label class="opt"><input type="radio" name="inv"><span>二聯式收據<small>個人報名，金額不變。</small></span></label>
+<label class="chk"><input type="checkbox" checked>發票已開</label>
+<label class="chk"><input type="checkbox">寄送紙本收據</label>

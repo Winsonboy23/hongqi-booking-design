@@ -1,0 +1,40 @@
+<!-- @dsCard group="導覽" height=300 subtitle="前台頁首導覽與後台側欄" -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+  html, body { margin: 0; }
+  body { background: var(--surface-page); color: var(--ink); font-family: var(--font-sans); display: flex; flex-direction: column; }
+  .top { background: var(--accent); border-bottom: var(--border-hair) solid var(--accent-edge); height: 72px; padding: 0 var(--space-6); display: flex; align-items: center; gap: var(--space-4); }
+  .brand { font-size: 20px; line-height: 28px; font-weight: 900; letter-spacing: 0.06em; }
+  .mark { font-family: var(--font-num); font-size: 13px; font-weight: 600; letter-spacing: 0.18em; color: var(--ink-on-band); }
+  nav { flex-grow: 1; display: flex; align-items: center; gap: var(--space-5); margin-left: var(--space-5); }
+  nav a { font-size: 15px; line-height: 24px; color: var(--ink-on-band); text-decoration: none; }
+  nav a.on { padding-bottom: 3px; border-bottom: var(--border-rule) solid var(--ink); color: var(--ink); font-weight: 700; }
+  .tel { font-size: 14px; color: var(--ink-on-band); }
+  .split { display: flex; flex-grow: 1; }
+  aside { width: 200px; background: var(--accent); border-right: var(--border-hair) solid var(--accent-edge); padding: var(--space-3) 0; display: flex; flex-direction: column; }
+  aside a { height: 44px; padding: 0 var(--space-5); display: flex; align-items: center; font-size: 15px; color: var(--ink-on-band); text-decoration: none; }
+  aside a.on { background: var(--surface-card); box-shadow: inset 3px 0 0 var(--ink); color: var(--ink); font-weight: 700; }
+  .pane { flex-grow: 1; padding: var(--space-5); }
+  .pane p { margin: 0; font-size: 13px; line-height: 20px; color: var(--ink-muted); }
+</style>
+
+<div class="top">
+  <span class="brand">弘淇羽球</span>
+  <span class="mark">BADMINTON</span>
+  <nav>
+    <a class="on" href="#">季課程報名</a>
+    <a href="#">單堂預約</a>
+    <a href="#">查詢報名</a>
+  </nav>
+  <span class="tel">諮詢專線 [中心電話]</span>
+</div>
+
+<div class="split">
+  <aside>
+    <a class="on" href="#">課程／時段管理</a>
+    <a href="#">教練管理</a>
+    <a href="#">地點管理</a>
+    <a href="#">訂單管理</a>
+  </aside>
+  <div class="pane"><p>前台目前頁用 2px ink 底線標示；後台側欄的目前頁改成白底加 3px ink 內側色條，因為側欄本身就是 accent，底線在上面看不出來。兩者都同時改字重與字色，不只靠一個記號。</p></div>
+</div>
