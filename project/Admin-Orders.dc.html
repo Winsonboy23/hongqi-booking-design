@@ -137,7 +137,6 @@ a { color: #0e1a2b; } a:hover { color: #3c4f61; }
           <div style="display: flex; flex-direction: column; align-items: flex-start;">
             <span style="font-size: 14px; line-height: 20px; font-weight: 700;">{{r.name}}</span>
             <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 14px; line-height: 18px; color: #56657a;">{{r.tel}}</span>
-            <span style="{{r.portraitStyle}}">{{r.portraitText}}</span>
           </div>
           <div style="display: flex; flex-direction: column;">
             <span style="font-size: 14px; line-height: 20px;">{{r.course}}</span>
@@ -165,7 +164,7 @@ a { color: #0e1a2b; } a:hover { color: #3c4f61; }
       <button type="button" style="height: 40px; padding: 0 16px; background: #b3d9ec; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer;">匯出所選</button>
     </div>
 
-    <p style="margin: 14px 32px 24px; font-size: 13px; line-height: 20px; color: #56657a;">付款狀態由管理員手動切換；發票為手開，開立後勾選「發票已開」並填入發票號碼，會計即可用匯出的 Excel 對帳。肖像授權選「不同意」的學員會在姓名下標紅字「不可拍攝」，拍攝當天請先給現場人員一份名單。匯出檔包含訂單編號、報名時間、姓名、電話、LINE ID、程度備註、課程、金額、發票類型、統編、抬頭、發票號碼、狀態、條款同意時間與肖像授權結果。</p>
+    <p style="margin: 14px 32px 24px; font-size: 13px; line-height: 20px; color: #56657a;">付款狀態由管理員手動切換；發票為手開，開立後勾選「發票已開」並填入發票號碼，會計即可用匯出的 Excel 對帳。匯出檔包含訂單編號、報名時間、姓名、電話、LINE ID、程度備註、課程、金額、發票類型、統編、抬頭、發票號碼、狀態，以及兩份同意書的同意時間。</p>
 
   </main>
 </div>
@@ -185,12 +184,12 @@ class Component extends DCLogic {
   renderVals() {
     var self = this;
     var DATA = [
-      { id: '1', no: 'HQ-20260920-0137', at: '09/20 14:22', name: '王小明', tel: '0912-345-678', course: '成人進階班（季）', venue: '永康館', invType: '統編發票', amount: 'NT$5,040', status: '已付款', issued: true, invNo: 'IV-38271905', portrait: true },
-      { id: '2', no: 'HQ-20260920-0136', at: '09/20 11:05', name: '李佳蓉', tel: '0928-111-222', course: '成人初級班（季）', venue: '永康館', invType: '二聯式', amount: 'NT$4,800', status: '已付款', issued: false, invNo: '', portrait: false },
-      { id: '3', no: 'HQ-20260919-0135', at: '09/19 21:47', name: '陳建宏', tel: '0933-444-555', course: '上班族夜間班（季）', venue: '中華館', invType: '統編發票', amount: 'NT$5,040', status: '待付款', issued: false, invNo: '', portrait: true },
-      { id: '4', no: 'HQ-20260919-0134', at: '09/19 16:30', name: '吳雅琪', tel: '0955-666-777', course: '兒童啟蒙班（季）', venue: '永康館', invType: '二聯式', amount: 'NT$3,600', status: '已付款', issued: true, invNo: 'IV-38271904', portrait: false },
-      { id: '5', no: 'HQ-20260918-0133', at: '09/18 10:12', name: '林志偉', tel: '0966-888-999', course: '單堂開放場 10/11', venue: '仁德館', invType: '二聯式', amount: 'NT$450', status: '已取消', issued: false, invNo: '', portrait: true },
-      { id: '6', no: 'HQ-20260918-0132', at: '09/18 09:03', name: '張美惠', tel: '0977-222-333', course: '樂齡羽球班（季）', venue: '永康館', invType: '二聯式', amount: 'NT$3,200', status: '已付款', issued: true, invNo: 'IV-38271903', portrait: true }
+      { id: '1', no: 'HQ-20260920-0137', at: '09/20 14:22', name: '王小明', tel: '0912-345-678', course: '成人進階班（季）', venue: '永康館', invType: '統編發票', amount: 'NT$5,040', status: '已付款', issued: true, invNo: 'IV-38271905' },
+      { id: '2', no: 'HQ-20260920-0136', at: '09/20 11:05', name: '李佳蓉', tel: '0928-111-222', course: '成人初級班（季）', venue: '永康館', invType: '二聯式', amount: 'NT$4,800', status: '已付款', issued: false, invNo: '' },
+      { id: '3', no: 'HQ-20260919-0135', at: '09/19 21:47', name: '陳建宏', tel: '0933-444-555', course: '上班族夜間班（季）', venue: '中華館', invType: '統編發票', amount: 'NT$5,040', status: '待付款', issued: false, invNo: '' },
+      { id: '4', no: 'HQ-20260919-0134', at: '09/19 16:30', name: '吳雅琪', tel: '0955-666-777', course: '兒童啟蒙班（季）', venue: '永康館', invType: '二聯式', amount: 'NT$3,600', status: '已付款', issued: true, invNo: 'IV-38271904' },
+      { id: '5', no: 'HQ-20260918-0133', at: '09/18 10:12', name: '林志偉', tel: '0966-888-999', course: '單堂開放場 10/11', venue: '仁德館', invType: '二聯式', amount: 'NT$450', status: '已取消', issued: false, invNo: '' },
+      { id: '6', no: 'HQ-20260918-0132', at: '09/18 09:03', name: '張美惠', tel: '0977-222-333', course: '樂齡羽球班（季）', venue: '永康館', invType: '二聯式', amount: 'NT$3,200', status: '已付款', issued: true, invNo: 'IV-38271903' }
     ];
     var statusOf = function (d) { return self.state.over[d.id] || d.status; };
     var issuedOf = function (d) {
@@ -214,10 +213,6 @@ class Component extends DCLogic {
       return {
         no: d.no, at: d.at, name: d.name, tel: d.tel, course: d.course, venue: d.venue,
         invType: d.invType, amount: d.amount, status: st, issued: issued, picked: picked,
-        portraitText: d.portrait ? '' : '不可拍攝',
-        portraitStyle: d.portrait
-          ? 'display:none;'
-          : 'margin-top:3px;font-size:11px;line-height:15px;font-weight:700;padding:1px 5px;border:1px solid #b04747;border-radius:2px;color:#b04747;',
         invNo: invNoOf(d),
         rowStyle: 'display:grid;' + COLS + 'gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #e3e7ec;'
           + (picked ? 'background:#e9f2f8;' : '') + (st === '已取消' ? 'opacity:0.62;' : ''),
