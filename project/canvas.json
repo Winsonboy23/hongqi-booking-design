@@ -1,9 +1,9 @@
 {
-  "v": 3,
   "attachments": {},
   "boards": {
     "Admin-Account.dc.html": {
-      "h": 760,
+      "h": 820,
+      "is_interactive": true,
       "title": "E 帳號與登入",
       "w": 1440,
       "x": 6080,
@@ -26,7 +26,7 @@
       "y": 3020
     },
     "Admin-Orders.dc.html": {
-      "h": 980,
+      "h": 940,
       "is_interactive": true,
       "title": "D 訂單管理",
       "w": 1440,
@@ -34,7 +34,7 @@
       "y": 3020
     },
     "Admin-Venues.dc.html": {
-      "h": 760,
+      "h": 820,
       "is_interactive": true,
       "title": "C 地點管理",
       "w": 1440,
@@ -42,7 +42,7 @@
       "y": 3020
     },
     "BookingList-Desktop.dc.html": {
-      "h": 940,
+      "h": 880,
       "is_interactive": true,
       "title": "2 預約列表・單堂",
       "w": 1280,
@@ -50,7 +50,7 @@
       "y": 1640
     },
     "BookingList-Mobile.dc.html": {
-      "h": 1240,
+      "h": 1180,
       "is_interactive": true,
       "title": "2 預約列表・單堂",
       "w": 390,
@@ -58,7 +58,7 @@
       "y": 0
     },
     "Checkout-Desktop.dc.html": {
-      "h": 1060,
+      "h": 980,
       "is_interactive": true,
       "title": "3 結帳",
       "w": 1280,
@@ -74,7 +74,7 @@
       "y": 0
     },
     "Courses-Desktop.dc.html": {
-      "h": 930,
+      "h": 880,
       "is_interactive": true,
       "title": "1 課程資訊・季報名",
       "w": 1280,
@@ -82,7 +82,8 @@
       "y": 1640
     },
     "Done-Desktop.dc.html": {
-      "h": 780,
+      "h": 760,
+      "is_interactive": true,
       "title": "4 完成",
       "w": 1280,
       "x": 4080,
@@ -90,6 +91,7 @@
     },
     "Done-Mobile.dc.html": {
       "h": 860,
+      "is_interactive": true,
       "title": "4 完成",
       "w": 390,
       "x": 1410,
@@ -127,28 +129,12 @@
       "x": 3220,
       "y": 0
     },
-    "Main-Minimal-C1.dc.html": {
-      "h": 1060,
-      "is_interactive": true,
-      "title": "簡約 C1・霧藍",
-      "w": 390,
-      "x": 3690,
-      "y": 0
-    },
-    "Main-Minimal-C2.dc.html": {
-      "h": 1060,
-      "is_interactive": true,
-      "title": "簡約 C2・粉藍",
-      "w": 390,
-      "x": 4160,
-      "y": 0
-    },
     "Main-Warm-N1.dc.html": {
       "h": 1090,
       "is_interactive": true,
       "title": "配色 N1・黃＋米咖啡",
       "w": 390,
-      "x": 4630,
+      "x": 3690,
       "y": 0
     },
     "Main-Warm-N2.dc.html": {
@@ -156,7 +142,7 @@
       "is_interactive": true,
       "title": "配色 N2・淡綠＋黃",
       "w": 390,
-      "x": 5100,
+      "x": 4160,
       "y": 0
     },
     "Main-Warm-N3.dc.html": {
@@ -164,7 +150,7 @@
       "is_interactive": true,
       "title": "配色 N3・陶土＋燕麥",
       "w": 390,
-      "x": 5570,
+      "x": 4630,
       "y": 0
     },
     "Main-Warm-N4.dc.html": {
@@ -172,11 +158,11 @@
       "is_interactive": true,
       "title": "配色 N4・藍",
       "w": 390,
-      "x": 6040,
+      "x": 5100,
       "y": 0
     },
     "Main.dc.html": {
-      "h": 1090,
+      "h": 1060,
       "is_interactive": true,
       "title": "1 課程資訊・季報名",
       "w": 390,
@@ -235,15 +221,15 @@
     },
     "n4": {
       "color": "blue",
-      "text": "可點流程：1 選地區→選館別→點月曆日期→報名→3 結帳（切統編會即時 +5%）→4 完成→5 查詢。地區換了，館別會跳到該區第一個館。2 先選地區再挑教練，兩個下拉都會真的篩選，篩空會出現空狀態。後台側欄五個模組互通。",
+      "text": "全站已統一為「簡約 B」風格：淺藍 #b3d9ec 帶狀頁首、深藍墨 #0e1a2b 文字與 2px 標題底線、Barlow Condensed 數字＋思源黑體中文、直角按鈕（radius 2）。可點流程：1 選地區→選館別→點月曆日期→報名→3 結帳（切統編會即時 +5%）→4 完成→5 查詢。地區換了，館別會跳到該區第一個館。2 先選地區再挑教練，兩個下拉都會真的篩選，篩空會出現空狀態。後台側欄五個模組互通，A/B/C 的上下架開關、D 的付款狀態與發票欄位都可以實際點。",
       "w": 320,
       "x": 2350,
       "y": 0
     },
     "n5": {
       "kind": "title1",
-      "maxW": 1800,
-      "text": "簡約風格提案",
+      "maxW": 860,
+      "text": "簡約風格提案（客戶選定 B）",
       "w": 240,
       "x": 2750,
       "y": -300
@@ -253,7 +239,7 @@
       "maxW": 1800,
       "text": "貼紙風配色提案",
       "w": 240,
-      "x": 4630,
+      "x": 3690,
       "y": -300
     }
   },
@@ -275,8 +261,6 @@
     "Admin-Account.dc.html",
     "Main-Minimal-A.dc.html",
     "Main-Minimal-B.dc.html",
-    "Main-Minimal-C1.dc.html",
-    "Main-Minimal-C2.dc.html",
     "Main-Warm-N1.dc.html",
     "Main-Warm-N2.dc.html",
     "Main-Warm-N3.dc.html",
@@ -284,5 +268,6 @@
     "System-Flow.dc.html"
   ],
   "pages": [],
-  "title": "弘淇羽球報名系統"
+  "title": "弘淇羽球報名系統",
+  "v": 3
 }

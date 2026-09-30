@@ -8,45 +8,42 @@
 <body>
 <x-dc>
 <helmet>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Noto+Sans+TC:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
 <style>
 * { box-sizing: border-box; }
-body { margin: 0; background: #faf7f3; color: #2f4a6d; font-family: "Zen Maru Gothic", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
-a { color: #2f4a6d; } a:hover { color: #dd94a2; }
+body { margin: 0; background: #ffffff; color: #0e1a2b; font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
+a { color: #0e1a2b; } a:hover { color: #3c4f61; }
 </style>
 </helmet>
-<div style="width: 1280px; height: 940px; background: #faf7f3; display: flex; flex-direction: column; overflow: hidden;">
+<div style="width: 1280px; height: 880px; background: #ffffff; display: flex; flex-direction: column; overflow: hidden;">
 
-  <div style="height: 72px; padding: 0 48px; display: flex; align-items: center; gap: 32px; background: #ffffff; border-bottom: 2px solid #2f4a6d; flex-shrink: 0;">
-    <a href="Courses-Desktop.dc.html" style="font-size: 22px; line-height: 30px; font-weight: 700; text-decoration: none;">弘淇羽球</a>
-    <nav style="flex-grow: 1; display: flex; align-items: center; gap: 24px;">
-      <a href="Courses-Desktop.dc.html" style="font-size: 15px; line-height: 26px; text-decoration: none;">季課程報名</a>
-      <a href="BookingList-Desktop.dc.html" style="font-size: 15px; line-height: 26px; font-weight: 700; text-decoration: none; box-shadow: inset 0 -8px 0 #f2c2cb;">單堂預約</a>
-      <a href="Lookup-Desktop.dc.html" style="font-size: 15px; line-height: 26px; text-decoration: none;">查詢報名</a>
-    </nav>
-    <span style="font-size: 15px; line-height: 26px; font-weight: 700;">諮詢專線 [中心電話]</span>
-  </div>
-
-  <div style="flex-grow: 1; padding: 40px 48px 48px; display: flex; flex-direction: column; gap: 24px;">
-
-    <div style="display: flex; flex-direction: column; gap: 4px;">
-      <h1 style="margin: 0; font-size: 32px; line-height: 40px; font-weight: 700;">單堂預約</h1>
-      <p style="margin: 0; font-size: 15px; line-height: 26px; color: #5c748f;">先選地區，再挑教練。兩個都可以留「不指定」，直接看所有開放時段。</p>
+  <div style="background: #b3d9ec; color: #0e1a2b; border-bottom: 1px solid #7996a8; padding: 0 48px 32px; display: flex; flex-direction: column; flex-shrink: 0;">
+    <div style="height: 72px; display: flex; align-items: center; gap: 16px;">
+      <span style="font-size: 20px; line-height: 28px; font-weight: 900; letter-spacing: 0.06em;">弘淇羽球</span>
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 13px; line-height: 18px; font-weight: 600; letter-spacing: 0.18em; color: #3c4f61;">BADMINTON</span>
+      <nav style="flex-grow: 1; display: flex; align-items: center; gap: 24px; margin-left: 24px;">
+        <a href="Courses-Desktop.dc.html" style="font-size: 15px; line-height: 24px; color: #3c4f61; text-decoration: none;">季課程報名</a>
+        <a href="BookingList-Desktop.dc.html" style="padding-bottom: 3px; border-bottom: 2px solid #0e1a2b; font-size: 15px; line-height: 24px; font-weight: 700; text-decoration: none;">單堂預約</a>
+        <a href="Lookup-Desktop.dc.html" style="font-size: 15px; line-height: 24px; color: #3c4f61; text-decoration: none;">查詢報名</a>
+      </nav>
+      <span style="font-size: 14px; line-height: 22px; color: #3c4f61;">諮詢專線 [中心電話]</span>
     </div>
-
-    <div style="background: #ffffff; border: 2px solid #2f4a6d; border-radius: 20px; box-shadow: 0 4px 0 #2f4a6d; padding: 20px 24px; display: flex; align-items: flex-end; gap: 24px;">
-      <div style="width: 240px; display: flex; flex-direction: column; gap: 4px;">
-        <label for="d-area" style="font-size: 15px; line-height: 26px; font-weight: 700;">地區</label>
-        <select id="d-area" value="{{area}}" onChange="{{setArea}}" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+    <span style="margin-top: 8px; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; line-height: 20px; font-weight: 600; letter-spacing: 0.16em; color: #3c4f61;">SINGLE SESSION</span>
+    <h1 style="margin: 4px 0 0; font-size: 36px; line-height: 44px; font-weight: 900;">單堂預約</h1>
+    <p style="margin: 6px 0 0; font-size: 15px; line-height: 24px; color: #3c4f61;">先選地區，再挑教練。兩個都可以留「不指定」。</p>
+    <div style="margin-top: 20px; display: flex; align-items: flex-end; gap: 16px;">
+      <div style="width: 240px; display: flex; flex-direction: column; gap: 6px;">
+        <label for="f-area" style="font-size: 13px; line-height: 18px; font-weight: 500; color: #3c4f61;">地區</label>
+        <select id="f-area" value="{{area}}" onChange="{{setArea}}" style="height: 44px; padding: 0 12px; background: #ffffff; border: 1px solid #0e1a2b; border-radius: 4px; font-family: inherit; font-size: 15px; color: #0e1a2b;">
           <option value="">不指定</option>
           <option value="永康區">永康區</option>
           <option value="東區">東區</option>
           <option value="仁德區">仁德區</option>
         </select>
       </div>
-      <div style="width: 240px; display: flex; flex-direction: column; gap: 4px;">
-        <label for="d-coach" style="font-size: 15px; line-height: 26px; font-weight: 700;">教練</label>
-        <select id="d-coach" value="{{coach}}" onChange="{{setCoach}}" style="height: 44px; padding: 0 12px; background: #f0eae3; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; color: #2f4a6d;">
+      <div style="width: 240px; display: flex; flex-direction: column; gap: 6px;">
+        <label for="f-coach" style="font-size: 13px; line-height: 18px; font-weight: 500; color: #3c4f61;">教練</label>
+        <select id="f-coach" value="{{coach}}" onChange="{{setCoach}}" style="height: 44px; padding: 0 12px; background: #ffffff; border: 1px solid #0e1a2b; border-radius: 4px; font-family: inherit; font-size: 15px; color: #0e1a2b;">
           <option value="">不指定</option>
           <option value="林彥廷">林彥廷</option>
           <option value="陳怡君">陳怡君</option>
@@ -54,57 +51,67 @@ a { color: #2f4a6d; } a:hover { color: #dd94a2; }
           <option value="張雅婷">張雅婷</option>
         </select>
       </div>
-      <span style="flex-grow: 1; font-size: 15px; line-height: 26px; color: #5c748f;">{{countText}}</span>
-      <button type="button" onClick="{{clear}}" style="height: 44px; padding: 0 24px; background: #ffffff; color: #2f4a6d; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 4px 0 #2f4a6d; font-family: inherit; font-size: 15px; line-height: 26px; font-weight: 700; cursor: pointer;">清除條件</button>
+      <button type="button" onClick="{{clear}}" style="height: 44px; padding: 0 20px; background: transparent; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: inherit; font-size: 15px; line-height: 22px; font-weight: 700; cursor: pointer;">清除條件</button>
+      <span style="flex-grow: 1;"></span>
+      <span style="margin-bottom: 11px; font-size: 14px; line-height: 22px; font-weight: 700;">{{countText}}</span>
+    </div>
+  </div>
+
+  <div style="flex-grow: 1; padding: 32px 48px 40px; display: flex; flex-direction: column;">
+
+    <div style="display: grid; grid-template-columns: 110px 150px 120px minmax(0, 1fr) 110px 140px 132px; gap: 16px; align-items: center; padding-bottom: 10px; border-bottom: 2px solid #0e1a2b;">
+      <span style="font-size: 13px; line-height: 20px; font-weight: 700;">日期</span>
+      <span style="font-size: 13px; line-height: 20px; font-weight: 700;">時間</span>
+      <span style="font-size: 13px; line-height: 20px; font-weight: 700;">教練</span>
+      <span style="font-size: 13px; line-height: 20px; font-weight: 700;">地點</span>
+      <span style="font-size: 13px; line-height: 20px; font-weight: 700;">單堂費用</span>
+      <span style="font-size: 13px; line-height: 20px; font-weight: 700;">名額</span>
+      <span></span>
     </div>
 
-    <div style="display: grid; grid-template-columns: 240px 140px 200px 160px 120px minmax(0, 1fr); gap: 16px; padding: 0 24px;">
-      <span style="font-size: 13px; line-height: 20px; color: #5c748f;">日期時段</span>
-      <span style="font-size: 13px; line-height: 20px; color: #5c748f;">教練</span>
-      <span style="font-size: 13px; line-height: 20px; color: #5c748f;">地點</span>
-      <span style="font-size: 13px; line-height: 20px; color: #5c748f;">剩餘名額</span>
-      <span style="font-size: 13px; line-height: 20px; color: #5c748f;">價格</span>
-      <span style="font-size: 13px; line-height: 20px; color: #5c748f;"></span>
-    </div>
-
-    <div style="display: flex; flex-direction: column; gap: 12px;">
-      <sc-for list="{{rows}}" as="r" hint-placeholder-count="6">
-        <div style="background: #ffffff; border: 2px solid #2f4a6d; border-radius: 20px; box-shadow: 0 4px 0 #2f4a6d; padding: 16px 24px; display: grid; grid-template-columns: 240px 140px 200px 160px 120px minmax(0, 1fr); gap: 16px; align-items: center;">
-          <span style="font-size: 18px; line-height: 26px; font-weight: 700;">{{r.when}}</span>
-          <span style="font-size: 15px; line-height: 26px;">{{r.coach}}</span>
-          <span style="font-size: 15px; line-height: 26px;">{{r.venue}}（{{r.area}}）</span>
-          <span style="{{r.chipStyle}}">{{r.chipText}}</span>
-          <span style="font-size: 15px; line-height: 26px; font-weight: 700;">{{r.price}}</span>
-          <div style="display: flex; justify-content: flex-end;">
-            <sc-if value="{{r.open}}" hint-placeholder-val="{{yes}}">
-              <a href="Checkout-Desktop.dc.html" style="display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 32px; background: #f2c2cb; color: #24405f; border: 2px solid #2f4a6d; border-radius: 12px; box-shadow: 0 4px 0 #dd94a2; font-size: 15px; line-height: 26px; font-weight: 700; text-decoration: none;">預約</a>
-            </sc-if>
-            <sc-if value="{{r.full}}" hint-placeholder-val="{{no}}">
-              <button type="button" disabled style="height: 44px; padding: 0 32px; background: #f0eae3; color: #5c748f; border: 2px solid #2f4a6d; border-radius: 12px; font-family: inherit; font-size: 15px; line-height: 26px; font-weight: 700;">已額滿</button>
-            </sc-if>
-          </div>
+    <sc-for list="{{rows}}" as="r" hint-placeholder-count="6">
+      <div style="display: grid; grid-template-columns: 110px 150px 120px minmax(0, 1fr) 110px 140px 132px; gap: 16px; align-items: center; padding: 16px 0; border-bottom: 1px solid #e3e7ec;">
+        <div style="display: flex; align-items: baseline; gap: 6px;">
+          <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 24px; line-height: 26px; font-weight: 700;">{{r.date}}</span>
+          <span style="font-size: 13px; line-height: 20px; color: #56657a;">（{{r.wd}}）</span>
         </div>
-      </sc-for>
-
-      <sc-if value="{{empty}}" hint-placeholder-val="{{no}}">
-        <div style="background: #ffffff; border: 2px solid #2f4a6d; border-radius: 20px; box-shadow: 0 4px 0 #2f4a6d; padding: 48px; display: flex; flex-direction: column; align-items: center; gap: 12px;">
-          <svg width="80" height="80" viewBox="0 0 72 72" fill="none" aria-hidden="true">
-            <circle cx="36" cy="46" r="15" fill="#bcd9ec" stroke="#2f4a6d" stroke-width="2"></circle>
-            <path d="M36 31 L24 10 M36 31 L36 8 M36 31 L48 10" stroke="#2f4a6d" stroke-width="2" stroke-linecap="round"></path>
-            <path d="M24 10 Q36 2 48 10" stroke="#2f4a6d" stroke-width="2" stroke-linecap="round"></path>
-          </svg>
-          <p style="margin: 0; font-size: 22px; line-height: 30px; font-weight: 700;">這個條件沒有開放時段</p>
-          <p style="margin: 0; font-size: 15px; line-height: 26px; color: #5c748f;">把教練或地區改回「不指定」，就能看到全部六個時段。</p>
+        <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 20px; line-height: 24px; font-weight: 700;">{{r.time}}</span>
+        <span style="font-size: 15px; line-height: 24px;">{{r.coach}}</span>
+        <div style="display: flex; flex-direction: column;">
+          <span style="font-size: 15px; line-height: 22px; font-weight: 700;">{{r.venue}}</span>
+          <span style="font-size: 13px; line-height: 20px; color: #56657a;">{{r.area}}・{{r.addr}}</span>
         </div>
-      </sc-if>
-    </div>
+        <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 20px; line-height: 24px; font-weight: 700;">{{r.price}}</span>
+        <span style="{{r.statusStyle}}">{{r.statusText}}</span>
+        <div style="display: flex; justify-content: flex-end;">
+          <sc-if value="{{r.open}}" hint-placeholder-val="{{yes}}">
+            <a href="Checkout-Desktop.dc.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 44px; padding: 0 22px; background: #b3d9ec; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-size: 15px; line-height: 22px; font-weight: 700; text-decoration: none;">預約<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7 H12 M8 3 L12 7 L8 11" stroke="#0e1a2b" stroke-width="2" stroke-linecap="square"></path></svg></a>
+          </sc-if>
+          <sc-if value="{{r.full}}" hint-placeholder-val="{{no}}">
+            <button type="button" disabled style="height: 44px; padding: 0 22px; background: #eef1f4; color: #8a96a5; border: none; border-radius: 2px; font-family: inherit; font-size: 15px; line-height: 22px; font-weight: 700;">額滿</button>
+          </sc-if>
+        </div>
+      </div>
+    </sc-for>
 
-    <p style="margin: 0; font-size: 13px; line-height: 20px; color: #5c748f;">找整季的班？<a href="Courses-Desktop.dc.html">看季課程報名</a></p>
+    <sc-if value="{{empty}}" hint-placeholder-val="{{no}}">
+      <div style="padding: 64px 24px; border-bottom: 1px solid #e3e7ec; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" aria-hidden="true">
+          <circle cx="36" cy="46" r="15" fill="#b3d9ec" stroke="#0e1a2b" stroke-width="2"></circle>
+          <path d="M36 31 L24 10 M36 31 L36 8 M36 31 L48 10" stroke="#0e1a2b" stroke-width="2" stroke-linecap="round"></path>
+          <path d="M24 10 Q36 2 48 10" stroke="#0e1a2b" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        <p style="margin: 0; font-size: 20px; line-height: 28px; font-weight: 700;">這個條件沒有開放時段</p>
+        <p style="margin: 0; text-align: center; font-size: 14px; line-height: 22px; color: #56657a;">把地區或教練改回「不指定」，就能看到全部六個時段。</p>
+        <button type="button" onClick="{{clear}}" style="height: 44px; padding: 0 24px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: inherit; font-size: 15px; line-height: 22px; font-weight: 700; cursor: pointer;">清除條件</button>
+      </div>
+    </sc-if>
 
+    <p style="margin: 20px 0 0; font-size: 13px; line-height: 20px; color: #56657a;">單堂名額於開課前 24 小時關閉；找整季的班？<a href="Courses-Desktop.dc.html" style="font-weight: 700;">看季課程報名</a></p>
   </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":940}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":880}}'>
 class Component extends DCLogic {
   constructor(props) {
     super(props);
@@ -113,12 +120,12 @@ class Component extends DCLogic {
   renderVals() {
     var self = this;
     var SESSIONS = [
-      { when: '10/06（二）20:00–22:00', coach: '林彥廷', venue: '永康館', area: '永康區', left: 4, price: 'NT$450' },
-      { when: '10/08（四）19:00–21:00', coach: '陳怡君', venue: '永康館', area: '永康區', left: 1, price: 'NT$450' },
-      { when: '10/09（五）20:00–22:00', coach: '張雅婷', venue: '東寧館', area: '東區', left: 6, price: 'NT$450' },
-      { when: '10/11（日）09:00–11:00', coach: '黃柏勛', venue: '仁德館', area: '仁德區', left: 0, price: 'NT$450' },
-      { when: '10/13（二）20:00–22:00', coach: '林彥廷', venue: '中華館', area: '永康區', left: 5, price: 'NT$450' },
-      { when: '10/15（四）19:00–21:00', coach: '陳怡君', venue: '仁德館', area: '仁德區', left: 3, price: 'NT$450' }
+      { date: '10.06', wd: '二', time: '20:00–22:00', coach: '林彥廷', venue: '永康館', area: '永康區', addr: '台南市永康區 [館址]', left: 4, price: 'NT$450' },
+      { date: '10.08', wd: '四', time: '19:00–21:00', coach: '陳怡君', venue: '永康館', area: '永康區', addr: '台南市永康區 [館址]', left: 1, price: 'NT$450' },
+      { date: '10.09', wd: '五', time: '20:00–22:00', coach: '張雅婷', venue: '東寧館', area: '東區', addr: '台南市東區 [館址]', left: 6, price: 'NT$450' },
+      { date: '10.11', wd: '日', time: '09:00–11:00', coach: '黃柏勛', venue: '仁德館', area: '仁德區', addr: '台南市仁德區 [館址]', left: 0, price: 'NT$450' },
+      { date: '10.13', wd: '二', time: '20:00–22:00', coach: '林彥廷', venue: '中華館', area: '永康區', addr: '台南市永康區 [館址]', left: 5, price: 'NT$450' },
+      { date: '10.15', wd: '四', time: '19:00–21:00', coach: '陳怡君', venue: '仁德館', area: '仁德區', addr: '台南市仁德區 [館址]', left: 3, price: 'NT$450' }
     ];
     var list = SESSIONS.filter(function (s) {
       return (!self.state.coach || s.coach === self.state.coach) && (!self.state.area || s.area === self.state.area);
@@ -126,13 +133,13 @@ class Component extends DCLogic {
     var rows = list.map(function (s) {
       var full = s.left === 0;
       var low = !full && s.left <= 3;
-      var t = full ? '已額滿' : (low ? '剩 ' + s.left + ' 位' : '尚有 ' + s.left + ' 位');
+      var t = full ? '已額滿' : (low ? '剩 ' + s.left + ' 個名額' : '尚有 ' + s.left + ' 個名額');
       var c = full ? '#b04747' : (low ? '#9a6318' : '#3f7f68');
       return {
-        when: s.when, coach: s.coach, venue: s.venue, area: s.area, price: s.price,
+        date: s.date, wd: s.wd, time: s.time, coach: s.coach, venue: s.venue, area: s.area, addr: s.addr, price: s.price,
         open: !full, full: full,
-        chipText: t,
-        chipStyle: 'justify-self:start;display:inline-flex;align-items:center;height:28px;padding:0 10px;background:#ffffff;border:2px solid ' + c + ';border-radius:8px;font-size:13px;line-height:20px;font-weight:700;color:' + c + ';'
+        statusText: t,
+        statusStyle: 'font-size:14px;line-height:22px;font-weight:500;color:' + c + ';'
       };
     });
     return {
@@ -143,7 +150,7 @@ class Component extends DCLogic {
       clear: function () { self.setState({ coach: '', area: '' }); },
       rows: rows,
       empty: rows.length === 0,
-      countText: '共 ' + rows.length + ' 個開放時段',
+      countText: '共 ' + rows.length + ' 個時段',
       yes: true,
       no: false
     };
