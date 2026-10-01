@@ -2,55 +2,63 @@
   "attachments": {},
   "boards": {
     "Admin-Account.dc.html": {
-      "h": 820,
+      "h": 680,
       "is_interactive": true,
       "title": "E 帳號與登入",
       "w": 1440,
-      "x": 6080,
-      "y": 3840
+      "x": 7600,
+      "y": 4680
     },
     "Admin-Coaches.dc.html": {
-      "h": 880,
+      "h": 620,
       "is_interactive": true,
       "title": "B 教練管理",
       "w": 1440,
+      "x": 3040,
+      "y": 4680
+    },
+    "Admin-Course-New.dc.html": {
+      "h": 1220,
+      "is_interactive": true,
+      "title": "A1 新增課程",
+      "w": 1440,
       "x": 1520,
-      "y": 3840
+      "y": 4680
     },
     "Admin-Courses.dc.html": {
-      "h": 1000,
+      "h": 940,
       "is_interactive": true,
       "title": "A 課程／時段管理",
       "w": 1440,
       "x": 0,
-      "y": 3840
+      "y": 4680
     },
     "Admin-Orders.dc.html": {
-      "h": 940,
+      "h": 1020,
       "is_interactive": true,
       "title": "D 訂單管理",
       "w": 1440,
-      "x": 4560,
-      "y": 3840
+      "x": 6080,
+      "y": 4680
     },
     "Admin-Venues.dc.html": {
-      "h": 820,
+      "h": 680,
       "is_interactive": true,
       "title": "C 地點管理",
       "w": 1440,
-      "x": 3040,
-      "y": 3840
+      "x": 4560,
+      "y": 4680
     },
     "BookingList-Desktop.dc.html": {
-      "h": 880,
+      "h": 1020,
       "is_interactive": true,
       "title": "2 預約列表・單堂",
       "w": 1280,
       "x": 1360,
-      "y": 2140
+      "y": 2560
     },
     "BookingList-Mobile.dc.html": {
-      "h": 1180,
+      "h": 1240,
       "is_interactive": true,
       "title": "2 預約列表・單堂",
       "w": 390,
@@ -58,15 +66,15 @@
       "y": 0
     },
     "Checkout-Desktop.dc.html": {
-      "h": 1380,
+      "h": 1800,
       "is_interactive": true,
       "title": "3 結帳",
       "w": 1280,
       "x": 2720,
-      "y": 2140
+      "y": 2560
     },
     "Checkout-Mobile.dc.html": {
-      "h": 1820,
+      "h": 2240,
       "is_interactive": true,
       "title": "3 結帳",
       "w": 390,
@@ -74,7 +82,7 @@
       "y": 0
     },
     "Checkout-Terms-Open.dc.html": {
-      "h": 1600,
+      "h": 1800,
       "is_interactive": true,
       "title": "3a 結帳・同意條款展開",
       "w": 390,
@@ -82,20 +90,20 @@
       "y": 0
     },
     "Courses-Desktop.dc.html": {
-      "h": 880,
+      "h": 860,
       "is_interactive": true,
       "title": "1 課程資訊・季報名",
       "w": 1280,
       "x": 0,
-      "y": 2140
+      "y": 2560
     },
     "Done-Desktop.dc.html": {
-      "h": 760,
+      "h": 700,
       "is_interactive": true,
       "title": "4 完成",
       "w": 1280,
       "x": 4080,
-      "y": 2140
+      "y": 2560
     },
     "Done-Mobile.dc.html": {
       "h": 860,
@@ -106,15 +114,15 @@
       "y": 0
     },
     "Lookup-Desktop.dc.html": {
-      "h": 820,
+      "h": 1000,
       "is_interactive": true,
       "title": "5 查詢",
       "w": 1280,
       "x": 5440,
-      "y": 2140
+      "y": 2560
     },
     "Lookup-Mobile.dc.html": {
-      "h": 900,
+      "h": 1060,
       "is_interactive": true,
       "title": "5 查詢",
       "w": 390,
@@ -122,7 +130,7 @@
       "y": 0
     },
     "Main.dc.html": {
-      "h": 1060,
+      "h": 1080,
       "is_interactive": true,
       "title": "1 課程資訊・季報名",
       "w": 390,
@@ -135,7 +143,7 @@
       "title": "系統流程圖",
       "w": 2200,
       "x": 0,
-      "y": 4960
+      "y": 6020
     }
   },
   "createdOnFiles": {
@@ -169,19 +177,19 @@
       "text": "前台・桌機 1280",
       "w": 240,
       "x": 0,
-      "y": 1840
+      "y": 2260
     },
     "n3": {
       "kind": "title1",
-      "maxW": 7520,
+      "maxW": 8000,
       "text": "後台・桌機 1440",
       "w": 240,
       "x": 0,
-      "y": 3540
+      "y": 4380
     },
     "n4": {
       "color": "blue",
-      "text": "全站已統一為「簡約 B」風格：淺藍 #b3d9ec 帶狀頁首、深藍墨 #0e1a2b 文字與 2px 標題底線、Barlow Condensed 數字＋思源黑體中文、直角按鈕（radius 2）。可點流程：1 選地區→選館別→點月曆日期→報名→3 結帳→4 完成→5 查詢。3 結帳有兩份同意書（報名條款、肖像授權），兩份都是必要：點那一列會展開全文，捲到最下面按「我已閱讀，同意…」就同時完成閱讀與勾選；兩份都勾了「前往付款」才會亮起。切統編發票金額會即時 +5%。結帳畫板的高度是抓「同時只展開一份同意書」，兩份都展開會超出畫板。2 先選地區再挑教練，兩個下拉都會真的篩選，篩空會出現空狀態。後台側欄五個模組互通，A/B/C 的上下架開關、D 的付款狀態與發票欄位都可以實際點。",
+      "text": "品牌色淺藍 #b3d9ec，每一頁最上面的帶狀頁首降到 50%（rgba(179, 217, 236, 0.5)，白底上等於 #d9ecf6），主要按鈕與後台側欄維持全強度。標題一般字重，層級交給 2px 底線與字級。欄位只做需求書上有的，沒有額外加功能。可點流程：1 選地區→選館別→點月曆日期→報名→3 結帳→4 完成→5 查詢。3 結帳有兩份同意書，點那一列會展開全文，捲到最下面按確認就同時完成閱讀與打勾；兩份都勾了才能付款。3a 是把全文攤開的狀態圖。A 的「＋ 新增課程」與每列「編輯」會開 A1。",
       "w": 320,
       "x": 2820,
       "y": 0
@@ -200,6 +208,7 @@
     "Done-Desktop.dc.html",
     "Lookup-Desktop.dc.html",
     "Admin-Courses.dc.html",
+    "Admin-Course-New.dc.html",
     "Admin-Coaches.dc.html",
     "Admin-Venues.dc.html",
     "Admin-Orders.dc.html",

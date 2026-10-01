@@ -95,6 +95,12 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
   display: flex; align-items: center; justify-content: center;
   color: var(--faint); font-size: 13px;
 }
+/* 畫板比框高時，底部淡出提示下面還有，點開才看得完 */
+.shot.clipped::before {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 56px; z-index: 1;
+  background: linear-gradient(rgba(255, 255, 255, 0), #ffffff);
+  pointer-events: none;
+}
 .shot:hover::after {
   content: "點開看大圖";
   position: absolute; inset: auto 0 0 0; padding: 8px 12px;
@@ -127,7 +133,7 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   padding: 64px 16px 72px;
 }
-.lb-stage { background: var(--card); border-radius: 8px; overflow: hidden; position: relative; }
+.lb-stage { background: var(--card); border-radius: 8px; overflow: auto; position: relative; }
 .lb-stage iframe { border: 0; display: block; transform-origin: top left; }
 .lb-bar {
   position: absolute; left: 0; right: 0; bottom: 0; margin: 0;
@@ -192,48 +198,51 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
 </div>
 
 <script>
-/* 資料來源：project/canvas.json。之後增刪畫板改這個陣列就好；hidden: true 的組先不顯示，拿掉就會回來。 */
+/* 資料來源：project/canvas.json。之後增刪畫板改這個陣列就好；hidden: true 的組先不顯示，拿掉就會回來。
+   tallest 是縮圖框的比例上限：同一組的卡片等高、標籤才對齊。比它高的畫板（例如結帳）
+   縮圖會切掉下半部並在底部淡出，點開燈箱才是完整的。 */
 const GROUPS = [
   {
     id: "mobile", label: "介面流程", note: "390px 寬，民眾在手機上看到的報名流程。",
-    grid: "mobile", w: 390, tallest: 1820,
+    grid: "mobile", w: 390, tallest: 1400,
     boards: [
-      { step: "1", file: "Main.dc.html",               title: "課程資訊・季報名", h: 1060, live: true },
-      { step: "2", file: "BookingList-Mobile.dc.html", title: "預約列表・單堂",   h: 1180, live: true },
-      { step: "3", file: "Checkout-Mobile.dc.html",    title: "結帳",            h: 1820, live: true },
-      { step: "3a", file: "Checkout-Terms-Open.dc.html", title: "結帳・同意條款展開", h: 1600, live: true, badge: "狀態圖" },
+      { step: "1", file: "Main.dc.html",               title: "課程資訊・季報名", h: 1080, live: true },
+      { step: "2", file: "BookingList-Mobile.dc.html", title: "預約列表・單堂",   h: 1240, live: true },
+      { step: "3", file: "Checkout-Mobile.dc.html",    title: "結帳",            h: 2240, live: true },
+      { step: "3a", file: "Checkout-Terms-Open.dc.html", title: "結帳・同意條款展開", h: 1800, live: true, badge: "狀態圖" },
       { step: "4", file: "Done-Mobile.dc.html",        title: "完成",            h: 860,  live: true },
-      { step: "5", file: "Lookup-Mobile.dc.html",      title: "查詢",            h: 900,  live: true }
+      { step: "5", file: "Lookup-Mobile.dc.html",      title: "查詢",            h: 1060, live: true }
     ]
   },
   {
     id: "desktop", label: "前台・桌機", note: "1280px 寬，同一套流程的電腦版。",
-    grid: "wide", w: 1280, tallest: 1380,
+    grid: "wide", w: 1280, tallest: 1200,
     boards: [
-      { step: "1", file: "Courses-Desktop.dc.html",     title: "課程資訊・季報名", h: 880, live: true },
-      { step: "2", file: "BookingList-Desktop.dc.html", title: "預約列表・單堂",   h: 880, live: true },
-      { step: "3", file: "Checkout-Desktop.dc.html",    title: "結帳",           h: 1380, live: true },
-      { step: "4", file: "Done-Desktop.dc.html",        title: "完成",            h: 760, live: true },
-      { step: "5", file: "Lookup-Desktop.dc.html",      title: "查詢",            h: 820, live: true }
+      { step: "1", file: "Courses-Desktop.dc.html",     title: "課程資訊・季報名", h: 860,  live: true },
+      { step: "2", file: "BookingList-Desktop.dc.html", title: "預約列表・單堂",   h: 1020, live: true },
+      { step: "3", file: "Checkout-Desktop.dc.html",    title: "結帳",            h: 1800, live: true },
+      { step: "4", file: "Done-Desktop.dc.html",        title: "完成",            h: 700,  live: true },
+      { step: "5", file: "Lookup-Desktop.dc.html",      title: "查詢",            h: 1000, live: true }
     ]
   },
   {
     id: "admin", label: "後台・桌機", note: "1440px 寬，中心內部管理用，側欄五個模組互通。",
-    grid: "wide", w: 1440, tallest: 1000,
+    grid: "wide", w: 1440, tallest: 1220,
     boards: [
-      { step: "A", file: "Admin-Courses.dc.html", title: "課程／時段管理", h: 1000, live: true },
-      { step: "B", file: "Admin-Coaches.dc.html", title: "教練管理",      h: 880,  live: true },
-      { step: "C", file: "Admin-Venues.dc.html",  title: "地點管理",      h: 820,  live: true },
-      { step: "D", file: "Admin-Orders.dc.html",  title: "訂單管理",      h: 940,  live: true },
-      { step: "E", file: "Admin-Account.dc.html", title: "帳號與登入",     h: 820,  live: true }
+      { step: "A",  file: "Admin-Courses.dc.html",    title: "課程／時段管理", h: 940,  live: true },
+      { step: "A1", file: "Admin-Course-New.dc.html", title: "新增課程",      h: 1220, live: true },
+      { step: "B",  file: "Admin-Coaches.dc.html",    title: "教練管理",      h: 620,  live: true },
+      { step: "C",  file: "Admin-Venues.dc.html",     title: "地點管理",      h: 680,  live: true },
+      { step: "D",  file: "Admin-Orders.dc.html",     title: "訂單管理",      h: 1020, live: true },
+      { step: "E",  file: "Admin-Account.dc.html",    title: "帳號與登入",     h: 680,  live: true }
     ]
   },
   {
     id: "flow", label: "系統流程圖",
     note: "五個角色 × 七個階段的泳道圖。實線是操作流程，虛線是資料同步；深藍框的方塊點了會跳到對應畫板。圖上標「待確認」的六件事要一起定案。",
-    grid: "full", w: 2200, tallest: 1320,
+    grid: "full", w: 2200, tallest: 1400,
     boards: [
-      { file: "System-Flow.dc.html", title: "泳道圖・五個角色 × 七個階段", h: 1320, live: true }
+      { file: "System-Flow.dc.html", title: "泳道圖・五個角色 × 七個階段", h: 1400, live: true }
     ]
   }
 ];
@@ -295,6 +304,7 @@ function card(g, b) {
   const shot = document.createElement("div");
   shot.className = "shot";
   shot.style.setProperty("--ar", g.w + " / " + g.tallest);
+  if (b.h > g.tallest) shot.classList.add("clipped");
   shot.tabIndex = 0;
   shot.role = "button";
   shot.setAttribute("aria-label", "放大 " + b.title);
@@ -368,10 +378,14 @@ function openLightbox(i) {
   document.body.style.overflow = "hidden";
   lbStage.innerHTML = "";
 
-  // 視窗放不下就等比縮小，放得下就維持原尺寸
+  // 視窗放不下就等比縮小，放得下就維持原尺寸。
+  // 但像結帳 2240 這種很高的畫板，照高度縮會縮到看不清楚（390 寬只剩 116），
+  // 所以縮太多時改成照寬度縮，高度放不下就讓燈箱自己捲。
   const maxW = window.innerWidth - (window.innerWidth > 640 ? 160 : 32);
   const maxH = window.innerHeight - (window.innerWidth > 640 ? 136 : 120);
-  const k = Math.min(1, maxW / g.w, maxH / b.h);
+  const kFit = Math.min(1, maxW / g.w, maxH / b.h);
+  const kWide = Math.min(1, maxW / g.w);
+  const k = kFit < kWide * 0.6 ? kWide : kFit;
 
   const fr = document.createElement("iframe");
   fr.src = boardSrc(b, true);
@@ -380,7 +394,7 @@ function openLightbox(i) {
   fr.title = b.title;
   fr.style.transform = "scale(" + k + ")";
   lbStage.style.width = Math.round(g.w * k) + "px";
-  lbStage.style.height = Math.round(b.h * k) + "px";
+  lbStage.style.height = Math.min(Math.round(b.h * k), maxH) + "px";
   lbStage.appendChild(fr);
 
   const label = document.createElement("span");

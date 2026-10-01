@@ -1,6 +1,6 @@
 標題有兩個層級，分別靠「帶狀」與「2px 線」做，不靠字級大小硬撐。
 
-**帶狀頁首**是每一頁最上面那塊 `accent`，下緣一條 1px `accent-edge`。裡面由上而下是：`overline`（全大寫英文，`ink-on-band`）、`display` 主標（900 字重）、一行 `body` 說明（`ink-on-band`）。手機左右內距 `space-5`，桌機 `space-7`，後台 `space-6`。篩選用的下拉選單也放在帶狀裡，跟著主標一起走。
+**帶狀頁首**是每一頁最上面那塊 `accent`，下緣一條 1px `accent-line`。裡面由上而下是：`overline`（全大寫英文，`ink-on-band`）、`display` 主標（900 字重）、一行 `body` 說明（`ink-on-band`）。手機左右內距 `space-5`，桌機 `space-7`，後台 `space-6`。篩選用的下拉選單也放在帶狀裡，跟著主標一起走。
 
 一頁只有一個帶狀頁首，也只有一個 `display`。
 
