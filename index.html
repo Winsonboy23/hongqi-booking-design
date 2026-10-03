@@ -203,7 +203,7 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
    縮圖會切掉下半部並在底部淡出，點開燈箱才是完整的。 */
 const GROUPS = [
   {
-    id: "mobile", label: "介面流程", note: "390px 寬，民眾在手機上看到的報名流程。",
+    id: "mobile", label: "前台・手機", note: "390px 寬，民眾在手機上看到的報名流程。",
     grid: "mobile", w: 390, tallest: 1400,
     boards: [
       { step: "1", file: "Main.dc.html",               title: "課程資訊・季報名", h: 1080, live: true },
@@ -238,7 +238,7 @@ const GROUPS = [
     ]
   },
   {
-    id: "flow", label: "系統流程圖",
+    id: "flow", label: "系統流程圖", hidden: true,
     note: "五個角色 × 七個階段的泳道圖。實線是操作流程，虛線是資料同步；深藍框的方塊點了會跳到對應畫板。圖上標「待確認」的六件事要一起定案。",
     grid: "full", w: 2200, tallest: 1400,
     boards: [
