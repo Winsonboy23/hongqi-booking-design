@@ -43,7 +43,7 @@ a { color: #0e1a2b; } a:hover { color: #6b5726; }
         <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.16em; color: #56657a;">ORDERS</span>
         <h1 style="margin: 0; font-size: 24px; line-height: 32px; font-weight: 500;">訂單管理</h1>
       </div>
-      <button type="button" style="height: 44px; padding: 0 20px; background: #fce38a; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer;">匯出 Excel</button>
+      <button type="button" style="height: 44px; padding: 0 20px; background: #fce38a; color: #0e1a2b; border: none; border-radius: 2px; font-family: inherit; font-size: 15px; font-weight: 500; cursor: pointer;">匯出 Excel</button>
     </header>
 
 
@@ -132,7 +132,7 @@ a { color: #0e1a2b; } a:hover { color: #6b5726; }
           <input type="checkbox" checked="{{r.issued}}" onChange="{{r.toggleIssued}}" aria-label="{{r.issuedAria}}" style="justify-self: start; margin-left: 14px; width: 20px; height: 20px; accent-color: #0e1a2b;">
           <input type="text" value="{{r.invNo}}" onChange="{{r.setInvNo}}" placeholder="IV-" aria-label="{{r.invAria}}" style="{{r.invStyle}}">
           <div style="display: flex; justify-content: flex-end;">
-            <button type="button" style="height: 34px; padding: 0 12px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer;">明細</button>
+            <button type="button" style="height: 34px; padding: 0 12px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer;">明細</button>
           </div>
         </div>
       </sc-for>
@@ -140,9 +140,9 @@ a { color: #0e1a2b; } a:hover { color: #6b5726; }
 
     <div style="{{barStyle}}">
       <span style="flex-grow: 1; font-size: 14px; line-height: 22px; font-weight: 700;">{{pickedText}}</span>
-      <button type="button" style="height: 40px; padding: 0 16px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer;">標記已付款</button>
-      <button type="button" style="height: 40px; padding: 0 16px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer;">標記發票已開</button>
-      <button type="button" style="height: 40px; padding: 0 16px; background: #fce38a; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer;">匯出所選</button>
+      <button type="button" style="height: 40px; padding: 0 16px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer;">標記已付款</button>
+      <button type="button" style="height: 40px; padding: 0 16px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer;">標記發票已開</button>
+      <button type="button" style="height: 40px; padding: 0 16px; background: #fce38a; color: #0e1a2b; border: none; border-radius: 2px; font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer;">匯出所選</button>
     </div>
 
     <p style="margin: 14px 32px 24px; font-size: 13px; line-height: 20px; color: #56657a;">付款狀態由管理員手動切換；發票為手開，開立後勾選「發票已開」並填入發票號碼，會計即可用匯出的 Excel 對帳。匯出檔包含訂單編號、報名時間、姓名、電話、LINE ID、程度備註、課程、金額、發票類型、統編、抬頭、發票號碼、狀態，以及兩份同意書的同意時間。</p>

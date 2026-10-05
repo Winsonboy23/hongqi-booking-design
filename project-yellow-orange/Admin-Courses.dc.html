@@ -43,8 +43,8 @@ a { color: #0e1a2b; } a:hover { color: #6b5726; }
         <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.16em; color: #56657a;">COURSES &amp; SESSIONS</span>
         <h1 style="margin: 0; font-size: 24px; line-height: 32px; font-weight: 500;">課程／時段管理</h1>
       </div>
-      <button type="button" style="height: 44px; padding: 0 18px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer;">複製上一季課表</button>
-      <a href="Admin-Course-New.dc.html" style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; background: #f7a541; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-size: 15px; font-weight: 700; text-decoration: none;">＋ 新增課程</a>
+      <button type="button" style="height: 44px; padding: 0 18px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: inherit; font-size: 15px; font-weight: 500; cursor: pointer;">複製上一季課表</button>
+      <a href="Admin-Course-New.dc.html" style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; background: #f7a541; color: #0e1a2b; border: none; border-radius: 2px; font-size: 15px; font-weight: 500; text-decoration: none;">＋ 新增課程</a>
     </header>
 
     <div style="padding: 20px 32px 0; display: flex; align-items: baseline;">
@@ -83,7 +83,7 @@ a { color: #0e1a2b; } a:hover { color: #6b5726; }
           <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 18px; line-height: 22px; font-weight: 700;">{{r.price}}</span>
           <button type="button" onClick="{{r.toggle}}" aria-pressed="{{r.on}}" aria-label="{{r.toggleAria}}" style="{{r.switchStyle}}"><span style="{{r.knobStyle}}"></span></button>
           <div style="display: flex; justify-content: flex-end; gap: 8px;">
-            <a href="Admin-Course-New.dc.html" style="display: inline-flex; align-items: center; height: 36px; padding: 0 12px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-size: 13px; font-weight: 700; text-decoration: none;">編輯</a>
+            <a href="Admin-Course-New.dc.html" style="display: inline-flex; align-items: center; height: 36px; padding: 0 12px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-size: 13px; font-weight: 500; text-decoration: none;">編輯</a>
           </div>
         </div>
       </sc-for>
@@ -91,10 +91,10 @@ a { color: #0e1a2b; } a:hover { color: #6b5726; }
 
     <div style="padding: 16px 32px 24px; display: flex; align-items: center; gap: 10px;">
       <p style="margin: 0; flex-grow: 1; font-size: 13px; line-height: 20px; color: #56657a;">「複製上一季課表」會把上一季所有課程連同時段、教練、售價整批複製成新季草稿，預設為下架狀態，確認後再逐一上架。</p>
-      <button type="button" disabled style="width: 36px; height: 36px; background: #eef1f4; color: #8a96a5; border: none; border-radius: 2px; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700;">‹</button>
-      <button type="button" style="width: 36px; height: 36px; background: #fce38a; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer;">1</button>
-      <button type="button" style="width: 36px; height: 36px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer;">2</button>
-      <button type="button" style="width: 36px; height: 36px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer;">›</button>
+      <button type="button" disabled style="width: 36px; height: 36px; background: #eef1f4; color: #8a96a5; border: none; border-radius: 2px; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 500;">‹</button>
+      <button type="button" style="width: 36px; height: 36px; background: #fce38a; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 500; cursor: pointer;">1</button>
+      <button type="button" style="width: 36px; height: 36px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 500; cursor: pointer;">2</button>
+      <button type="button" style="width: 36px; height: 36px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 500; cursor: pointer;">›</button>
     </div>
 
   </main>

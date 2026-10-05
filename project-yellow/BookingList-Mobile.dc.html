@@ -72,10 +72,10 @@ a { color: #0e1a2b; } a:hover { color: #6b5726; }
             <span style="{{r.statusStyle}}">{{r.statusText}}</span>
             <span style="flex-grow: 1;"></span>
             <sc-if value="{{r.open}}" hint-placeholder-val="{{yes}}">
-              <a href="Checkout-Mobile.dc.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 44px; padding: 0 18px; background: #fce38a; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-size: 15px; line-height: 22px; font-weight: 700; text-decoration: none;">預約<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7 H12 M8 3 L12 7 L8 11" stroke="#0e1a2b" stroke-width="2" stroke-linecap="square"></path></svg></a>
+              <a href="Checkout-Mobile.dc.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 44px; padding: 0 18px; background: #fce38a; color: #0e1a2b; border: none; border-radius: 2px; font-size: 15px; line-height: 22px; font-weight: 500; text-decoration: none;">預約<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7 H12 M8 3 L12 7 L8 11" stroke="#0e1a2b" stroke-width="2" stroke-linecap="square"></path></svg></a>
             </sc-if>
             <sc-if value="{{r.full}}" hint-placeholder-val="{{no}}">
-              <button type="button" disabled style="height: 44px; padding: 0 18px; background: #eef1f4; color: #8a96a5; border: none; border-radius: 2px; font-family: inherit; font-size: 15px; line-height: 22px; font-weight: 700;">額滿</button>
+              <button type="button" disabled style="height: 44px; padding: 0 18px; background: #eef1f4; color: #8a96a5; border: none; border-radius: 2px; font-family: inherit; font-size: 15px; line-height: 22px; font-weight: 500;">額滿</button>
             </sc-if>
           </div>
         </div>
@@ -91,7 +91,7 @@ a { color: #0e1a2b; } a:hover { color: #6b5726; }
         </svg>
         <p style="margin: 0; font-size: 18px; line-height: 26px; font-weight: 700;">這個條件沒有開放時段</p>
         <p style="margin: 0; text-align: center; font-size: 13px; line-height: 20px; color: #56657a;">把地區或教練改回「不指定」，就能看到全部六個時段。</p>
-        <button type="button" onClick="{{clear}}" style="height: 44px; padding: 0 24px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: inherit; font-size: 15px; line-height: 22px; font-weight: 700; cursor: pointer;">清除條件</button>
+        <button type="button" onClick="{{clear}}" style="height: 44px; padding: 0 24px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: inherit; font-size: 15px; line-height: 22px; font-weight: 500; cursor: pointer;">清除條件</button>
       </div>
     </sc-if>
   </div>
