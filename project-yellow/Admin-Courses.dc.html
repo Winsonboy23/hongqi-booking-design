@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>後台・課程／時段管理</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #ffffff; color: #0e1a2b; font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
+a { color: #0e1a2b; } a:hover { color: #6b5726; }
+</style>
+</helmet>
+<div style="width: 1440px; height: 940px; background: #ffffff; display: flex; overflow: hidden;">
+
+  <aside style="width: 236px; flex-shrink: 0; background: #fce38a; border-right: 1px solid #b8963a; display: flex; flex-direction: column;">
+    <div style="padding: 24px 20px 20px; display: flex; flex-direction: column; gap: 2px; border-bottom: 1px solid #b8963a;">
+      <span style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;"><img src="data:image/png;base64,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" alt="" width="40" height="40" style="display: block; width: 40px; height: 40px; flex-shrink: 0;"><span style="font-size: 15px; line-height: 23px; font-weight: 400; letter-spacing: 0.04em;">弘淇運動羽球教學團隊</span></span>
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 13px; line-height: 18px; font-weight: 600; letter-spacing: 0.18em; color: #6b5726;">ADMIN CONSOLE</span>
+    </div>
+    <nav style="flex-grow: 1; padding: 14px 0; display: flex; flex-direction: column;">
+      <a href="Admin-Courses.dc.html" style="height: 46px; padding: 0 20px; display: flex; align-items: center; background: #ffffff; box-shadow: inset 3px 0 0 #0e1a2b; font-size: 15px; font-weight: 700; text-decoration: none;">課程／時段管理</a>
+      <a href="Admin-Coaches.dc.html" style="height: 46px; padding: 0 20px; display: flex; align-items: center; color: #6b5726; font-size: 15px; text-decoration: none;">教練管理</a>
+      <a href="Admin-Venues.dc.html" style="height: 46px; padding: 0 20px; display: flex; align-items: center; color: #6b5726; font-size: 15px; text-decoration: none;">地點管理</a>
+      <a href="Admin-Orders.dc.html" style="height: 46px; padding: 0 20px; display: flex; align-items: center; color: #6b5726; font-size: 15px; text-decoration: none;">訂單管理</a>
+      <a href="Admin-Account.dc.html" style="height: 46px; padding: 0 20px; display: flex; align-items: center; color: #6b5726; font-size: 15px; text-decoration: none;">管理員帳號</a>
+    </nav>
+    <div style="padding: 16px 20px 20px; border-top: 1px solid #b8963a; display: flex; flex-direction: column; gap: 2px;">
+      <span style="font-size: 14px; line-height: 22px; font-weight: 700;">中心管理員</span>
+      <span style="font-size: 13px; line-height: 20px; color: #6b5726;">admin@hongqi.tw</span>
+      <a href="Admin-Account.dc.html" style="margin-top: 6px; font-size: 13px; line-height: 20px; color: #6b5726;">帳號設定 / 登出</a>
+    </div>
+  </aside>
+
+  <main style="flex-grow: 1; display: flex; flex-direction: column; min-width: 0;">
+
+    <header style="height: 76px; flex-shrink: 0; padding: 0 32px; border-bottom: 1px solid #e3e7ec; display: flex; align-items: center; gap: 16px;">
+      <div style="flex-grow: 1; display: flex; flex-direction: column;">
+        <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.16em; color: #56657a;">COURSES &amp; SESSIONS</span>
+        <h1 style="margin: 0; font-size: 24px; line-height: 32px; font-weight: 500;">課程／時段管理</h1>
+      </div>
+      <button type="button" style="height: 44px; padding: 0 18px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer;">複製上一季課表</button>
+      <a href="Admin-Course-New.dc.html" style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; background: #fce38a; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-size: 15px; font-weight: 700; text-decoration: none;">＋ 新增課程</a>
+    </header>
+
+    <div style="padding: 20px 32px 0; display: flex; align-items: baseline;">
+      <span style="flex-grow: 1; font-size: 14px; line-height: 22px;">2026 秋季</span>
+      <span style="font-size: 14px; line-height: 22px; font-weight: 700;">{{countText}}</span>
+    </div>
+
+    <div style="margin: 18px 32px 0; flex-grow: 1; overflow: hidden;">
+      <div style="display: grid; grid-template-columns: minmax(0, 1.4fr) 90px 100px 110px minmax(0, 1.3fr) 110px 120px 96px 96px; gap: 12px; align-items: center; padding-bottom: 10px; border-bottom: 2px solid #0e1a2b;">
+        <span style="font-size: 13px; line-height: 20px; font-weight: 700;">課程名稱</span>
+        <span style="font-size: 13px; line-height: 20px; font-weight: 700;">類型</span>
+        <span style="font-size: 13px; line-height: 20px; font-weight: 700;">教練</span>
+        <span style="font-size: 13px; line-height: 20px; font-weight: 700;">館別</span>
+        <span style="font-size: 13px; line-height: 20px; font-weight: 700;">時段</span>
+        <span style="font-size: 13px; line-height: 20px; font-weight: 700;">名額</span>
+        <span style="font-size: 13px; line-height: 20px; font-weight: 700;">售價</span>
+        <span style="font-size: 13px; line-height: 20px; font-weight: 700;">上架</span>
+        <span></span>
+      </div>
+      <sc-for list="{{rows}}" as="r" hint-placeholder-count="7">
+        <div style="{{r.rowStyle}}">
+          <div style="display: flex; flex-direction: column;">
+            <span style="font-size: 15px; line-height: 22px; font-weight: 700;">{{r.name}}</span>
+          </div>
+          <span style="justify-self: start; font-size: 12px; line-height: 18px; font-weight: 500; padding: 2px 7px; border: 1px solid #0e1a2b; border-radius: 2px;">{{r.type}}</span>
+          <span style="font-size: 14px; line-height: 22px;">{{r.coach}}</span>
+          <span style="font-size: 14px; line-height: 22px;">{{r.venue}}</span>
+          <div style="display: flex; flex-direction: column;">
+            <span style="font-size: 14px; line-height: 22px;">{{r.dow}} <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700;">{{r.time}}</span></span>
+            <span style="font-size: 12px; line-height: 18px; color: #56657a;">{{r.span}}</span>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 18px; line-height: 22px; font-weight: 700;">{{r.taken}} / {{r.cap}}</span>
+            <span style="{{r.leftStyle}}">{{r.leftText}}</span>
+          </div>
+          <span style="font-family: 'Barlow Condensed', sans-serif; font-size: 18px; line-height: 22px; font-weight: 700;">{{r.price}}</span>
+          <button type="button" onClick="{{r.toggle}}" aria-pressed="{{r.on}}" aria-label="{{r.toggleAria}}" style="{{r.switchStyle}}"><span style="{{r.knobStyle}}"></span></button>
+          <div style="display: flex; justify-content: flex-end; gap: 8px;">
+            <a href="Admin-Course-New.dc.html" style="display: inline-flex; align-items: center; height: 36px; padding: 0 12px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-size: 13px; font-weight: 700; text-decoration: none;">編輯</a>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="padding: 16px 32px 24px; display: flex; align-items: center; gap: 10px;">
+      <p style="margin: 0; flex-grow: 1; font-size: 13px; line-height: 20px; color: #56657a;">「複製上一季課表」會把上一季所有課程連同時段、教練、售價整批複製成新季草稿，預設為下架狀態，確認後再逐一上架。</p>
+      <button type="button" disabled style="width: 36px; height: 36px; background: #eef1f4; color: #8a96a5; border: none; border-radius: 2px; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700;">‹</button>
+      <button type="button" style="width: 36px; height: 36px; background: #fce38a; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer;">1</button>
+      <button type="button" style="width: 36px; height: 36px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer;">2</button>
+      <button type="button" style="width: 36px; height: 36px; background: #ffffff; color: #0e1a2b; border: 1px solid #0e1a2b; border-radius: 2px; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer;">›</button>
+    </div>
+
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":940}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { off: { '6': true } };
+  }
+  renderVals() {
+    var self = this;
+    var DATA = [
+      { id: '1', name: '成人初級班', type: '季課程', coach: '林彥廷', venue: '永康館', dow: '每週二', time: '19:00–21:00', span: '10/06 起・12 堂', cap: 16, taken: 13, price: 'NT$4,800' },
+      { id: '2', name: '成人進階班', type: '季課程', coach: '陳怡君', venue: '永康館', dow: '每週四', time: '19:00–21:00', span: '10/08 起・12 堂', cap: 16, taken: 11, price: 'NT$4,800' },
+      { id: '3', name: '樂齡羽球班', type: '季課程', coach: '張雅婷', venue: '永康館', dow: '每週四', time: '14:00–15:30', span: '10/08 起・12 堂', cap: 12, taken: 12, price: 'NT$3,200' },
+      { id: '4', name: '兒童啟蒙班', type: '季課程', coach: '黃柏勛', venue: '永康館', dow: '每週六', time: '09:00–10:30', span: '10/10 起・12 堂', cap: 14, taken: 8, price: 'NT$3,600' },
+      { id: '5', name: '上班族夜間班', type: '季課程', coach: '林彥廷', venue: '中華館', dow: '每週五', time: '20:00–22:00', span: '10/09 起・12 堂', cap: 16, taken: 14, price: 'NT$4,800' },
+      { id: '6', name: '青少年培訓班', type: '季課程', coach: '黃柏勛', venue: '東寧館', dow: '每週一', time: '18:30–20:30', span: '10/05 起・12 堂', cap: 12, taken: 10, price: 'NT$5,200' },
+      { id: '7', name: '單堂開放場', type: '單堂', coach: '不指定', venue: '仁德館', dow: '每週日', time: '09:00–11:00', span: '整季開放', cap: 20, taken: 13, price: 'NT$450' }
+    ];
+    var list = DATA;
+    var rows = list.map(function (d, i) {
+      var on = !self.state.off[d.id];
+      var left = d.cap - d.taken;
+      var lc = left === 0 ? '#b04747' : (left <= 3 ? '#9a6318' : '#3f7f68');
+      return {
+        name: d.name, type: d.type, coach: d.coach, venue: d.venue,
+        dow: d.dow, time: d.time, span: d.span, cap: d.cap, taken: d.taken, price: d.price,
+        on: on,
+        rowStyle: 'display:grid;grid-template-columns:minmax(0,1.4fr) 90px 100px 110px minmax(0,1.3fr) 110px 120px 96px 96px;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid #e3e7ec;'
+          + (on ? '' : 'opacity:0.58;'),
+        leftText: left === 0 ? '已額滿' : '剩 ' + left + ' 位',
+        leftStyle: 'font-size:12px;line-height:18px;font-weight:500;color:' + lc + ';',
+        switchStyle: 'justify-self:start;width:56px;height:30px;padding:3px;display:flex;align-items:center;border-radius:2px;cursor:pointer;'
+          + (on ? 'background:#fce38a;border:1px solid #0e1a2b;justify-content:flex-end;' : 'background:#eef1f4;border:1px solid #a3adba;justify-content:flex-start;'),
+        knobStyle: 'display:block;width:22px;height:22px;border-radius:1px;background:' + (on ? '#0e1a2b' : '#8a96a5') + ';',
+        toggleAria: d.name + (on ? '，已上架' : '，已下架'),
+        toggle: function () {
+          var o = {};
+          for (var k in self.state.off) { if (self.state.off.hasOwnProperty(k)) { o[k] = self.state.off[k]; } }
+          if (o[d.id]) { delete o[d.id]; } else { o[d.id] = true; }
+          self.setState({ off: o });
+        }
+      };
+    });
+    return {
+      rows: rows,
+      countText: '共 ' + rows.length + ' 筆課程',
+      yes: true,
+      no: false
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -41,6 +41,23 @@ header { padding: 48px 24px 28px; max-width: 1400px; margin: 0 auto; }
 .brand { margin: 0 0 10px; font-size: 13px; line-height: 20px; font-weight: 700; letter-spacing: .12em; color: var(--ink); }
 h1 { margin: 0; font-size: 28px; line-height: 38px; font-weight: 700; }
 
+/* ---------- 配色切換 ---------- */
+.styles { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.styles-label { margin-right: 4px; font-size: 13px; line-height: 20px; color: var(--muted); }
+.style-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 38px; padding: 0 14px;
+  background: var(--card); color: var(--ink);
+  border: 1px solid var(--line-strong); border-radius: 8px;
+  font-family: inherit; font-size: 15px; font-weight: 500; cursor: pointer;
+}
+.style-btn:hover { background: var(--bg-soft); }
+.style-btn[aria-pressed="true"] { border-color: var(--primary); box-shadow: inset 0 0 0 1px var(--primary); font-weight: 700; }
+.swatch { display: inline-flex; }
+.swatch i { width: 14px; height: 14px; border: 1px solid #0e1a2b; border-radius: 999px; }
+.swatch i + i { margin-left: -4px; }
+.style-note { margin: 10px 0 0; font-size: 14px; line-height: 22px; }
+
 /* ---------- 分頁列 ---------- */
 .tabs {
   position: sticky; top: 0; z-index: 20;
@@ -180,6 +197,8 @@ main { max-width: 1400px; margin: 0 auto; padding: 28px 24px 80px; }
 <header>
   <p class="brand">弘淇運動羽球教學團隊</p>
   <h1>報名系統介面設計稿</h1>
+  <div class="styles" id="styles" role="group" aria-label="配色"><span class="styles-label">配色</span></div>
+  <p class="style-note" id="styleNote"></p>
 </header>
 
 <nav class="tabs" aria-label="介面分類">
@@ -254,12 +273,42 @@ const SHOWN = GROUPS.filter(g => !g.hidden);
 GROUPS.forEach(g => g.boards.forEach(b => { b.group = g; }));
 const FLAT = SHOWN.flatMap(g => g.boards);
 
+// 三種配色：畫板內容一樣、只換顏色，各放一個資料夾、檔名相同。切換時留在同一個分頁，方便對照同一頁。
+const STYLES = [
+  { label: "藍色版", dir: "project/", colors: ["#b3d9ec"],
+    note: "品牌色淺藍 #b3d9ec：按鈕、選中狀態、後台側欄都是淺藍，頁首帶狀用 50%。" },
+  { label: "鵝黃版", dir: "project-yellow/", colors: ["#fce38a"],
+    note: "品牌色鵝黃 #fce38a：按鈕、選中狀態、後台側欄都是鵝黃，頁首帶狀用 50%。" },
+  { label: "鵝黃＋橘按鈕版", dir: "project-yellow-orange/", colors: ["#fce38a", "#f7a541"],
+    note: "底色同鵝黃版；「按了會進到下一步」的按鈕改成橘色 #f7a541，已經選好的狀態維持鵝黃，要按的和已選的一眼就分得出來。" }
+];
+let style;
+
+const stylesEl = document.getElementById("styles");
+STYLES.forEach(s => {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "style-btn";
+  btn.innerHTML = '<span class="swatch">' + s.colors.map(c => '<i style="background:' + c + '"></i>').join("") + "</span>" + s.label;
+  btn.addEventListener("click", () => setStyle(s));
+  s.btn = btn;
+  stylesEl.appendChild(btn);
+});
+
+function setStyle(s) {
+  style = s;
+  STYLES.forEach(x => x.btn.setAttribute("aria-pressed", String(x === s)));
+  document.getElementById("styleNote").textContent = s.note;
+  document.querySelectorAll(".card").forEach(c => c._restyle());
+}
+setStyle(STYLES[0]);
+
 // embed：燈箱裡的畫板把連結交給這頁處理（見 project/support.js）
 function boardSrc(b, embed) {
   const q = new URLSearchParams();
   if (embed) q.set("embed", "1");
   const qs = q.toString();
-  return "project/" + b.file + (qs ? "?" + qs : "");
+  return style.dir + b.file + (qs ? "?" + qs : "");
 }
 const tabsEl = document.getElementById("tabs");
 const panelsEl = document.getElementById("panels");
@@ -336,6 +385,7 @@ function card(g, b) {
     if (el._mounted) return;
     el._mounted = true;
     const fr = document.createElement("iframe");
+    el._fr = fr;
     fr.src = boardSrc(b, false);
     fr.width = g.w;
     fr.height = b.h;
@@ -350,6 +400,8 @@ function card(g, b) {
     fit();
     new ResizeObserver(fit).observe(shot);
   };
+  // 換配色：已經載入的縮圖換成新資料夾的同一張，還沒載入的等打開分頁時自然會用新的
+  el._restyle = () => { if (el._fr) el._fr.src = boardSrc(b, false); };
   return el;
 }
 
@@ -399,7 +451,7 @@ function openLightbox(i) {
 
   const label = document.createElement("span");
   label.textContent =
-    (cur + 1) + " / " + FLAT.length + " ・ " + g.label + " " + (b.step ? b.step + " " : "") + b.title +
+    (cur + 1) + " / " + FLAT.length + " ・ " + style.label + " ・ " + g.label + " " + (b.step ? b.step + " " : "") + b.title +
     (b.live ? "（可操作）" : "（靜態畫面）");
   const full = document.createElement("a");
   full.href = boardSrc(b, false);
